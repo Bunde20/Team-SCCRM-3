@@ -20,7 +20,12 @@ function getOneUser(req, res) {
 
 function createNewUser(req, res) {
   User.create(req.body)
-    .then((data) => res.json(data))
+    .then((data) =>{
+      return data.generateAuthToken().then((token) => {
+        res.status(201).json({ user: data, token})
+      })
+
+    })
     .catch((err) => {
       console.log(err);
       res.json(err);

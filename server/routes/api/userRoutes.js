@@ -24,8 +24,14 @@ router.get("/:id", (req, res) => {
 // Create one new user
 router.post("/", (req, res) => {
   user = User.create(req.body)
-    .then((data) => res.json(data))
-    .catch((err) => {
+    .then((data) =>{
+      // generates token when a new user is created
+      return data.generateAuthToken().then((token) => {
+        res.status(201).json({ user: data, token})
+      })
+      
+    }) 
+      .catch((err) => {
       console.log(err);
       res.json(err);
     });

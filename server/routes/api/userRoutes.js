@@ -4,8 +4,6 @@ const User = require("../../models/User");
 // Find all users
 router.get("/", (req, res) => {
   User.find({})
-    .populate("friends")
-    .populate("thoughts")
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);

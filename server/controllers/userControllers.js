@@ -1,5 +1,6 @@
 const User = require("../models/User");
 
+// Find all users
 function getAllUsers(req, res) {
   User.find({})
     .then((data) => res.json(data))
@@ -9,6 +10,7 @@ function getAllUsers(req, res) {
     });
 }
 
+// Find one user by id
 function getOneUser(req, res) {
   User.find({ _id: req.params.id })
     .then((data) => res.json(data))
@@ -18,6 +20,7 @@ function getOneUser(req, res) {
     });
 }
 
+// Create one new user
 function createNewUser(req, res) {
   User.create(req.body)
     .then((data) => res.json(data))
@@ -27,6 +30,7 @@ function createNewUser(req, res) {
     });
 }
 
+// Update one user by id
 function updateUser(req, res) {
   User.findOneAndUpdate(
     { _id: req.params.id },
@@ -34,6 +38,37 @@ function updateUser(req, res) {
     { new: true }
   )
     .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
+}
+
+// Add one card to collection by id
+function addUserCard(req, res) {
+  User.findOneAndUpdate(
+    { _id: req.params.userId },
+    { $push: { cards: req.params.cardId } },
+    { new: true }
+  )
+    .then((data) => res.json(data))
+    .then(() => console.log("CARD ADDED"))
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
+}
+
+// Delete first instance of one card from collection by id
+function deleteUserCard(req, res) {
+  User.findOne({ _id: req.params.userId })
+    .then((user) => {
+        const cardIndex = user.cards.indexOf(req.params.cardId)
+        user.cards.splice(cardIndex, 1)
+        return user.save()
+    })
+    .then((data) => res.json(data))
+    .then(() => console.log("CARD DELETED"))
     .catch((err) => {
       console.log(err);
       res.json(err);
@@ -55,4 +90,6 @@ module.exports = {
   createNewUser,
   updateUser,
   deleteUser,
+  addUserCard,
+  deleteUserCard,
 };

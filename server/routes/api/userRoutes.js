@@ -1,17 +1,22 @@
 const router = require("express").Router();
 
 const {
-    getAllUsers,
-    getOneUser,
-    createNewUser,
-    updateUser,
-    deleteUser,
-} = require('../../controllers/userControllers')
+  getAllUsers,
+  getOneUser,
+  createNewUser,
+  updateUser,
+  deleteUser,
+  addUserCard,
+  deleteUserCard,
+} = require("../../controllers/userControllers");
 
-// Find all users, or create a new user
+
 router.route("/").get(getAllUsers).post(createNewUser);
 
-// Find one user, update that user, or delete that user
-router.route("/:id").get(getOneUser).put(updateUser).delete(deleteUser)
+// NEVER EVER EVER UPDATE CARDS FROM THIS ENDPOINT
+router.route("/:id").get(getOneUser).put(updateUser).delete(deleteUser);
+
+// ALWAYS ALWAYS ALWAYS UPDATE CARDS HERE
+router.route("/:userId/cards/:cardId").put(addUserCard).delete(deleteUserCard)
 
 module.exports = router;

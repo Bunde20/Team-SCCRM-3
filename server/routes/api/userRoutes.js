@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 
 // Create one new user
 router.post("/", (req, res) => {
-  User.create(req.body)
+  user = User.create(req.body)
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);

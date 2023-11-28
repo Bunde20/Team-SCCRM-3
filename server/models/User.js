@@ -23,6 +23,8 @@ const userSchema = new Schema(
       trim: true,
     },
     cards: [{ type: Schema.Types.ObjectId, ref: "Card" }],
+    tokens: [{ token: {type: String, required: true} }]
+
   },
   {
     toJSON: {

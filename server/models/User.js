@@ -1,6 +1,7 @@
+require('dotenv').config()
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-
+const secretKey = process.env.SECRET_KEY
 const userSchema = new Schema(
   {
     username: {
@@ -40,6 +41,18 @@ userSchema.pre("save", async function (next) {
   }
   next();
 });
+
+userSchema.methods.generateAuthToken = async function () {
+  // secret key currently just '1' 
+  const token = jwt.sign({ _id: this._id },secretKey,{
+    expiresIn: '24h',
+  })
+
+  this.tokens = token
+  await this.save()
+
+  return token
+}
 
 // return user's card total
 userSchema.virtual("cardCount").get(function () {

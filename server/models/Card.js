@@ -17,11 +17,7 @@ const cardSchema = new Schema({
   defense: {
     type: Number,
     required: true,
-  },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
+  }
 });
 
 const Card = model("Card", cardSchema);

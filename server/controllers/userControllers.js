@@ -64,10 +64,11 @@ function addUserCard(req, res) {
     });
 }
 
-// Delete first instance of one card from collection by id
+// Delete one card from collection by id
 function deleteUserCard(req, res) {
   User.findOne({ _id: req.params.userId })
     .then((user) => {
+        // only delete first instance of cardId
         const cardIndex = user.cards.indexOf(req.params.cardId)
         user.cards.splice(cardIndex, 1)
         return user.save()

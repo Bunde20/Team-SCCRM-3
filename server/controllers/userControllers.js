@@ -1,4 +1,6 @@
 const User = require("../models/User");
+// middleware to authenticate jwt
+
 
 // Find all users
 function getAllUsers(req, res) {
@@ -23,12 +25,7 @@ function getOneUser(req, res) {
 // Create one new user
 function createNewUser(req, res) {
   User.create(req.body)
-    .then((data) =>{
-      return data.generateAuthToken().then((token) => {
-        res.status(201).json({ user: data, token})
-      })
-
-    })
+    .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);
       res.json(err);

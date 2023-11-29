@@ -22,6 +22,11 @@ if (!passMatch) {
 }
 if (userMatch && passMatch) {
     const token = jwt.sign({ _id: userMatch._id }, secretKey, { expiresIn: '24h' });
+    
+//    now it should be adding the token to the user's tokens array
+    userMatch.tokens = userMatch.tokens.concat({ token });
+   
+    await userMatch.save();
     res.status(200).json({ user: userMatch, token });
 }
 }catch(err){

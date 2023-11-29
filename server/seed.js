@@ -20,11 +20,18 @@ const userData = [
   },
 ];
 
-const cardData = []
+const cardData = [
+  {
+    name: "Swinteger",
+    image: "image-0",
+    attack: "25",
+    defense: "44",
+  }
+]
 
 db.once("open", (req, res) => {
-  User.deleteMany({}).then(() => {
-    User.insertMany(userData)
+  Card.deleteMany({}).then(() => {
+    Card.insertMany(cardData)
       .then((data) => {
         console.log("USERS SEEDED");
         console.log(data);

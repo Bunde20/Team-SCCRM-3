@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const authenticateToken = require("../utils/helper");
 const {
   getAllUsers,
   getOneUser,

@@ -44,18 +44,9 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.methods.generateAuthToken = async function () {
-  // secret key currently just '1' 
-  const token = jwt.sign({ _id: this._id },secretKey,{
-    expiresIn: '24h',
-  })
-
-  this.tokens = token
-  await this.save()
-
-  return token
+userSchema.methods.passwordCheck = async function (password) {
+  return await bcrypt.compare(password, this.password);
 }
-
 // return user's card total
 userSchema.virtual("cardCount").get(function () {
   return this.cards.length;

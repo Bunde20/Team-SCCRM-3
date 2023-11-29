@@ -1,4 +1,6 @@
 const User = require("../models/User");
+// middleware to authenticate jwt
+
 
 // Find all users
 function getAllUsers(req, res) {
@@ -23,12 +25,7 @@ function getOneUser(req, res) {
 // Create one new user
 function createNewUser(req, res) {
   User.create(req.body)
-    .then((data) =>{
-      return data.generateAuthToken().then((token) => {
-        res.status(201).json({ user: data, token})
-      })
-
-    })
+    .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);
       res.json(err);
@@ -64,10 +61,11 @@ function addUserCard(req, res) {
     });
 }
 
-// Delete first instance of one card from collection by id
+// Delete one card from collection by id
 function deleteUserCard(req, res) {
   User.findOne({ _id: req.params.userId })
     .then((user) => {
+        // only delete first instance of cardId
         const cardIndex = user.cards.indexOf(req.params.cardId)
         user.cards.splice(cardIndex, 1)
         return user.save()

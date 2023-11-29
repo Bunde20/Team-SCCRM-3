@@ -1,24 +1,38 @@
 const { Schema, model } = require("mongoose");
 
-const cardSchema = new Schema({
-  name: {
-    type: String,
-    unique: true,
-    required: true,
+const cardSchema = new Schema(
+  {
+    dexNo: {
+      type: Number,
+      required: true,
+    },
+    name: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    attack: {
+      type: Number,
+      required: true,
+    },
+    defense: {
+      type: Number,
+      required: true,
+    },
   },
-  image: {
-    type: String,
-    required: true,
-  },
-  attack: {
-    type: Number,
-    required: true,
-  },
-  defense: {
-    type: Number,
-    required: true,
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+    versionKey: false,
   }
-});
+);
 
 const Card = model("Card", cardSchema);
 

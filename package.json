@@ -1,7 +1,6 @@
 {
   "name": "project-3",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "install": "cd server && npm install && cd ../client && npm install ",
@@ -16,6 +15,4 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "jsonwebtoken": "^9.0.2"
-  }
 }

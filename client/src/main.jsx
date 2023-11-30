@@ -1,9 +1,10 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import App from './App.jsx'
 import Error from './pages/Error.jsx'
-import Home from './pages/Login.jsx'
 import Homepage from './pages/Homepage.jsx'
 import Marketplace from './pages/Marketplace.jsx'
 import Lobby from './pages/Lobby.jsx'
@@ -17,10 +18,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
-      },
-      {
-        path: '/homepage',
         element: <Homepage />
       },
       {

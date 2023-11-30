@@ -1,3 +1,8 @@
+/* Homepage */
+.homepageContainer {
+  background-color: aqua;
+}
+
 /* CARD */
 .card-container {
   display: flex;
@@ -37,4 +42,3 @@
   justify-content: center;
   align-items: center;
 }
-

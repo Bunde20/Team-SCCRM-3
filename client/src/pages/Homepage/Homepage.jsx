@@ -1,41 +1,42 @@
 import './Homepage.css'
-import Button from '../../components/Button.jsx'
-
-const btnLoggedInTxt = [
-    {
-        text: 'Login'
-    },
-    {
-        text: 'How to Play'
-    },
-    {
-        text: 'Marketplace'
-    }
-]
+import Button from '../../components/HomepageButton.jsx'
+import { Link } from 'react-router-dom'
 
 const btnLoggedOutTxt = [
     {
-        text: 'New Game'
+        text: 'How to Play',
+        path: '/tutorial'
     },
     {
-        text: 'Continue'
+        text: 'Marketplace',
+        path: '/marketplace'
+    }
+]
+
+const btnLoggedInTxt = [
+    {
+        text: 'New Game',
+        path: '/lobby'
     },
     {
-        text: 'How to Play'
+        text: 'Continue',
+        path: '/game'
     },
     {
-        text: 'Marketplace'
+        text: 'How to Play',
+        path: '/tutorial'
     },
     {
-        text: 'Logout'
+        text: 'Marketplace',
+        path: '/marketplace'
     },
 ]
 
 export default function Homepage() {
 
-    const isLoggedIn = false
-     
-    function homepageBtnRender () {
+    const isLoggedIn = true
+
+    function homepageBtnRender() {
         if (isLoggedIn) {
             return btnLoggedInTxt.map(obj => <Button {...obj} />)
         } else {
@@ -49,7 +50,10 @@ export default function Homepage() {
                 <p className='m-5 text-end'>Welcome!</p>
             </div>
             <div className="col-10 col-md-4 mx-auto my-5 rounded homepageContainer">
-                {homepageBtnRender()}
+                <div className="col-10 text-end ms-5 bg-primary">
+                    {homepageBtnRender()}
+                    <button className='col-10 btn btn-secondary my-5'> Login </button>
+                </div>
             </div>
 
         </>

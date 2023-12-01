@@ -9,6 +9,7 @@ import Homepage from './pages/Homepage/Homepage.jsx'
 import Marketplace from './pages/Marketplace/Marketplace.jsx'
 import Lobby from './pages/Lobby/Lobby.jsx'
 import Game from './pages/Game/Game.jsx'
+import HowToPlay from './pages/Tutorial/HowToPlay.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/game',
         element: <Game />
+      },
+      {
+        path: '/tutorial',
+        element: <HowToPlay />
       }
     ]
   }

@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require('cors')
 const app = express();
 const path = require('path')
 
@@ -9,6 +10,7 @@ const router = require("./routes");
 
 const db = require('./config/connection')
 
+app.use(cors()) // enable cross-origin resource sharing
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use("/", router)

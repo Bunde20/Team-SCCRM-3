@@ -31,27 +31,39 @@ const creatures = [
     },
 ]
 
-function Card({creature}) {
-  return (
-    <div>
-      <div className="card">
-        <div className="card-header">
-          <h2 className="card-title ">{creature.name}</h2>
-          <FontAwesomeIcon
-            icon={creature.icon}
-            style={creature.style}
-            className="fa-2x"
-          />
-        </div>
-        <img
-          className="card-image"
-          src={creature.cardPhoto}
-          alt="Monster image"
+function Card({ creature }) {
+  // const [isPurchased, setPurchased] = useState(false);
+
+  // const handlePurchase = () => {
+  //   // Implement logic to deduct coins and add the creature to the user's collection
+  //   // For demonstration purposes, just toggle the purchased state
+  //   setPurchased(!isPurchased);
+  // };
+return (
+  <div>
+    <div className="card">
+      <div className="card-header">
+        <h2 className="card-title ">{creature.name}</h2>
+        <FontAwesomeIcon
+          icon={creature.icon}
+          style={creature.style}
+          className="fa-2x"
         />
-        <p className="card-text">{creature.description}</p>
       </div>
+      <img
+        className="card-image"
+        src={creature.image}
+        alt="Creature image"
+      />
+      <p className="card-text">{creature.description}</p>
+      {/* {!isPurchased && (
+        <button className="purchase-button" onClick={handlePurchase}>
+          Purchase for {creature.coinCost} coins
+        </button> */}
+      {/* )} */}
     </div>
-  );
+  </div>
+);
 }
 
 export default Card;

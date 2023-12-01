@@ -22,9 +22,12 @@ const userSchema = new Schema(
       required: true,
       trim: true,
     },
+    coins: {
+      type: Number,
+      default: 100,
+      required: true,
+    },
     cards: [{ type: Schema.Types.ObjectId, ref: "Card" }],
-    tokens: [{ token: {type: String, required: true} }]
-
   },
   {
     toJSON: {

@@ -4,11 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.jsx'
-import Error from './pages/Error.jsx'
-import Homepage from './pages/Homepage.jsx'
-import Marketplace from './pages/Marketplace.jsx'
-import Lobby from './pages/Lobby.jsx'
-import Game from './pages/Game.jsx'
+import Error from './pages/Error404/Error.jsx'
+import Homepage from './pages/Homepage/Homepage.jsx'
+import Marketplace from './pages/Marketplace/Marketplace.jsx'
+import Lobby from './pages/Lobby/Lobby.jsx'
+import Game from './pages/Game/Game.jsx'
 
 const router = createBrowserRouter([
   {

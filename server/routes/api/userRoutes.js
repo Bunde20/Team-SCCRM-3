@@ -13,7 +13,8 @@ const {
 
 router.route("/").get(getAllUsers).post(createNewUser);
 
-// NEVER EVER EVER UPDATE CARDS FROM THIS ENDPOINT
+// NEVER EVER EVER UPDATE CARDS FROM THIS ENDPOINT.
+// DOING SO WILL WIPE THE PLAYER'S ENTIRE COLLECTION.
 router.route("/:id").get(getOneUser).put(updateUser).delete(deleteUser);
 
 // ALWAYS ALWAYS ALWAYS UPDATE CARDS HERE

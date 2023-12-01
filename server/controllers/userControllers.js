@@ -5,6 +5,7 @@ const User = require("../models/User");
 // Find all users
 function getAllUsers(req, res) {
   User.find({})
+    .populate("cards")
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);
@@ -15,6 +16,7 @@ function getAllUsers(req, res) {
 // Find one user by id
 function getOneUser(req, res) {
   User.find({ _id: req.params.id })
+    .populate("cards")
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);

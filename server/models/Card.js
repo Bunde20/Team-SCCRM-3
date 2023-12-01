@@ -24,6 +24,10 @@ const cardSchema = new Schema(
       type: Number,
       required: true,
     },
+    coinCost: {
+      type: Number,
+      required: true,
+    },
   },
   {
     toJSON: {

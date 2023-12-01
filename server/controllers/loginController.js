@@ -1,4 +1,6 @@
-require("dotenv").config();
+require("dotenv").config(
+    {path: '../.env'}
+);
 const User = require("../models/User");
 const jwt = require('jsonwebtoken')
 const secretKey = process.env.SECRET_KEY
@@ -7,7 +9,8 @@ const secretKey = process.env.SECRET_KEY
 const getUserPasswordCheck = async (req, res) => {
     try{
         const {username, password} = req.body
-        const userMatch = await User.find({username: username})
+        const userMatch = await User.findOne({username: username})
+        
     
         if (!userMatch) {
             res.status(401).json({ message: 'You have entered an incorrect Username or Password.' });
@@ -17,7 +20,8 @@ const getUserPasswordCheck = async (req, res) => {
 const passMatch = await userMatch.passwordCheck(password)
 
 if (!passMatch) {
-    res.status(401).json({ message: 'You have entered an incorrect Username or Password.' });
+  
+    res.status(401).json({ userMatch, message: 'You have entered an incorrect Username or Password.' });
     return;
 }
 if (userMatch && passMatch) {

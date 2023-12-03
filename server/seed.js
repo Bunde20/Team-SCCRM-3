@@ -204,15 +204,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-  },
-  {
-    dexNo: "",
-    name: "",
-    image: "",
-    attack: "50",
-    defense: "50",
-    coinCost: "10",
-  },
+  }
 ];
 
 db.once("open", (req, res) => {

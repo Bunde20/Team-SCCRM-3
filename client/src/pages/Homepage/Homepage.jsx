@@ -40,11 +40,11 @@ export default function Homepage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [showLoginModal, setShowLoginModal] = useState(false)
 
-    const handleLogin = async (username,password) => {
-        try{
+    const handleLogin = async (username, password) => {
+        try {
             const res = await fetch('http://localhost:3001/api/login', {
                 method: 'POST',
-                body: JSON.stringify({username, password}),
+                body: JSON.stringify({ username, password }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -57,11 +57,11 @@ export default function Homepage() {
             } else {
                 alert('Invalid username or password')
             }
-        
+
         } catch (err) {
-        console.error('Error logging in', err)
+            console.error('Error logging in', err)
+        }
     }
-}
 
     function homepageBtnRender() {
         if (isLoggedIn) {
@@ -72,19 +72,21 @@ export default function Homepage() {
     }
 
     return (
-        <>
-            <div id='welcomeEl'>
-                <p className='m-5 text-end'>Welcome!</p>
-            </div>
-            <div className="col-10 col-md-4 mx-auto my-5 rounded homepageContainer">
-                <div className="col-10 text-end ms-5 bg-primary">
-                    {homepageBtnRender()}
-                    <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),setShowLoginModal(true)}}> Login </button>
+        <div className='col-12 homepage-bg'>
+            <div className='col-11 mx-auto border border-primary h-bg'>
+                <div id='welcomeEl'>
+                    <p className='m-5 text-end'>Welcome!</p>
                 </div>
+                <div className="col-12 col-md-8 mx-auto my-5 rounded homepageContainer text-end d-flex justify-content-end">
+                    <div className="col-11">
+                        {homepageBtnRender()}
+                        <button className='col-7 btn btn-secondary my-5' onClick={() => { console.log('login button was clicked'), setShowLoginModal(true) }}> Login </button>
+                    </div>
+                </div>
+                {showLoginModal && (
+                    <LoginModal onClose={() => setShowLoginModal(false)} onLogin={handleLogin} />
+                )}
             </div>
-        {showLoginModal &&(
-            <LoginModal onClose={() => setShowLoginModal(false)} onLogin={handleLogin} />
-        )}
-        </>
+        </div>
     )
 }

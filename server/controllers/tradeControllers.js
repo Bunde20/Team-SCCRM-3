@@ -9,7 +9,7 @@ function completeTrade(req, res) {
       { $push: { cards: req.params.card2 } },
       { new: true }
     ).then((user) => {
-      // only delete first instance of cardId
+      // only delete first instance of card1
       const cardIndex = user.cards.indexOf(req.params.card1);
       user.cards.splice(cardIndex, 1);
       return user.save();
@@ -19,7 +19,7 @@ function completeTrade(req, res) {
       { $push: { cards: req.params.card1 } },
       { new: true }
     ).then((user) => {
-      // only delete first instance of cardId
+      // only delete first instance of card2
       const cardIndex = user.cards.indexOf(req.params.card2);
       user.cards.splice(cardIndex, 1);
       return user.save();

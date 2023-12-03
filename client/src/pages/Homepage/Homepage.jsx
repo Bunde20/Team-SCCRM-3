@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import './Homepage.css'
 import Button from '../../components/HomepageButton.jsx'
 import { Link } from 'react-router-dom'
-import LoginModal from '../../components/LoginModal.jsx'
-
+import LogModal from '../../components/Modal.jsx'
 const btnLoggedOutTxt = [
     {
         text: 'How to Play',
@@ -38,11 +37,10 @@ export default function Homepage() {
 
     // const isLoggedIn = true
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [showLoginModal, setShowLoginModal] = useState(false)
-
+    
     const handleLogin = async (username,password) => {
         try{
-            const res = await fetch('http://localhost:3001/api/login', {
+            const res = await fetch('http://localhost:3000/api/login', {
                 method: 'POST',
                 body: JSON.stringify({username, password}),
                 headers: {
@@ -51,12 +49,11 @@ export default function Homepage() {
             })
             const data = await res.json()
             console.log(data)
-            if (data.success) {
+            if (data.token) {
+                console.log('Login successful')
                 setIsLoggedIn(true)
-                setShowLoginModal(false)
-            } else {
-                alert('Invalid username or password')
-            }
+                
+            } 
         
         } catch (err) {
         console.error('Error logging in', err)
@@ -70,21 +67,28 @@ export default function Homepage() {
             return btnLoggedOutTxt.map(obj => <Button {...obj} />)
         }
     }
+    function loginBtnRender() {
+        if(!isLoggedIn) {
+            return <LogModal onLogin={handleLogin}/>
+        }
+    }
+
 
     return (
         <>
+        {/* {showLoginModal &&(
+            <LogModal onClose={() => setShowLoginModal(false)}  />
+        )} */}
             <div id='welcomeEl'>
                 <p className='m-5 text-end'>Welcome!</p>
             </div>
             <div className="col-10 col-md-4 mx-auto my-5 rounded homepageContainer">
                 <div className="col-10 text-end ms-5 bg-primary">
                     {homepageBtnRender()}
-                    <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),setShowLoginModal(true)}}> Login </button>
+                    {loginBtnRender()}
+                    {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}
                 </div>
             </div>
-        {showLoginModal &&(
-            <LoginModal onClose={() => setShowLoginModal(false)} onLogin={handleLogin} />
-        )}
         </>
     )
 }

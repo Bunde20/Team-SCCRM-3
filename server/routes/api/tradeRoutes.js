@@ -1,7 +1,17 @@
-const router = require('express').Router()
+const router = require("express").Router();
 
-const { completeTrade } = require('../../controllers/tradeControllers')
+const {
+  completeTrade,
+  getAllTradeOffers,
+  createNewTradeOffer,
+  getOneTradeOffer,
+  deleteOneTradeOffer,
+} = require("../../controllers/tradeControllers");
 
-router.route('/:user1/:card1/:user2/:card2').put(completeTrade)
+router.route("/offers").get(getAllTradeOffers).post(createNewTradeOffer);
+
+router.route("/offers/:id").get(getOneTradeOffer).delete(deleteOneTradeOffer);
+
+router.route("/:user1/:card1/:user2/:card2").put(completeTrade);
 
 module.exports = router;

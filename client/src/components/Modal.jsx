@@ -36,7 +36,7 @@ function LogModal({ onClose, onLogin }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Programon Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>

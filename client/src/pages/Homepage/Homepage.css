@@ -1,3 +1,10 @@
 .homepageContainer {
-    background-color: aqua;
+    border: solid 2px black;
 }
+
+.homepage-bg {
+    background-image: url('../../images/homeBG.png'); 
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

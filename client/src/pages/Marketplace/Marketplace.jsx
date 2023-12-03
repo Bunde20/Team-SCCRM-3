@@ -4,7 +4,6 @@ import { faFire, faLeaf, faDroplet } from '@fortawesome/free-solid-svg-icons';
 import cardPhoto from '../../images/Swinteger.webp';
 import cardPhoto2 from '../../images/Leafarray.webp';
 import cardPhoto3 from '../../images/Varchar.webp';
-import '../../App.css';
 
 const creatures = [
   {

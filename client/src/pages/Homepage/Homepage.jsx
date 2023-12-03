@@ -43,7 +43,7 @@ export default function Homepage() {
 
     const handleLogin = async (username, password) => {
         try {
-            const res = await fetch('http://localhost:3001/api/login', {
+            const res = await fetch('http://localhost:3000/api/login', {
                 method: 'POST',
                 body: JSON.stringify({ username, password }),
                 headers: {
@@ -55,7 +55,7 @@ export default function Homepage() {
             if (data.token) {
                 console.log('Login successful')
                 setIsLoggedIn(true)
-                setShowLoginModal(false)
+         
             } else {
                 alert('Invalid username or password')
             }

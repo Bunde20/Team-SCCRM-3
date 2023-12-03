@@ -1,3 +1,7 @@
+* {
+  font-family: 'Nova Square';
+}
+
 /* CARD */
 .card-container {
   display: flex;

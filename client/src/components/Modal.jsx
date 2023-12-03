@@ -30,7 +30,7 @@ function LogModal({ onClose, onLogin }) {
 
   return (
     <>
-      <Button variant="secondary" className='col-10 btn my-5' onClick={handleShow}>
+      <Button variant="secondary" className='col-10 col-md-7 my-5 home-btn-cstm rounded p-1' onClick={handleShow}>
         Login
       </Button>
 

@@ -16,6 +16,10 @@ const cardSchema = new Schema(
       type: String,
       required: true,
     },
+    cardType: {
+      type: String,
+      required: true,
+    },
     attack: {
       type: Number,
       required: true,

@@ -31,19 +31,21 @@ const userData = [
 const cardData = [
   {
     dexNo: "001",
-    name: "Swinteger",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367652103934083/elrondhubbard_Bioluminescent_Deep_Sea_Leviathan_in_Abyssal_Dept_277a89b2-b14a-4060-b3c6-ff25319d545a.png?ex=657d2a0a&is=656ab50a&hm=b67b50b3a79a9cb76eaab830542be6dbe1c17f0dd6f4f5c1eb2cfa82fdd469c0&",
+    name: "Varchar",
+    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367839706759188/elrondhubbard_Molten_Lava_Salamander_in_Inferno_Pit_pokemon_cut_70ff1890-032d-47e4-8c54-462fa38bd5aa.png?ex=657d2a37&is=656ab537&hm=553aeebd6f6b57300fe4ea8e5475a1dd2d6a91376fac22a6236faa3a2af05dc6&",
     attack: "64",
     defense: "36",
-    coinCost: "10"
+    coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "002",
-    name: "Varchar",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367839706759188/elrondhubbard_Molten_Lava_Salamander_in_Inferno_Pit_pokemon_cut_70ff1890-032d-47e4-8c54-462fa38bd5aa.png?ex=657d2a37&is=656ab537&hm=553aeebd6f6b57300fe4ea8e5475a1dd2d6a91376fac22a6236faa3a2af05dc6&",
+    name: "Swinteger",
+    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367652103934083/elrondhubbard_Bioluminescent_Deep_Sea_Leviathan_in_Abyssal_Dept_277a89b2-b14a-4060-b3c6-ff25319d545a.png?ex=657d2a0a&is=656ab50a&hm=b67b50b3a79a9cb76eaab830542be6dbe1c17f0dd6f4f5c1eb2cfa82fdd469c0&",
     attack: "51",
     defense: "49",
-    coinCost: "15"
+    coinCost: "15",
+    cardType: "defender"
   },
   {
     dexNo: "003",
@@ -51,7 +53,8 @@ const cardData = [
     image: "https://cdn.discordapp.com/attachments/1062551659168944249/1179031805052071987/elrondhubbard_Enchanted_Forest_Sprite_with_Luminescent_Wings__p_dd57d35e-f384-4686-987e-8052115aca70.png?ex=65784def&is=6565d8ef&hm=414d9ce42ba3b62fe9c7e26e79b96c83d6a19c2229d3585a751430520245c1da&",
     attack: "28",
     defense: "72",
-    coinCost: "20"
+    coinCost: "20",
+    cardType: "trickster"
   },
   {
     dexNo: "004",
@@ -60,6 +63,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "defender"
   },
   {
     dexNo: "005",
@@ -68,6 +72,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "trickster"
   },
   {
     dexNo: "006",
@@ -76,6 +81,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "trickster"
   },
   {
     dexNo: "007",
@@ -84,6 +90,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "008",
@@ -92,6 +99,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "defender"
   },
   {
     dexNo: "009",
@@ -100,6 +108,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "010",
@@ -108,6 +117,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "011",
@@ -116,6 +126,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "defender"
   },
   {
     dexNo: "012",
@@ -124,6 +135,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "defender"
   },
   {
     dexNo: "013",
@@ -132,6 +144,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "014",
@@ -140,6 +153,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "trickster"
   },
   {
     dexNo: "015",
@@ -148,6 +162,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "016",
@@ -156,6 +171,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "trickster"
   },
   {
     dexNo: "017",
@@ -164,6 +180,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "defender"
   },
   {
     dexNo: "018",
@@ -172,6 +189,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "019",
@@ -180,6 +198,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "trickster"
   },
   {
     dexNo: "020",
@@ -188,6 +207,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "defender"
   },
   {
     dexNo: "021",
@@ -196,6 +216,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   },
   {
     dexNo: "022",
@@ -204,6 +225,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
+    cardType: "attacker"
   }
 ];
 

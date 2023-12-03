@@ -61,7 +61,7 @@ export default function Homepage() {
             if (data.token) {
                 console.log('Login successful')
                 setIsLoggedIn(true)
-                setShowLoginModal(false)
+         
             } else {
                 alert('Invalid username or password')
             }

@@ -7,10 +7,12 @@ import LogModal from '../../components/Modal.jsx'
 
 const btnLoggedOutTxt = [
     {
+        id: 0,
         text: 'How to Play',
         path: '/tutorial'
     },
     {
+        id: 1,
         text: 'Marketplace',
         path: '/marketplace'
     }
@@ -18,18 +20,22 @@ const btnLoggedOutTxt = [
 
 const btnLoggedInTxt = [
     {
+        id: 0,
         text: 'New Game',
         path: '/lobby'
     },
     {
+        id: 1,
         text: 'Continue',
         path: '/game'
     },
     {
+        id: 2,
         text: 'How to Play',
         path: '/tutorial'
     },
     {
+        id: 3,
         text: 'Marketplace',
         path: '/marketplace'
     },
@@ -67,9 +73,9 @@ export default function Homepage() {
 
     function homepageBtnRender() {
         if (isLoggedIn) {
-            return btnLoggedInTxt.map(obj => <HomepageButton {...obj} />)
+            return btnLoggedInTxt.map(obj => <HomepageButton {...obj} key={obj.id} />)
         } else {
-            return btnLoggedOutTxt.map(obj => <HomepageButton {...obj}/>)
+            return btnLoggedOutTxt.map(obj => <HomepageButton {...obj} key={obj.id} />)
         }
     }
     function loginBtnRender() {
@@ -83,12 +89,18 @@ export default function Homepage() {
         <>
             {/* {showLoginModal &&(<LogModal onClose={() => setShowLoginModal(false)}  />)} */}
             <div className='col-12 homepage-bg'>
-                <div className='col-11 mx-auto border border-primary'>
+                <div className='col-11 mx-auto'>
                     <div id='welcomeEl'>
-                        <p className='m-5 text-end'>Welcome!</p>
+                        <p className='text-end'>Welcome!</p>
                     </div>
-                    <div className="col-12 col-md-8 mx-auto my-5 rounded homepageContainer text-end d-flex justify-content-end">
-                        <div className="col-11">
+                    <div className='col-12 row align-items-center mx-auto'>
+                        <div className='col-12 col-lg-6 text-center'>
+                            <p className='homeTitle'>Programon Palace</p>
+                            <div>
+                                <p className='fs-3 home-subhead'>Gotta fetch 'em all!</p>
+                            </div>
+                        </div>
+                        <div className="col-12 col-lg-6 mx-auto my-5 rounded text-center">
                             {homepageBtnRender()}
                             {loginBtnRender()}
                             {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}

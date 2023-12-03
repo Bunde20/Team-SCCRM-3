@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire, faLeaf, faDroplet } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +8,7 @@ import cardPhoto3 from "../../images/Varchar.webp";
 import "../../App.css";
 import API from "../../utils/API";
 import Card from "../../components/Card";
+
 
 // const creatures = [
 //   {

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import './Homepage.css'
-import Button from '../../components/HomepageButton.jsx'
+import HomepageButton from '../../components/HomepageButton.jsx'
 import { Link } from 'react-router-dom'
-import LoginModal from '../../components/LoginModal.jsx'
+import LogModal from '../../components/Modal.jsx'
+
 
 const btnLoggedOutTxt = [
     {
@@ -38,53 +39,63 @@ export default function Homepage() {
 
     // const isLoggedIn = true
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [showLoginModal, setShowLoginModal] = useState(false)
 
-    const handleLogin = async (username,password) => {
-        try{
+
+    const handleLogin = async (username, password) => {
+        try {
             const res = await fetch('http://localhost:3001/api/login', {
                 method: 'POST',
-                body: JSON.stringify({username, password}),
+                body: JSON.stringify({ username, password }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
             const data = await res.json()
             console.log(data)
-            if (data.success) {
+            if (data.token) {
+                console.log('Login successful')
                 setIsLoggedIn(true)
                 setShowLoginModal(false)
             } else {
                 alert('Invalid username or password')
             }
-        
-        } catch (err) {
-        console.error('Error logging in', err)
-    }
-}
 
-    function homepageBtnRender() {
-        if (isLoggedIn) {
-            return btnLoggedInTxt.map(obj => <Button {...obj} />)
-        } else {
-            return btnLoggedOutTxt.map(obj => <Button {...obj} />)
+        } catch (err) {
+            console.error('Error logging in', err)
         }
     }
 
+    function homepageBtnRender() {
+        if (isLoggedIn) {
+            return btnLoggedInTxt.map(obj => <HomepageButton {...obj} />)
+        } else {
+            return btnLoggedOutTxt.map(obj => <HomepageButton {...obj}/>)
+        }
+    }
+    function loginBtnRender() {
+        if (!isLoggedIn) {
+            return <LogModal onLogin={handleLogin} />
+        }
+    }
+
+
     return (
         <>
-            <div id='welcomeEl'>
-                <p className='m-5 text-end'>Welcome!</p>
-            </div>
-            <div className="col-10 col-md-4 mx-auto my-5 rounded homepageContainer">
-                <div className="col-10 text-end ms-5 bg-primary">
-                    {homepageBtnRender()}
-                    <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),setShowLoginModal(true)}}> Login </button>
+            {/* {showLoginModal &&(<LogModal onClose={() => setShowLoginModal(false)}  />)} */}
+            <div className='col-12 homepage-bg'>
+                <div className='col-11 mx-auto border border-primary'>
+                    <div id='welcomeEl'>
+                        <p className='m-5 text-end'>Welcome!</p>
+                    </div>
+                    <div className="col-12 col-md-8 mx-auto my-5 rounded homepageContainer text-end d-flex justify-content-end">
+                        <div className="col-11">
+                            {homepageBtnRender()}
+                            {loginBtnRender()}
+                            {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}
+                        </div>
+                    </div>
                 </div>
             </div>
-        {showLoginModal &&(
-            <LoginModal onClose={() => setShowLoginModal(false)} onLogin={handleLogin} />
-        )}
         </>
     )
 }

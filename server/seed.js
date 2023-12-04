@@ -1,5 +1,6 @@
 const User = require("./models/User");
 const Card = require("./models/Card");
+const Offer = require("./models/Offer")
 const db = require("./config/connection");
 
 const userData = [
@@ -22,11 +23,6 @@ const userData = [
     coins: 100
   },
 ];
-
-//q: why are the coins not showing up in the database?
-//a: because you are not passing in the coins field in the userSchema
-//q: how do I pass in the coins field?
-//a: add it to the userSchema
 
 const cardData = [
   {
@@ -229,15 +225,88 @@ const cardData = [
   }
 ];
 
-db.once("open", (req, res) => {
-  Promise.all([Card.deleteMany({}), User.deleteMany({})]).then(() => {
-    Promise.all([Card.insertMany(cardData), User.insertMany(userData)])
-      .then((data) => {
-        console.log(data, "SEED SUCCESS!");
-        process.exit();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+async function seedCardData() {
+  try {
+    await Card.deleteMany({});
+    const cards = await Card.insertMany(cardData);
+    console.log(cards.length + " cards seeded successfully");
+  } catch (error) {
+    console.error("Error seeding card data:", error);
+  }
+}
+
+async function seedUserData() {
+  try {
+    await User.deleteMany({});
+    await User.insertMany(userData);
+    console.log(userData.length + " users seeded successfully");
+  } catch (error) {
+    console.error("Error seeding user data:", error);
+  }
+}
+
+async function updateUsersWithRandomCards() {
+  try {
+    const users = await User.find();
+    const cards = await Card.find();
+
+    await Promise.all(users.map(async (user) => {
+      const randomCards = getRandomSubset(cards, 5); // Adjust the number of cards as needed
+      user.cards = randomCards.map(card => card._id);
+      await user.save();
+    }));
+
+    console.log("Users updated with random cards successfully");
+  } catch (error) {
+    console.error("Error updating users with random cards:", error);
+  }
+}
+
+async function createTradeOffers() {
+  try {
+    await Offer.deleteMany({})
+    const users = await User.find();
+
+    await Promise.all(users.map(async (user) => {
+      const userCardIds = user.cards.map(cardId => cardId.toString());
+
+      if (userCardIds.length >= 2) {
+        // Select two random cards from the user's collection
+        const [offeredCardId, seekingCardId] = getRandomSubset(userCardIds, 2);
+
+        // Create a trade offer for the selected cards
+        await Offer.create({
+          userId: user._id,
+          offeredCardId,
+          seekingCardId,
+        });
+      }
+    }));
+
+    console.log("Trade offers created successfully");
+  } catch (error) {
+    console.error("Error creating trade offers:", error);
+  }
+}
+
+function getRandomSubset(array, size) {
+  const shuffled = array.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, size);
+}
+
+function getRandomElement(array) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+
+async function seed() {
+  await db.once("open", async () => {
+    await seedCardData();
+    await seedUserData();
+    await updateUsersWithRandomCards();
+    await createTradeOffers();
+    process.exit();
   });
-});
+}
+
+seed();

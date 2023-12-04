@@ -5,7 +5,6 @@ const User = require("../models/User");
 // Find all users
 function getAllUsers(req, res) {
   User.find({})
-    .populate("cards")
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);

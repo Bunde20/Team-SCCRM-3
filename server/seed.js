@@ -23,10 +23,6 @@ const userData = [
   },
 ];
 
-//q: why are the coins not showing up in the database?
-//a: because you are not passing in the coins field in the userSchema
-//q: how do I pass in the coins field?
-//a: add it to the userSchema
 
 const cardData = [
   {
@@ -36,7 +32,7 @@ const cardData = [
     attack: "64",
     defense: "36",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "002",
@@ -45,7 +41,7 @@ const cardData = [
     attack: "51",
     defense: "49",
     coinCost: "15",
-    cardType: "defender"
+    type: "defender"
   },
   {
     dexNo: "003",
@@ -54,7 +50,7 @@ const cardData = [
     attack: "28",
     defense: "72",
     coinCost: "20",
-    cardType: "trickster"
+    type: "trickster"
   },
   {
     dexNo: "004",
@@ -63,7 +59,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "defender"
+    type: "defender"
   },
   {
     dexNo: "005",
@@ -72,7 +68,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "trickster"
+    type: "trickster"
   },
   {
     dexNo: "006",
@@ -81,7 +77,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "trickster"
+    type: "trickster"
   },
   {
     dexNo: "007",
@@ -90,7 +86,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "008",
@@ -99,7 +95,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "defender"
+    type: "defender"
   },
   {
     dexNo: "009",
@@ -108,7 +104,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "010",
@@ -117,7 +113,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "011",
@@ -126,7 +122,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "defender"
+    type: "defender"
   },
   {
     dexNo: "012",
@@ -135,7 +131,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "defender"
+    type: "defender"
   },
   {
     dexNo: "013",
@@ -144,7 +140,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "014",
@@ -153,7 +149,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "trickster"
+    type: "trickster"
   },
   {
     dexNo: "015",
@@ -162,7 +158,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "016",
@@ -171,7 +167,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "trickster"
+    type: "trickster"
   },
   {
     dexNo: "017",
@@ -180,7 +176,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "defender"
+    type: "defender"
   },
   {
     dexNo: "018",
@@ -189,7 +185,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "019",
@@ -198,7 +194,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "trickster"
+    type: "trickster"
   },
   {
     dexNo: "020",
@@ -207,7 +203,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "defender"
+    type: "defender"
   },
   {
     dexNo: "021",
@@ -216,7 +212,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   },
   {
     dexNo: "022",
@@ -225,7 +221,7 @@ const cardData = [
     attack: "50",
     defense: "50",
     coinCost: "10",
-    cardType: "attacker"
+    type: "attacker"
   }
 ];
 

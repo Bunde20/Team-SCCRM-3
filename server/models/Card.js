@@ -16,7 +16,7 @@ const cardSchema = new Schema(
       type: String,
       required: true,
     },
-    cardType: {
+    type: {
       type: String,
       required: true,
     },

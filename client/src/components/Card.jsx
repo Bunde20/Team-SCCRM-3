@@ -2,10 +2,8 @@ import React from 'react';
 import './Card.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFire, faLeaf, faDroplet } from '@fortawesome/free-solid-svg-icons';
-import cardPhoto from '../images/Swinteger.webp';
-import cardPhoto2 from '../images/Leafarray.webp';
-import cardPhoto3 from '../images/Varchar.webp';
+import { faWandMagicSparkles, faBurst, faShield } from '@fortawesome/free-solid-svg-icons';
+
 
 // const creatures = [
 //     {
@@ -31,28 +29,26 @@ import cardPhoto3 from '../images/Varchar.webp';
 //     },
 // ]
 
-function Card({creature}) {
+
+function Card({ creature }) {
   return (
     <div>
-      <div className="card">
-        <div className="card-header">
-          <h2 className="card-title ">{creature.name}</h2>
-          <FontAwesomeIcon
-            icon={creature.icon}
-            style={creature.style}
-            className="fa-2x"
-          />
+      <div className="card creature">
+        <div className="card-header creature-header">
+          <h2 className="card-title creature-title" style={creature.style}>
+            {creature.name} {' '}
+            {creature.type === 'attacker' && <FontAwesomeIcon icon={faBurst} className="" />}
+            {creature.type === 'defender' && <FontAwesomeIcon icon={faShield} className="" />}
+            {creature.type === 'trickster' && <FontAwesomeIcon icon={faWandMagicSparkles} className="" />}
+          </h2>
         </div>
-        <img
-          className="card-image"
-          src={creature.image}
-          alt="Monster image"
-        />
-        <p className="card-text">{creature.description}</p>
+        <img className="card-image creature-image" src={creature.image} alt="Creature image" />
+        <p className="card-text creature-text">{creature.description}</p>
       </div>
     </div>
   );
 }
+
 
 // function Card({creature}) {
 //   return (

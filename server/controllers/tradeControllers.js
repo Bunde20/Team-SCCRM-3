@@ -4,8 +4,8 @@ const Offer = require("../models/Offer");
 // Get all trade offers
 function getAllTradeOffers(req, res) {
   Offer.find({})
-    .populate("users")
-    .populate("cards")
+    // .populate("users")
+    // .populate("cards")
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);

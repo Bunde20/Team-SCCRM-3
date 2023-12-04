@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWandMagicSparkles, faBurst, faShield } from '@fortawesome/free-solid-svg-icons';
 import "../../App.css";
-import API from "../../utils/API";
+import cardAPI from "../../utils/cardAPI";
 import Card from "../../components/Card";
 
 
@@ -87,7 +87,7 @@ export default function Marketplace() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    API.getAllCards().then((res) => {
+    cardAPI.getAllCards().then((res) => {
       setCards(res.data);
     });
   }, []);

@@ -1,10 +1,48 @@
-.homepageContainer {
-    border: solid 2px black;
-}
-
 .homepage-bg {
     background-image: url('../../images/homeBG.png'); 
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
+
+.homeTitle {
+    font-size: 9vw;
+    color: white;
+    text-shadow: 5px 7px black;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: black;
+    font-weight: bold;
+}
+
+.home-subhead {
+    color: white;
+    text-shadow: 3px 3px black;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: black;
+}
+
+.home-btn-cstm {
+    color: white;
+    text-shadow: 3px 3px black;
+    -webkit-text-stroke-width: .005px;
+    -webkit-text-stroke-color: black;
+    font-weight: bold;
+    font-size: 3vw;
+    background-color: rgba(40,155,217,.5);
+    border: solid 2px rgb(72, 72, 72);
+}
+
+.home-btn-cstm:hover {
+    transition: 350ms;
+    background-color: rgba(40, 155, 217, 0.75);
+    border: solid 2px black;
+}
+
+@media only screen and (max-width: 750px) {
+    .homeTitle {
+        font-size: 67px
+    }
+    .home-btn-cstm {
+        font-size: 33px
+    }
+}

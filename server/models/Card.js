@@ -5,6 +5,7 @@ const cardSchema = new Schema(
     dexNo: {
       type: Number,
       required: true,
+      unique: true,
     },
     name: {
       type: String,

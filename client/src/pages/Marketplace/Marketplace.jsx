@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWandMagicSparkles, faBurst, faShield } from '@fortawesome/free-solid-svg-icons';
+import {
+  faWandMagicSparkles,
+  faBurst,
+  faShield,
+} from "@fortawesome/free-solid-svg-icons";
 import cardAPI from "../../utils/cardAPI";
+import tradeAPI from "../../utils/tradeAPI";
 import Card from "../../components/Card";
-import "./Marketplace.css"
-
-
+import TradeOffer from "../../components/TradeOffer";
+import "./Marketplace.css";
 
 // const creatures = [
 //   {
@@ -86,16 +90,16 @@ import "./Marketplace.css"
 export default function Marketplace() {
   const [cards, setCards] = useState([]);
   const [userCoins, setUserCoins] = useState(50);
+  const [tradeOffers, setTradeOffers] = useState([]);
 
   const handlePurchase = (cost, name) => {
     if (userCoins >= cost) {
       setUserCoins(userCoins - cost);
       console.log(`Purchased ${name} for ${cost} coins`);
     } else {
-      alert('Not enough coins!');
+      alert("Not enough coins!");
     }
   };
-
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -111,23 +115,35 @@ export default function Marketplace() {
 
         setCards(selectedCards);
       } catch (error) {
-        console.error('Error fetching cards:', error);
+        console.error("Error fetching cards:", error);
       }
     };
 
     fetchCards();
+
+    tradeAPI.getAllOffers().then((res) => setTradeOffers(res.data));
   }, []);
 
   return (
     <>
       <div className="col-12 marketplace-bg">
-      <h1 className="text-center align-items-center justify-content-center">
-        Marketplace
-      </h1>
-      <div className="d-flex justify-content-center flex-row flex-wrap">
-        {cards.map((creature, index) => (
-            <Card creature={creature} userCoins={userCoins} handlePurchase={handlePurchase} key={index}/>
-        ))}
+        <h1 className="text-center align-items-center justify-content-center">
+          Marketplace
+        </h1>
+        <div className="d-flex justify-content-center flex-row flex-wrap">
+          {cards.map((creature, index) => (
+            <Card
+              creature={creature}
+              userCoins={userCoins}
+              handlePurchase={handlePurchase}
+              key={index}
+            />
+          ))}
+          <div className="d-flex">
+            {tradeOffers.map((offer, index) => (
+              <TradeOffer offer={offer} key={index} />
+            ))}
+          </div>
         </div>
       </div>
     </>
@@ -135,8 +151,8 @@ export default function Marketplace() {
 }
 
 //GET AND DISPLAY ALL CARDS//
-  // useEffect(() => {
-  //   cardAPI.getAllCards().then((res) => {
-  //     setCards(res.data);
-  //   });
-  // }, []);
+// useEffect(() => {
+//   cardAPI.getAllCards().then((res) => {
+//     setCards(res.data);
+//   });
+// }, []);

@@ -1,10 +1,11 @@
 /* CARD */
-.card-container {
+.card-container, .button-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
   
   .creature {
     border: 2px solid black;
@@ -33,4 +34,15 @@
     align-items: center;
     background-color: transparent;
     border: none;
+  }
+
+  .purchase-button {
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    max-width: 100%;
+    width: 270px;
+    border: 2px solid black;
   }

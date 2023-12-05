@@ -18,4 +18,12 @@ const createNewUser = (username, email, password) => {
     });
 }
 
-export default {getAllUsers, getOneUser, createNewUser}
+const addUserCard = (userId, cardId) => {
+    return axios.put(`${baseURL}/users/${userId}/cards/${cardId}`)
+}
+
+const deleteUserCard = (userId, cardId) => {
+    return axios.put(`${baseURL}/users/${userId}/cards/${cardId}`)
+}
+
+export default {getAllUsers, getOneUser, createNewUser, addUserCard, deleteUserCard }

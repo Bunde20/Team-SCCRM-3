@@ -3,6 +3,7 @@ import './Homepage.css'
 import HomepageButton from '../../components/HomepageButton.jsx'
 import { Link } from 'react-router-dom'
 import LogModal from '../../components/Modal.jsx'
+import AlertModal from '../../components/AlertModal.jsx'
 
 
 const btnLoggedOutTxt = [
@@ -45,8 +46,11 @@ export default function Homepage() {
 
     // const isLoggedIn = true
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-
+    const [showAlert, setShowAlert] = useState(false);
+    const [modalContent, setModalContent] = useState({ heading: 'Uh Oh!', message: 'Wrong Username or Password. Please try again!' });
+    
+    const handleCloseAlert = () => setShowAlert(false);
+    
     const handleLogin = async (username, password) => {
         try {
             const res = await fetch('http://localhost:3000/api/login', {
@@ -63,7 +67,7 @@ export default function Homepage() {
                 setIsLoggedIn(true)
          
             } else {
-                alert('Invalid username or password')
+             setShowAlert(true)
             }
 
         } catch (err) {
@@ -83,7 +87,6 @@ export default function Homepage() {
             return <LogModal onLogin={handleLogin} />
         }
     }
-
 
     return (
         <>
@@ -108,6 +111,13 @@ export default function Homepage() {
                     </div>
                 </div>
             </div>
+            <AlertModal
+            heading={modalContent.heading}
+            message={modalContent.message}
+            updateContent={setModalContent}
+            show={showAlert}
+            handleClose={handleCloseAlert}
+            />
         </>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Paragraph from '../../components/Paragraph'
 
 import './HowToPlay.css'
+import BackButton from '../../components/BackButton/BackButton'
 
 export default function HowToPlay() {
     const tutorialParagraphs = [
@@ -31,6 +32,7 @@ export default function HowToPlay() {
         <>
             <div className='col-12 mx-auto p-1 homepage-bg'>
                 <div className='col-10 mx-auto text-center'>
+                    <BackButton />
                     <p className='homeTitle'>Prográmon Palace</p>
                 </div>
                 <div className='col-12 mx-auto'>

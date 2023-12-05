@@ -10,6 +10,7 @@ import tradeAPI from "../../utils/tradeAPI";
 import Card from "../../components/Card";
 import PurchaseBtn from "../../components/PurchaseBtn";
 import TradeOffer from "../../components/TradeOffer";
+import BackButton from "../../components/BackButton/BackButton";
 import "./Marketplace.css";
 
 // const creatures = [
@@ -128,7 +129,10 @@ export default function Marketplace() {
   return (
     <>
       <div className="col-12 marketplace-bg">
-        <h1 className="text-center align-items-center justify-content-center">
+        <div className='col-12 mx-auto text-center'>
+          <BackButton/>
+        </div>
+        <h1 className="text-center align-items-center justify-content-center homeTitle">
           Marketplace
         </h1>
         <div className="d-flex justify-content-center flex-row flex-wrap">

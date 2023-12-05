@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWandMagicSparkles, faBurst, faShield } from '@fortawesome/free-solid-svg-icons';
-import "../../App.css";
 import cardAPI from "../../utils/cardAPI";
 import Card from "../../components/Card";
+import "./Marketplace.css"
 
 
 
@@ -94,13 +94,15 @@ export default function Marketplace() {
 
   return (
     <>
-      <h1 className="text-center align-items-center justify-content-center">
-        Marketplace
-      </h1>
-      <div className="d-flex justify-content-center flex-row flex-wrap">
-        {cards.map((creature, index) => (
-            <Card creature={creature} key={index}/>
-        ))}
+      <div className="col-12 marketplace-bg">
+        <h1 className="text-center align-items-center justify-content-center">
+          Marketplace
+        </h1>
+        <div className="d-flex justify-content-center flex-row flex-wrap">
+          {cards.map((creature, index) => (
+            <Card creature={creature} key={index} />
+          ))}
+        </div>
       </div>
     </>
   );

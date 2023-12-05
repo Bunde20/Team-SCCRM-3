@@ -8,6 +8,7 @@ import {
 import cardAPI from "../../utils/cardAPI";
 import tradeAPI from "../../utils/tradeAPI";
 import Card from "../../components/Card";
+import PurchaseBtn from "../../components/PurchaseBtn";
 import TradeOffer from "../../components/TradeOffer";
 import "./Marketplace.css";
 
@@ -132,12 +133,15 @@ export default function Marketplace() {
         </h1>
         <div className="d-flex justify-content-center flex-row flex-wrap">
           {cards.map((creature, index) => (
-            <Card
-              creature={creature}
-              userCoins={userCoins}
-              handlePurchase={handlePurchase}
-              key={index}
-            />
+            <div>
+              <Card creature={creature} key={index} />
+              <PurchaseBtn
+                creature={creature}
+                userCoins={userCoins}
+                handlePurchase={handlePurchase}
+                key={index}
+              />
+            </div>
           ))}
           <div className="d-flex">
             {tradeOffers.map((offer, index) => (

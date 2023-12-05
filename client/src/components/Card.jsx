@@ -30,24 +30,45 @@ import { faWandMagicSparkles, faBurst, faShield } from '@fortawesome/free-solid-
 // ]
 
 
-function Card({ creature }) {
+function Card({ creature, userCoins, handlePurchase }) {
   return (
-    <div>
+    <div className="card-container">
       <div className="card creature">
         <div className="card-header creature-header">
           <h2 className="card-title creature-title" style={creature.style}>
-            {creature.name} {' '}
-            {creature.type === 'attacker' && <FontAwesomeIcon icon={faBurst} className="" />}
-            {creature.type === 'defender' && <FontAwesomeIcon icon={faShield} className="" />}
-            {creature.type === 'trickster' && <FontAwesomeIcon icon={faWandMagicSparkles} className="" />}
+            {creature.name}{' '}
+            {creature.type === 'attacker' && (
+              <FontAwesomeIcon icon={faBurst} className="" />
+            )}
+            {creature.type === 'defender' && (
+              <FontAwesomeIcon icon={faShield} className="" />
+            )}
+            {creature.type === 'trickster' && (
+              <FontAwesomeIcon icon={faWandMagicSparkles} className="" />
+            )}
           </h2>
         </div>
-        <img className="card-image creature-image" src={creature.image} alt="Creature image" />
+        <img
+          className="card-image creature-image"
+          src={creature.image}
+          alt="Creature image"
+        />
         <p className="card-text creature-text">{creature.description}</p>
+      </div>
+      <div className="button-container">
+        {userCoins >= creature.coinCost && (
+          <button
+            className="rounded purchase-button"
+            onClick={() => handlePurchase(creature.coinCost, creature.name)}
+          >
+            Purchase for {creature.coinCost} coins
+          </button>
+        )}
       </div>
     </div>
   );
 }
+
 
 
 // function Card({creature}) {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWandMagicSparkles, faBurst, faShield } from '@fortawesome/free-solid-svg-icons';
-import "../../App.css";
 import cardAPI from "../../utils/cardAPI";
 import Card from "../../components/Card";
+import "./Marketplace.css"
 
 
 
@@ -120,6 +120,7 @@ export default function Marketplace() {
 
   return (
     <>
+      <div className="col-12 marketplace-bg">
       <h1 className="text-center align-items-center justify-content-center">
         Marketplace
       </h1>
@@ -127,6 +128,7 @@ export default function Marketplace() {
         {cards.map((creature, index) => (
             <Card creature={creature} userCoins={userCoins} handlePurchase={handlePurchase} key={index}/>
         ))}
+        </div>
       </div>
     </>
   );

@@ -95,7 +95,7 @@ export default function Homepage() {
                     </div>
                     <div className='col-12 row align-items-center mx-auto'>
                         <div className='col-12 col-lg-6 text-center'>
-                            <p className='homeTitle'>Programon Palace</p>
+                            <p className='homeTitle'>Prográmon Palace</p>
                             <div>
                                 <p className='fs-3 home-subhead'>Gotta fetch 'em all!</p>
                             </div>

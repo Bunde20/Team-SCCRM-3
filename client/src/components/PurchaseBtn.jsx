@@ -1,5 +1,6 @@
 import React from "react";
 import userAPI from "../utils/userAPI";
+import CoinIcon from "../components/CoinIcon"
 
 export default function PurchaseBtn(props) {
   const handlePurchase = (userId, cardId) => {
@@ -14,7 +15,7 @@ export default function PurchaseBtn(props) {
           handlePurchase(props.currentUser._id, props.creature._id)
         }
       >
-        Purchase for {props.creature.coinCost} coins
+        Purchase for {props.creature.coinCost} coins <CoinIcon />
       </button>
     </div>
   );

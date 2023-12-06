@@ -6,7 +6,7 @@ export default function Lobby() {
     const lobbyText = [
         {
             id: 0,
-            text: "Here you can prepare for you adventure! Remember, you must choose 3 Prográmon to take with you. Choose wisely and good luck in there, adventurer!"
+            text: "Here you can prepare for your adventure! Remember, you must choose 3 Prográmon to take with you. Choose wisely and good luck in there, adventurer!"
         }
     ]
 

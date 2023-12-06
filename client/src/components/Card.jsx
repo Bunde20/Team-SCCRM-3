@@ -8,7 +8,7 @@ import {
   faShield,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Card({ creature, userCoins, handlePurchase }) {
+function Card({ creature }) {
   return (
     <div className="card-container">
       <div className="card creature">

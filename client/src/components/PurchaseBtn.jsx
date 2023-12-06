@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PurchaseBtn({ creature, userCoins, handlePurchase }) {
   return (
-    <div className="button-container">
+    <div className="button-container mb-2">
       {userCoins >= creature.coinCost && (
         <button
           className="rounded purchase-button"

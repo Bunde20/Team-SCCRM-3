@@ -46,7 +46,7 @@ export default function TradeOffer(props) {
             card2={props.offer.seekingCardId}
           />
         ) : (
-          <h4 className="text-center">you don't own the matching card!</h4>
+          <h4 className="text-center">Pending offer...</h4>
         )}
       </section>
     </>

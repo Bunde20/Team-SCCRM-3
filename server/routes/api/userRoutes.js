@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const authenticateToken = require("../../utils/helper");
+const jwtAuth = require("../../utils/helper");
 const {
   getAllUsers,
   getOneUser,
@@ -11,7 +11,7 @@ const {
 } = require("../../controllers/userControllers");
 
 
-router.route("/").get(getAllUsers).post(createNewUser);
+router.route("/").get(jwtAuth, getAllUsers).post(createNewUser);
 
 // NEVER EVER EVER UPDATE CARDS FROM THIS ENDPOINT.
 // DOING SO WILL WIPE THE PLAYER'S ENTIRE COLLECTION.

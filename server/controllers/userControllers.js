@@ -1,4 +1,5 @@
 const User = require("../models/User");
+
 // middleware to authenticate jwt
 
 

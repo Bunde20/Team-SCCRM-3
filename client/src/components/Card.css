@@ -6,10 +6,9 @@
     align-items: center;
   }
 
-  
   .creature {
     border: 2px solid black;
-    padding: 5px;
+    padding: 4px;
     margin: 5px;
     text-align: center;
     max-width: 270px;
@@ -30,6 +29,7 @@
     align-items: center;
     background-color: transparent;
     border: none;
+    max-width: 100%;
   }
 
   .purchase-button {
@@ -42,3 +42,52 @@
     width: 270px;
     border: 2px solid black;
   }
+
+/* Media Queries for Responsive Cards */
+@media (max-width: 768px) {
+  .creature {
+    max-width: 200px;
+    height: 300px;
+  }
+
+  .creature-image {
+    max-width: 80%;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .purchase-button {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .creature {
+    max-width: 100px;
+    height: 200px;
+    padding-top: 0px;
+    margin: 1px 4px 1px 4px;
+  }
+
+  .creature-image {
+    max-width: 100%;
+  }
+
+  .card-title, .purchase-button {
+    font-size: 14px; 
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 0px;
+  }
+
+  /* .purchase-button::before {
+    content: "Purchase"; 
+  } */
+
+  .purchase-button {
+    width: 100px;
+  }
+
+}

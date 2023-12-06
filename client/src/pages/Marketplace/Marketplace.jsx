@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import cardAPI from "../../utils/cardAPI";
 import tradeAPI from "../../utils/tradeAPI";
+import userAPI from "../../utils/userAPI";
 import Card from "../../components/Card";
 import PurchaseBtn from "../../components/PurchaseBtn";
 import BackButton from "../../components/BackButton/BackButton";
@@ -15,16 +16,8 @@ import "./Marketplace.css";
 
 export default function Marketplace() {
   const [cards, setCards] = useState([]);
+  const [currentUser, setCurrentUser] = useState({})
   const [userCoins, setUserCoins] = useState(50);
-
-  const handlePurchase = (cost, name) => {
-    if (userCoins >= cost) {
-      setUserCoins(userCoins - cost);
-      console.log(`Purchased ${name} for ${cost} coins`);
-    } else {
-      alert("Not enough coins!");
-    }
-  };
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -43,8 +36,10 @@ export default function Marketplace() {
         console.error("Error fetching cards:", error);
       }
     };
-
     fetchCards();
+
+    userAPI.getOneUser(localStorage.getItem('currentUser'))
+    .then((res) => setCurrentUser(res.data[0]))
 
   }, []);
 
@@ -63,9 +58,8 @@ export default function Marketplace() {
             <div>
               <Card creature={creature} key={index} />
               <PurchaseBtn
+                currentUser={currentUser}
                 creature={creature}
-                userCoins={userCoins}
-                handlePurchase={handlePurchase}
                 key={index}
               />
             </div>

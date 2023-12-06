@@ -1,7 +1,12 @@
 import React from "react";
 import CoinIcon from "./CoinIcon";
+import userAPI from "../utils/userAPI";
 
-export default function PurchaseBtn({ creature, userCoins, handlePurchase }) {
+export default function PurchaseBtn(props) {
+  const handlePurchase = (userId, cardId) => {
+    userAPI.addUserCard(userId, cardId);
+  };
+
   return (
     <div className="button-container mb-2">
       {userCoins >= creature.coinCost && (

@@ -24,6 +24,11 @@ export default function TradeOffer(props) {
     <>
       <section className="border rounded m-4 p-4 bg-light">
         <h2 className="text-center text-capitalize">{`${user.username} wants to trade!`}</h2>
+        {props.matchCards ? (
+          <h4 className="text-center">you own the matching card!</h4>
+        ) : (
+          <h4 className="text-center">you don't own the matching card!</h4>
+        )}
         <div className="d-flex">
           <div>
             <h3 className="text-center">Offering</h3>

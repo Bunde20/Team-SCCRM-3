@@ -30,9 +30,11 @@ if (userMatch && passMatch) {
     console.log(token)
     console.log('password matches')
 //    now it should be adding the token to the user's tokens array
-    userMatch.tokens = token
+
    
-    await userMatch.save();
+    
+res.cookie('token', token, { httpOnly: true })
+    
     res.status(200).json({ user: userMatch, token });
 }
 }catch(err){

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Homepage.css'
 import HomepageButton from '../../components/HomepageButton.jsx'
 import { Link } from 'react-router-dom'
@@ -11,12 +11,7 @@ const btnLoggedOutTxt = [
         id: 0,
         text: 'How to Play',
         path: '/tutorial'
-    },
-    {
-        id: 1,
-        text: 'Marketplace',
-        path: '/marketplace'
-    }
+    }   
 ]
 
 const btnLoggedInTxt = [
@@ -60,11 +55,12 @@ export default function Homepage() {
                     'Content-Type': 'application/json'
                 }
             })
-            const data = await res.json()
-            console.log(data)
-            if (data.token) {
-                console.log('Login successful')
+            const user = await res.json()
+            if (user) {
                 setIsLoggedIn(true)
+                console.log('Login successful')
+                console.log(user)
+                localStorage.setItem('token',user.token)
          
             } else {
              setShowAlert(true)
@@ -87,7 +83,15 @@ export default function Homepage() {
             return <LogModal onLogin={handleLogin} />
         }
     }
-
+    function checkToken() {
+        const token = localStorage.getItem('token')
+        if (token) {
+            setIsLoggedIn(true)
+        }
+    }
+    useEffect(() => {
+        checkToken()
+    }, [])
     return (
         <>
             {/* {showLoginModal &&(<LogModal onClose={() => setShowLoginModal(false)}  />)} */}
@@ -106,6 +110,7 @@ export default function Homepage() {
                         <div className="col-12 col-lg-6 mx-auto my-5 rounded text-center">
                             {homepageBtnRender()}
                             {loginBtnRender()}
+                            
                             {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import CoinIcon from "./CoinIcon";
 import userAPI from "../utils/userAPI";
 
 export default function PurchaseBtn(props) {
@@ -7,15 +8,15 @@ export default function PurchaseBtn(props) {
   };
 
   return (
-    <div className="button-container">
-      <button
-        className="rounded purchase-button"
-        onClick={() =>
-          handlePurchase(props.currentUser._id, props.creature._id)
-        }
-      >
-        Purchase for {props.creature.coinCost} coins
-      </button>
+    <div className="button-container mb-2">
+      {userCoins >= creature.coinCost && (
+        <button
+          className="rounded purchase-button"
+          onClick={() => handlePurchase(creature.coinCost, creature.name)}
+        >
+          Purchase for {creature.coinCost} <CoinIcon />
+        </button>
+      )}
     </div>
   );
 }

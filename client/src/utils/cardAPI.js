@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000/api"
+const baseURL = ""
 
 const getAllCards = () => {
-  return axios.get(`${baseURL}/cards`);
+  return axios.get(`/api/cards`);
 };
 
 const getOneCard = (cardId) => {
-  return axios.get(`${baseURL}/cards/${cardId}`);
+  return axios.get(`/api/cards/${cardId}`);
 }
 
 export default { getAllCards, getOneCard };

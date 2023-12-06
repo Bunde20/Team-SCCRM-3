@@ -1,0 +1,24 @@
+.lobby-bg {
+    background-image: url('../../images/lobbyBG.png'); 
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.continue-btn-cstm {
+    color: white;
+    text-shadow: 3px 3px black;
+    -webkit-text-stroke-width: .005px;
+    -webkit-text-stroke-color: black;
+    font-weight: bold;
+    font-size: 3vw;
+    background-color: rgba(171, 41, 41, 0.7);
+    border: solid 2px rgb(72, 72, 72);
+}
+
+.continue-btn-cstm:hover {
+    transition: 250ms;
+    background-color: rgba(171, 41, 41, .9);
+    border: solid 2px black;
+}

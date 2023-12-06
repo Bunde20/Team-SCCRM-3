@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import tradeAPI from "../../utils/tradeAPI";
+import userAPI from "../../utils/userAPI";
 import TradeOffer from "../../components/TradeOffer";
 import MarketplaceNav from "../../components/MarketplaceNav";
 import BackButton from "../../components/BackButton/BackButton";

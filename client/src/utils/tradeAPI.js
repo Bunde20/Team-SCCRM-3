@@ -1,17 +1,17 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000/api";
+const baseURL = "";
 
 const getAllOffers = () => {
-  return axios.get(`${baseURL}/trade/offers`);
+  return axios.get(`/api/trade/offers`);
 };
 
 const getOneTradeOffer = (offerId) => {
-  return axios.get(`${baseURL}/trade/offers/${offerId}`);
+  return axios.get(`/api/trade/offers/${offerId}`);
 };
 
 const createNewTradeOffer = (userId, offeredCardId, seekingCardId) => {
-  return axios.post(`${baseURL}/trade/offers`, {
+  return axios.post(`/api/trade/offers`, {
     userId: userId,
     offeredCardId: offeredCardId,
     seekingCardId: seekingCardId,
@@ -19,12 +19,12 @@ const createNewTradeOffer = (userId, offeredCardId, seekingCardId) => {
 };
 
 const deleteOneTradeOffer = (offerId) => {
-  return axios.delete(`${baseURL}/trade/offers/${offerId}`);
+  return axios.delete(`/api/trade/offers/${offerId}`);
 };
 
 const completeTrade = (user1Id, card1Id, user2Id, card2Id) => {
   return axios.put(
-    `${baseURL}/api/trade/${user1Id}/${card1Id}/${user2Id}/${card2Id}`
+    `/api/trade/${user1Id}/${card1Id}/${user2Id}/${card2Id}`
   );
 };
 

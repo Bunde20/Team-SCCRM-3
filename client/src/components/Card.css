@@ -24,10 +24,6 @@
     margin-bottom: 10px;
   }
   
-  .creature-title, .creature-text {
-    font-family: Arial, Helvetica, sans-serif; 
-  }
-  
   .creature-header {
     display: flex;
     justify-content: center;

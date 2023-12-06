@@ -10,6 +10,8 @@ import Marketplace from './pages/Marketplace/Marketplace.jsx'
 import Lobby from './pages/Lobby/Lobby.jsx'
 import Game from './pages/Game/Game.jsx'
 import HowToPlay from './pages/Tutorial/HowToPlay.jsx'
+import Trade from './pages/Trade/Trade.jsx'
+import MyDeck from './pages/Deck/MyDeck.jsx'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: '/tutorial',
         element: <HowToPlay />
+      },
+      {
+        path: '/trade',
+        element: <Trade /> 
+      },
+      {
+        path: '/mydeck',
+        element: <MyDeck />
       }
     ]
   }

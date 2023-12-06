@@ -9,8 +9,8 @@ import cardAPI from "../../utils/cardAPI";
 import tradeAPI from "../../utils/tradeAPI";
 import Card from "../../components/Card";
 import PurchaseBtn from "../../components/PurchaseBtn";
-import TradeOffer from "../../components/TradeOffer";
 import BackButton from "../../components/BackButton/BackButton";
+import MarketplaceNav from "../../components/MarketplaceNav";
 import "./Marketplace.css";
 
 // const creatures = [
@@ -92,7 +92,6 @@ import "./Marketplace.css";
 export default function Marketplace() {
   const [cards, setCards] = useState([]);
   const [userCoins, setUserCoins] = useState(50);
-  const [tradeOffers, setTradeOffers] = useState([]);
 
   const handlePurchase = (cost, name) => {
     if (userCoins >= cost) {
@@ -123,7 +122,6 @@ export default function Marketplace() {
 
     fetchCards();
 
-    tradeAPI.getAllOffers().then((res) => setTradeOffers(res.data));
   }, []);
 
   return (
@@ -135,6 +133,7 @@ export default function Marketplace() {
         <h1 className="text-center align-items-center justify-content-center homeTitle">
           Marketplace
         </h1>
+        <MarketplaceNav />
         <div className="d-flex justify-content-center flex-row flex-wrap">
           {cards.map((creature, index) => (
             <div>
@@ -147,11 +146,6 @@ export default function Marketplace() {
               />
             </div>
           ))}
-          <div className="d-flex">
-            {tradeOffers.map((offer, index) => (
-              <TradeOffer offer={offer} key={index} />
-            ))}
-          </div>
         </div>
       </div>
     </>

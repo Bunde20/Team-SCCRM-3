@@ -1,128 +1,132 @@
-import React, { useState, useEffect } from 'react'
-import './Homepage.css'
-import HomepageButton from '../../components/HomepageButton.jsx'
-import { Link } from 'react-router-dom'
-import LogModal from '../../components/Modal.jsx'
-import AlertModal from '../../components/AlertModal.jsx'
-
+import React, { useState, useEffect } from "react";
+import "./Homepage.css";
+import HomepageButton from "../../components/HomepageButton.jsx";
+import { Link } from "react-router-dom";
+import LogModal from "../../components/Modal.jsx";
+import AlertModal from "../../components/AlertModal.jsx";
 
 const btnLoggedOutTxt = [
-    {
-        id: 0,
-        text: 'How to Play',
-        path: '/tutorial'
-    }   
-]
+  {
+    id: 0,
+    text: "How to Play",
+    path: "/tutorial",
+  },
+];
 
 const btnLoggedInTxt = [
-    {
-        id: 0,
-        text: 'New Game',
-        path: '/lobby'
-    },
-    {
-        id: 1,
-        text: 'Continue',
-        path: '/game'
-    },
-    {
-        id: 2,
-        text: 'How to Play',
-        path: '/tutorial'
-    },
-    {
-        id: 3,
-        text: 'Marketplace',
-        path: '/marketplace'
-    },
-]
+  {
+    id: 0,
+    text: "New Game",
+    path: "/lobby",
+  },
+  {
+    id: 1,
+    text: "Continue",
+    path: "/game",
+  },
+  {
+    id: 2,
+    text: "How to Play",
+    path: "/tutorial",
+  },
+  {
+    id: 3,
+    text: "Marketplace",
+    path: "/marketplace",
+  },
+];
 
 export default function Homepage() {
+  // const isLoggedIn = true
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    heading: "Uh Oh!",
+    message: "Wrong Username or Password. Please try again!",
+  });
 
-    // const isLoggedIn = true
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [showAlert, setShowAlert] = useState(false);
-    const [modalContent, setModalContent] = useState({ heading: 'Uh Oh!', message: 'Wrong Username or Password. Please try again!' });
-    
-    const handleCloseAlert = () => setShowAlert(false);
-    
-    const handleLogin = async (username, password) => {
-        try {
-            const res = await fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                body: JSON.stringify({ username, password }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            const user = await res.json()
-            if (user) {
-                setIsLoggedIn(true)
-                console.log('Login successful')
-                console.log(user)
-                localStorage.setItem('token',user.token)
-         
-            } else {
-             setShowAlert(true)
-            }
+  const handleCloseAlert = () => setShowAlert(false);
 
-        } catch (err) {
-            console.error('Error logging in', err)
-        }
+  const handleLogin = async (username, password) => {
+    try {
+      const res = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const user = await res.json();
+      if (user) {
+        setIsLoggedIn(true);
+        console.log(`${user.user.username} login successful`);
+        const currentUserId = user.user._id;
+        localStorage.setItem("token", user.token);
+        localStorage.setItem("currentUser", currentUserId);
+      } else {
+        setShowAlert(true);
+      }
+    } catch (err) {
+      console.error("Error logging in", err);
     }
+  };
 
-    function homepageBtnRender() {
-        if (isLoggedIn) {
-            return btnLoggedInTxt.map(obj => <HomepageButton {...obj} key={obj.id} />)
-        } else {
-            return btnLoggedOutTxt.map(obj => <HomepageButton {...obj} key={obj.id} />)
-        }
+  function homepageBtnRender() {
+    if (isLoggedIn) {
+      return btnLoggedInTxt.map((obj) => (
+        <HomepageButton {...obj} key={obj.id} />
+      ));
+    } else {
+      return btnLoggedOutTxt.map((obj) => (
+        <HomepageButton {...obj} key={obj.id} />
+      ));
     }
-    function loginBtnRender() {
-        if (!isLoggedIn) {
-            return <LogModal onLogin={handleLogin} />
-        }
+  }
+  function loginBtnRender() {
+    if (!isLoggedIn) {
+      return <LogModal onLogin={handleLogin} />;
     }
-    function checkToken() {
-        const token = localStorage.getItem('token')
-        if (token) {
-            setIsLoggedIn(true)
-        }
+  }
+  function checkToken() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
     }
-    useEffect(() => {
-        checkToken()
-    }, [])
-    return (
-        <>
-            {/* {showLoginModal &&(<LogModal onClose={() => setShowLoginModal(false)}  />)} */}
-            <div className='col-12 homepage-bg'>
-                <div className='col-11 mx-auto'>
-                    <div id='welcomeEl'>
-                        <p className='text-end'>Welcome!</p>
-                    </div>
-                    <div className='col-12 row align-items-center mx-auto'>
-                        <div className='col-12 col-lg-6 text-center'>
-                            <p className='homeTitle'>Prográmon Palace</p>
-                            <div>
-                                <p className='fs-3 home-subhead'>Gotta fetch 'em all!</p>
-                            </div>
-                        </div>
-                        <div className="col-12 col-lg-6 mx-auto my-5 rounded text-center">
-                            {homepageBtnRender()}
-                            {loginBtnRender()}
-                            
-                            {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}
-                        </div>
-                    </div>
-                </div>
+  }
+  useEffect(() => {
+    checkToken();
+  }, []);
+  return (
+    <>
+      {/* {showLoginModal &&(<LogModal onClose={() => setShowLoginModal(false)}  />)} */}
+      <div className="col-12 homepage-bg">
+        <div className="col-11 mx-auto">
+          <div id="welcomeEl">
+            <p className="text-end">Welcome!</p>
+          </div>
+          <div className="col-12 row align-items-center mx-auto">
+            <div className="col-12 col-lg-6 text-center">
+              <p className="homeTitle">Prográmon Palace</p>
+              <div>
+                <p className="fs-3 home-subhead">Gotta fetch 'em all!</p>
+              </div>
             </div>
-            <AlertModal
-            heading={modalContent.heading}
-            message={modalContent.message}
-            updateContent={setModalContent}
-            show={showAlert}
-            handleClose={handleCloseAlert}
-            />
-        </>
-    )
+            <div className="col-12 col-lg-6 mx-auto my-5 rounded text-center">
+              {homepageBtnRender()}
+              {loginBtnRender()}
+
+              {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}
+            </div>
+          </div>
+        </div>
+      </div>
+      <AlertModal
+        heading={modalContent.heading}
+        message={modalContent.message}
+        updateContent={setModalContent}
+        show={showAlert}
+        handleClose={handleCloseAlert}
+      />
+    </>
+  );
 }

@@ -34,7 +34,7 @@
 }
 
 .home-btn-cstm:hover {
-    transition: 350ms;
+    transition: 250ms;
     background-color: rgba(40, 155, 217, 0.75);
     border: solid 2px black;
 }

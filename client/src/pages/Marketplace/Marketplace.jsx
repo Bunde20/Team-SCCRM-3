@@ -69,10 +69,3 @@ export default function Marketplace() {
     </>
   );
 }
-
-//GET AND DISPLAY ALL CARDS//
-// useEffect(() => {
-//   cardAPI.getAllCards().then((res) => {
-//     setCards(res.data);
-//   });
-// }, []);

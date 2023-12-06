@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import TradeButton from "./TradeBtn";
 import cardAPI from "../utils/cardAPI";
 import userAPI from "../utils/userAPI";
 
@@ -22,13 +23,8 @@ export default function TradeOffer(props) {
 
   return (
     <>
-      <section className="border rounded m-4 p-4 bg-light">
+      <section className="border rounded m-4 p-4 bg-light text-center">
         <h2 className="text-center text-capitalize">{`${user.username} wants to trade!`}</h2>
-        {props.matchCards ? (
-          <h4 className="text-center">you own the matching card!</h4>
-        ) : (
-          <h4 className="text-center">you don't own the matching card!</h4>
-        )}
         <div className="d-flex">
           <div>
             <h3 className="text-center">Offering</h3>
@@ -39,11 +35,11 @@ export default function TradeOffer(props) {
             width="32"
             height="32"
             fill="currentColor"
-            class="bi bi-arrow-left-right"
+            className="bi bi-arrow-left-right"
             viewBox="0 0 16 16"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"
             />
           </svg>
@@ -52,6 +48,16 @@ export default function TradeOffer(props) {
             <Card creature={seekingCard} />
           </div>
         </div>
+        {props.matchCards ? (
+          <TradeButton
+            user1={props.offer.userId}
+            card1={props.offer.offeredCardId}
+            user2={props.currentUser}
+            card2={props.offer.seekingCardId}
+          />
+        ) : (
+          <h4 className="text-center">you don't own the matching card!</h4>
+        )}
       </section>
     </>
   );

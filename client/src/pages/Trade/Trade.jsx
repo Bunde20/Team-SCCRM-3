@@ -18,7 +18,7 @@ export default function Trade(props) {
   }, []);
 
   const matchCards = (seekingCardId) => {
-    return currentUser.cards.some((card) => card._id === seekingCardId);
+    return currentUser.cards && currentUser.cards.some((card) => card._id === seekingCardId);
   };
 
   return (
@@ -35,6 +35,7 @@ export default function Trade(props) {
           <TradeOffer
             offer={offer}
             key={index}
+            currentUser={currentUser._id}
             matchCards={matchCards(offer.seekingCardId)}
           />
         ))}

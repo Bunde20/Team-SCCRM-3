@@ -1,4 +1,5 @@
 import React from "react";
+import CoinIcon from "./CoinIcon";
 
 export default function PurchaseBtn({ creature, userCoins, handlePurchase }) {
   return (
@@ -8,7 +9,7 @@ export default function PurchaseBtn({ creature, userCoins, handlePurchase }) {
           className="rounded purchase-button"
           onClick={() => handlePurchase(creature.coinCost, creature.name)}
         >
-          Purchase for {creature.coinCost} coins
+          Purchase for {creature.coinCost} <CoinIcon />
         </button>
       )}
     </div>

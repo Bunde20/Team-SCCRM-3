@@ -44,6 +44,7 @@ export default function TradeOffer(props) {
             card1={props.offer.offeredCardId}
             user2={props.currentUser}
             card2={props.offer.seekingCardId}
+            offerId={props.offer._id}
           />
         ) : (
           <h4 className="text-center">Pending offer...</h4>

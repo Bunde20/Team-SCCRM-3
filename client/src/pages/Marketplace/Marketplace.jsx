@@ -16,8 +16,8 @@ import "./Marketplace.css";
 
 export default function Marketplace() {
   const [cards, setCards] = useState([]);
-  const [currentUser, setCurrentUser] = useState({})
-  const [userCoins, setUserCoins] = useState(50);
+  const [currentUser, setCurrentUser] = useState({});
+  const [userCoins, setUserCoins] = useState(0);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -38,30 +38,36 @@ export default function Marketplace() {
     };
     fetchCards();
 
-    userAPI.getOneUser(localStorage.getItem('currentUser'))
-    .then((res) => setCurrentUser(res.data[0]))
-
+    userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
+      setCurrentUser(res.data[0]);
+      setUserCoins(res.data[0].coins);
+    });
   }, []);
 
   return (
     <>
       <div className="col-12 marketplace-bg">
-        <div className='col-12 mx-auto text-center'>
-          <BackButton/>
+        <div className="col-12 mx-auto text-center">
+          <BackButton />
         </div>
         <h1 className="text-center align-items-center justify-content-center homeTitle">
           Marketplace
         </h1>
         <MarketplaceNav />
+        <h3 className="text-center">COINS: {userCoins}</h3>
         <div className="d-flex justify-content-center flex-row flex-wrap">
           {cards.map((creature, index) => (
             <div>
               <Card creature={creature} key={index} />
-              <PurchaseBtn
-                currentUser={currentUser}
-                creature={creature}
-                key={index}
-              />
+              {userCoins >= creature.coinCost && (
+                <PurchaseBtn
+                  currentUser={currentUser}
+                  creature={creature}
+                  userCoins={userCoins}
+                  setUserCoins={setUserCoins}
+                  key={index}
+                />
+              )}
             </div>
           ))}
         </div>

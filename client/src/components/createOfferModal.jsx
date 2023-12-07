@@ -12,7 +12,7 @@ export default function CreateOfferModal({
   show,
   handleClose,
   onClose = () => {},
-  offeredCreature
+  offeredCreature,
 }) {
   const [cards, setCards] = useState([]);
 
@@ -32,7 +32,11 @@ export default function CreateOfferModal({
             {cards.map((creature) => (
               <div>
                 <Card creature={creature} key={creature._id} />
-                <SeekCardBtn creature={creature} offeredCreature={offeredCreature} handleClose={handleClose}/>
+                <SeekCardBtn
+                  creature={creature}
+                  offeredCreature={offeredCreature}
+                  handleClose={handleClose}
+                />
               </div>
             ))}
           </div>

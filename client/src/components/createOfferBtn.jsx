@@ -2,21 +2,26 @@ import React, { useState, useEffect } from "react";
 import CreateOfferModal from "./createOfferModal";
 
 export default function CreateOfferBtn(props) {
+  const [showModal, setShowModal] = useState(false);
 
-    const [showModal, setShowModal] = useState(false)
+  const handleClose = () => setShowModal(false);
 
-    const handleClose = () => setShowModal(false);
-
-    const handleClick = () => {
-        setShowModal(true)
-    }
+  const handleClick = () => {
+    setShowModal(true);
+  };
 
   return (
     <>
       <div className="button-container">
-        <button className="rounded purchase-button" onClick={handleClick}>Offer Trade</button>
+        <button className="rounded purchase-button" onClick={handleClick}>
+          Offer Trade
+        </button>
       </div>
-      <CreateOfferModal show={showModal} offeredCreature={props.offeredCreature} handleClose={handleClose}/>
+      <CreateOfferModal
+        show={showModal}
+        offeredCreature={props.offeredCreature}
+        handleClose={handleClose}
+      />
     </>
   );
 }

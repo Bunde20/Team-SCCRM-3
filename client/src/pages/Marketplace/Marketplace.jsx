@@ -57,15 +57,15 @@ export default function Marketplace() {
         <h3 className="text-center">COINS: {userCoins}</h3>
         <div className="d-flex justify-content-center flex-row flex-wrap">
           {cards.map((creature, index) => (
-            <div>
-              <Card creature={creature} key={index} />
+            <div key={index}>
+              <Card creature={creature} key={creature._id} />
               {userCoins >= creature.coinCost && (
                 <PurchaseBtn
                   currentUser={currentUser}
                   creature={creature}
                   userCoins={userCoins}
                   setUserCoins={setUserCoins}
-                  key={index}
+                  key={`PurchaseBtn_${creature._id}`}
                 />
               )}
             </div>

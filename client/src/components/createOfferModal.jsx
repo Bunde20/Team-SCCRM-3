@@ -29,13 +29,14 @@ export default function CreateOfferModal({
         <Modal.Body>
           {message}
           <div className="d-flex flex-wrap justify-content-center">
-            {cards.map((creature) => (
-              <div>
+            {cards.map((creature, index) => (
+              <div key={index}>
                 <Card creature={creature} key={creature._id} />
                 <SeekCardBtn
                   creature={creature}
                   offeredCreature={offeredCreature}
                   handleClose={handleClose}
+
                 />
               </div>
             ))}

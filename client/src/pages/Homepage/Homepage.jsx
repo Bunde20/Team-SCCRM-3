@@ -4,6 +4,7 @@ import HomepageButton from "../../components/HomepageButton.jsx";
 import { Link } from "react-router-dom";
 import LogModal from "../../components/Modal.jsx";
 import AlertModal from "../../components/AlertModal.jsx";
+import LogOutBtn from "../../components/LogOutBtn.jsx";
 
 const btnLoggedOutTxt = [
   {
@@ -61,8 +62,10 @@ export default function Homepage() {
         setIsLoggedIn(true);
         console.log(`${user.user.username} login successful`);
         const currentUserId = user.user._id;
+        const currentUsername = user.user.username;
         localStorage.setItem("token", user.token);
         localStorage.setItem("currentUser", currentUserId);
+        localStorage.setItem("currentUsername", currentUsername);
       } else {
         setShowAlert(true);
       }
@@ -70,6 +73,13 @@ export default function Homepage() {
       console.error("Error logging in", err);
     }
   };
+
+
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("currentUser");
+  setIsLoggedIn(false);
+}
 
   function homepageBtnRender() {
     if (isLoggedIn) {
@@ -85,8 +95,14 @@ export default function Homepage() {
   function loginBtnRender() {
     if (!isLoggedIn) {
       return <LogModal onLogin={handleLogin} />;
+    } else {
+      return (
+        <LogOutBtn onLogout={handleLogout} />
+     
+      );
     }
   }
+  const currentUser = localStorage.getItem("currentUsername");
   function checkToken() {
     const token = localStorage.getItem("token");
     if (token) {
@@ -96,13 +112,14 @@ export default function Homepage() {
   useEffect(() => {
     checkToken();
   }, []);
+
   return (
     <>
       {/* {showLoginModal &&(<LogModal onClose={() => setShowLoginModal(false)}  />)} */}
       <div className="col-12 homepage-bg">
         <div className="col-11 mx-auto">
           <div id="welcomeEl">
-            <p className="text-end">Welcome!</p>
+            <p className="text-end">Welcome {currentUser}!</p>
           </div>
           <div className="col-12 row align-items-center mx-auto">
             <div className="col-12 col-lg-6 text-center">

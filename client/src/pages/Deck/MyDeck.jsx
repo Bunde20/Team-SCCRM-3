@@ -29,12 +29,10 @@ export default function MyDeck() {
         <MarketplaceNav />
         <div className="d-flex flex-wrap justify-content-center">
           {userCards.map((creature, index) => (
-            <>
-              <div>
-                <Card creature={creature} key={creature.index} />
-                <CreateOfferBtn key={index} offeredCreature={creature}/>
+              <div key={index}>
+                <Card key={`creature_${creature._id}`} creature={creature} />
+                <CreateOfferBtn key={`offerBtn_${creature._id}`} offeredCreature={creature}/>
               </div>
-            </>
           ))}
         </div>
       </div>

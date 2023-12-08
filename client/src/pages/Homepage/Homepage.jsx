@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import LogModal from "../../components/Modal.jsx";
 import AlertModal from "../../components/AlertModal.jsx";
 import LogOutBtn from "../../components/LogOutBtn.jsx";
+import AlertModal2 from "../../components/AlertModal2.jsx";
+
 
 const btnLoggedOutTxt = [
   {
@@ -35,12 +37,15 @@ export default function Homepage() {
   // const isLoggedIn = true
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [showAlert2, setShowAlert2] = useState(false);
   const [modalContent, setModalContent] = useState({
     heading: "Uh Oh!",
     message: "Wrong Username or Password. Please try again!",
   });
+  
 
   const handleCloseAlert = () => setShowAlert(false);
+  const handleCloseAlert2 = () => setShowAlert2(false); 
 
   const handleLogin = async (username, password) => {
     try {
@@ -85,14 +90,17 @@ export default function Homepage() {
         },
       });
       const newUser = await res.json(); 
-      if(newUser) {
-      console.log(newUser);
-      handleLogin(username, password);
+      if(newUser._id) {
+        console.log(newUser);
+        handleLogin(username, password);
+       
       } else {
-        setShowAlert(true);
+        setShowAlert2(true);
+       
       }
     } catch (err) {
       setIsLoggedIn(false);
+      setShowAlert2(true);
       console.error("Error signing up", err);
     }
   }
@@ -167,6 +175,12 @@ export default function Homepage() {
         show={showAlert}
         handleClose={handleCloseAlert}
       />
+      <AlertModal2
+        heading="Uh oh!"
+        message="Something Went Wrong. Please Try Again!"
+        show={showAlert2}
+        handleClose={handleCloseAlert2}
+        />
     </>
   );
 }

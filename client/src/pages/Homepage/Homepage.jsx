@@ -85,6 +85,7 @@ export default function Homepage() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("currentUsername");
     setIsLoggedIn(false);
   };
   function logoutBtnRender() {

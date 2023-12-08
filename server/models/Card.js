@@ -25,7 +25,7 @@ const cardSchema = new Schema(
       type: Number,
       required: true,
     },
-    defense: {
+    health: {
       type: Number,
       required: true,
     },

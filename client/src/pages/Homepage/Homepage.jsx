@@ -6,7 +6,9 @@ import LogModal from "../../components/Modal.jsx";
 import AlertModal from "../../components/AlertModal.jsx";
 import LogOutBtn from "../../components/LogOutBtn.jsx";
 import AlertModal2 from "../../components/AlertModal2.jsx";
-
+import axios from "axios";
+import userApi from "../../utils/userApi";
+import cardApi from "../../utils/cardApi";
 
 const btnLoggedOutTxt = [
   {
@@ -47,6 +49,37 @@ export default function Homepage() {
   const handleCloseAlert = () => setShowAlert(false);
   const handleCloseAlert2 = () => setShowAlert2(false); 
 
+  async function generateRandomCards(newUser) {
+    try {
+      const res = await cardApi.getAllCards();
+      const cardArr = res.data;
+      
+      // Ensure that there are at least 3 cards available
+      if (cardArr.length < 3) {
+        console.error('Not enough cards available');
+        return;
+      }
+  
+      const cardIdArr = cardArr.map((card) => card._id);
+  
+      // Generate and add 3 random cards
+      for (let i = 0; i < 3; i++) {
+        const randomCardId =
+          cardIdArr[Math.floor(Math.random() * cardIdArr.length)];
+        await userApi.addUserCard(newUser._id, randomCardId);
+    
+      }
+      await newUser.save()
+  
+      console.log('Successfully added 3 random cards');
+    } catch (error) {
+      console.error('Error generating random cards:', error.message);
+    }
+  }
+  
+
+  
+
   const handleLogin = async (username, password) => {
     try {
       const res = await fetch("http://localhost:3000/api/login", {
@@ -80,6 +113,7 @@ export default function Homepage() {
     }
   };
 
+
   const handleSignup = async (username, password, email) => {
     try { 
       const res = await fetch("http://localhost:3000/api/users", {
@@ -93,6 +127,10 @@ export default function Homepage() {
       if(newUser._id) {
         console.log(newUser);
         handleLogin(username, password);
+        generateRandomCards(newUser);
+        
+        
+     
        
       } else {
         setShowAlert2(true);

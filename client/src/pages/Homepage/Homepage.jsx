@@ -21,11 +21,6 @@ const btnLoggedInTxt = [
     path: "/lobby",
   },
   {
-    id: 1,
-    text: "Continue",
-    path: "/game",
-  },
-  {
     id: 2,
     text: "How to Play",
     path: "/tutorial",
@@ -36,7 +31,6 @@ const btnLoggedInTxt = [
     path: "/marketplace",
   },
 ];
-
 export default function Homepage() {
   // const isLoggedIn = true
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -74,13 +68,6 @@ export default function Homepage() {
     }
   };
 
-
-const handleLogout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("currentUser");
-  setIsLoggedIn(false);
-}
-
   function homepageBtnRender() {
     if (isLoggedIn) {
       return btnLoggedInTxt.map((obj) => (
@@ -88,19 +75,32 @@ const handleLogout = () => {
       ));
     } else {
       return btnLoggedOutTxt.map((obj) => (
-        <HomepageButton {...obj} key={obj.id} />
+        <>
+          <HomepageButton {...obj} key={obj.id} />
+        </>
       ));
     }
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    setIsLoggedIn(false);
+  };
+  function logoutBtnRender() {
+    if (isLoggedIn) {
+    return (
+      <div>
+      <LogOutBtn onLogout={handleLogout} />;
+    </div>
+    )  
+  }
+    
   }
   function loginBtnRender() {
     if (!isLoggedIn) {
       return <LogModal onLogin={handleLogin} />;
-    } else {
-      return (
-        <LogOutBtn onLogout={handleLogout} />
-     
-      );
-    }
+    } 
   }
   const currentUser = localStorage.getItem("currentUsername");
   function checkToken() {
@@ -131,6 +131,7 @@ const handleLogout = () => {
             <div className="col-12 col-lg-6 mx-auto my-5 rounded text-center">
               {homepageBtnRender()}
               {loginBtnRender()}
+              {logoutBtnRender()}
 
               {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}
             </div>

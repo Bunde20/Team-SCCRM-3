@@ -21,12 +21,12 @@ const btnLoggedInTxt = [
     path: "/lobby",
   },
   {
-    id: 2,
+    id: 1,
     text: "How to Play",
     path: "/tutorial",
   },
   {
-    id: 3,
+    id: 2,
     text: "Marketplace",
     path: "/marketplace",
   },

@@ -90,11 +90,7 @@ export default function Homepage() {
   };
   function logoutBtnRender() {
     if (isLoggedIn) {
-    return (
-      <div>
-      <LogOutBtn onLogout={handleLogout} />;
-    </div>
-    )  
+    return <LogOutBtn onLogout={handleLogout} />; 
   }
     
   }
@@ -116,7 +112,6 @@ export default function Homepage() {
 
   return (
     <>
-      {/* {showLoginModal &&(<LogModal onClose={() => setShowLoginModal(false)}  />)} */}
       <div className="col-12 homepage-bg">
         <div className="col-11 mx-auto">
           <div id="welcomeEl">
@@ -133,8 +128,6 @@ export default function Homepage() {
               {homepageBtnRender()}
               {loginBtnRender()}
               {logoutBtnRender()}
-
-              {/* <button className='col-10 btn btn-secondary my-5' onClick={() => {console.log('login button was clicked'),handleShow(true)}}> Login </button> */}
             </div>
           </div>
         </div>

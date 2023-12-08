@@ -16,24 +16,30 @@
     display: inline-block;
   }
 
-    .trickster-bg {
-      background-color: #D27C59ff;
-        }
-  
-    .defender-bg {
-      background-color: #72764Aff;
-    }
-  
-    .attacker-bg {
-      background-color: #B1E0D6ff;
-    }
-  
-  .creature-image {
-    border: 2px solid black;
-    max-width: 70%;
-    height: auto;
-    margin-bottom: 10px;
+  .trickster-bg {
+    /* background-color: #f99d77; */
+    background: rgb(249,157,119);
+background: linear-gradient(35deg, rgba(249,157,119,1) 0%, rgba(88,56,43,1) 52%, rgba(249,157,119,1) 94%);
+      }
+
+  .defender-bg {
+    /* background-color: #E6D89Bff; */
+    background: rgb(236,221,154);
+    background: linear-gradient(35deg, rgba(236,221,154,1) 0%, rgba(88,56,43,1) 52%, rgba(236,221,154,1) 94%);
   }
+
+  .attacker-bg {
+    /* background-color: #B1E0D6ff; */
+    background: rgb(172,235,220);
+background: linear-gradient(35deg, rgba(172,235,220,1) 0%, rgba(13,8,6,0.8324579831932774) 52%, rgba(172,235,220,1) 94%);
+  }
+
+.creature-image {
+  border: 2px solid black;
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 10px;
+}
   
   .creature-header {
     display: flex;

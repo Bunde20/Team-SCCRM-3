@@ -6,6 +6,8 @@ import {
   faWandMagicSparkles,
   faBurst,
   faShield,
+  faHeart,
+  faBullseye
 } from "@fortawesome/free-solid-svg-icons";
 
 function Card({ creature }) {
@@ -31,7 +33,17 @@ function Card({ creature }) {
           src={creature.image}
           alt="Creature image"
         />
-        <p className="card-text creature-text">{creature.description}</p>
+        <div className="d-flex justify-content-between">
+          <div className="d-flex ms-4">
+          <p className="fs-4">{creature.health}</p>
+            <FontAwesomeIcon className="fs-4 mt-1 mx-1" icon={faHeart}/>
+          </div>
+          <div className="d-flex me-4">
+            <FontAwesomeIcon className="fs-4 mt-1 mx-1" icon={faBullseye}/>
+            <p className="fs-4">{creature.attack}</p>
+          </div>
+              
+        </div>
       </div>
     </div>
   );

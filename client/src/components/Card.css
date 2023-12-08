@@ -15,6 +15,21 @@
     height: 370px;
     display: inline-block;
   }
+
+    .trickster-bg {
+      background: rgb(2, 0, 36);
+      background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(86, 9, 121, 1) 45%, rgba(0, 212, 255, 1) 83%);
+    }
+  
+    .defender-bg {
+      background: rgb(2, 0, 36);
+      background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(37, 78, 9, 1) 45%, rgba(52, 246, 2, 1) 83%);
+    }
+  
+    .attacker-bg {
+      background: rgb(2, 0, 36);
+      background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(70, 19, 8, 1) 45%, rgba(255, 0, 57, 1) 83%);
+    }
   
   .creature-image {
     border: 2px solid black;

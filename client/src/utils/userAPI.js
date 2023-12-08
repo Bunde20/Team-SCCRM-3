@@ -2,8 +2,6 @@ import axios from "axios";
 
 const baseURL = "";
 
-var creature = creature;
-
 const getAllUsers = () => {
   return axios.get(`/api/users`);
 };

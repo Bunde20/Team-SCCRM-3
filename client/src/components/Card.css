@@ -17,18 +17,15 @@
   }
 
     .trickster-bg {
-      background: rgb(2, 0, 36);
-      background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(86, 9, 121, 1) 45%, rgba(0, 212, 255, 1) 83%);
-    }
+      background-color: #D27C59ff;
+        }
   
     .defender-bg {
-      background: rgb(2, 0, 36);
-      background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(37, 78, 9, 1) 45%, rgba(52, 246, 2, 1) 83%);
+      background-color: #72764Aff;
     }
   
     .attacker-bg {
-      background: rgb(2, 0, 36);
-      background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(70, 19, 8, 1) 45%, rgba(255, 0, 57, 1) 83%);
+      background-color: #B1E0D6ff;
     }
   
   .creature-image {

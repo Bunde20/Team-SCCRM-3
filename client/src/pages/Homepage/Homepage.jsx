@@ -52,7 +52,11 @@ export default function Homepage() {
         },
       });
       const user = await res.json();
-      if (user) {
+      const logToken = await user.token
+      console.log(logToken);
+      
+      if (logToken) {
+        console.log(user);
         setIsLoggedIn(true);
         console.log(`${user.user.username} login successful`);
         const currentUserId = user.user._id;
@@ -61,6 +65,9 @@ export default function Homepage() {
         localStorage.setItem("currentUser", currentUserId);
         localStorage.setItem("currentUsername", currentUsername);
       } else {
+        localStorage.removeItem("token");
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("currentUsername");
         setShowAlert(true);
       }
     } catch (err) {
@@ -68,6 +75,27 @@ export default function Homepage() {
     }
   };
 
+  const handleSignup = async (username, password, email) => {
+    try { 
+      const res = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        body: JSON.stringify({ username, password, email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const newUser = await res.json(); 
+      if(newUser) {
+      console.log(newUser);
+      handleLogin(username, password);
+      } else {
+        setShowAlert(true);
+      }
+    } catch (err) {
+      setIsLoggedIn(false);
+      console.error("Error signing up", err);
+    }
+  }
   function homepageBtnRender() {
     if (isLoggedIn) {
       return btnLoggedInTxt.map((obj) => (
@@ -96,7 +124,7 @@ export default function Homepage() {
   }
   function loginBtnRender() {
     if (!isLoggedIn) {
-      return <LogModal onLogin={handleLogin} />;
+      return <LogModal onLogin={handleLogin} onSignup={handleSignup} />;
     } 
   }
   const currentUser = localStorage.getItem("currentUsername");

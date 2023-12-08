@@ -17,21 +17,16 @@ const btnLoggedOutTxt = [
 const btnLoggedInTxt = [
   {
     id: 0,
-    text: "New Game",
+    text: "Play",
     path: "/lobby",
   },
   {
     id: 1,
-    text: "Continue",
-    path: "/game",
-  },
-  {
-    id: 2,
     text: "How to Play",
     path: "/tutorial",
   },
   {
-    id: 3,
+    id: 2,
     text: "Marketplace",
     path: "/marketplace",
   },

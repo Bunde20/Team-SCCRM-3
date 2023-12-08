@@ -1,8 +1,16 @@
+import { Link } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+
 import BackButton from '../../components/BackButton/BackButton'
 import Paragraph from '../../components/Paragraph'
+import Card from '../../components/Card'
+import userAPI from '../../utils/userAPI'
 import './Lobby.css'
 
+
 export default function Lobby() {
+    const [cards, setCards] = useState([])
+
     const lobbyText = [
         {
             id: 0,
@@ -14,9 +22,24 @@ export default function Lobby() {
         return lobbyText.map((obj) => <Paragraph {...obj} key={obj.id} />)
     }
 
+    useEffect(() => {
+        const fetchCards = async () => {
+            try {
+                const res = await userAPI.getOneUser(localStorage.getItem('currentUser'))
+                const userCards = res.data[0].cards
+                console.log(userCards)
+                setCards(userCards)
+            } catch (err) {
+                console.error("Error fetching User's cards.", err)
+            }
+        }
+        fetchCards();
+
+    }, [cards])
+
     return (
         <>
-            <body className='lobby-bg'>
+            <div className='lobby-bg'>
                 <div className='col-12 text-center'>
                     <BackButton />
                 </div>
@@ -25,12 +48,19 @@ export default function Lobby() {
                     <div>
                         {lobbyParagraphRender()}
                     </div>
-                    <div className='text-center'>
-                        <button className='continue-btn-cstm rounded'>Continue</button>
+                    <div>
+                        <h2 className='text-center text-white fs-1 col-12 my-5 paragraph-text'>Select your Prográmon</h2>
+                        <div className='col-12 text-center border border-white row'>
+                            {cards.map( (obj) => <div className='col-4 col-lg-3'><Card creature={obj} key={obj._id} /></div> )}
+                        </div>
                     </div>
-
+                    <div className='text-center'>
+                        <Link to='/game'>
+                            <button className='continue-btn-cstm rounded'>Begin</button>
+                        </Link>
+                    </div>
                 </main>
-            </body>
+            </div>
         </>
 
     )

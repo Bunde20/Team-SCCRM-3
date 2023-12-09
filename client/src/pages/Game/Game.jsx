@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import userAPI from "../../utils/userAPI";
 
 import Boss from "../../components/GameComponents/Boss";
+import Card from "../../components/Card";
 import AttackBtn from "../../components/GameComponents/AttackBtn";
 
 import mushroomHallBG from "../../images/mushroomHallBG.png";
@@ -9,14 +11,6 @@ import caveBG from "../../images/caveBG.png";
 import "./Game.css";
 
 const bosses = [
-  {
-    name: "GLITCHBLIGHT: THE UNDEFINED",
-    image:
-      "https://cdn.discordapp.com/attachments/1062551659168944249/1183052268933750877/elrondhubbard_a_monstrous_QR_code_seeping_with_ooze_and_glowing_c15186bc-d4d6-489b-9776-7f81452c8609.png?ex=6586ee48&is=65747948&hm=2eb4078d6b2fcf7e5a33540ad785535301b7f21139eea5e88784d9e101c3ce3a&",
-    health: 1000,
-    attack: 13,
-    background: mushroomHallBG,
-  },
   {
     name: "STANMANGA: SOURCE OF TRUTH",
     image:
@@ -33,21 +27,49 @@ const bosses = [
     attack: 11,
     background: caveBG,
   },
+  {
+    name: "GLITCHBLIGHT: THE UNDEFINED",
+    image:
+      "https://cdn.discordapp.com/attachments/1062551659168944249/1183052268933750877/elrondhubbard_a_monstrous_QR_code_seeping_with_ooze_and_glowing_c15186bc-d4d6-489b-9776-7f81452c8609.png?ex=6586ee48&is=65747948&hm=2eb4078d6b2fcf7e5a33540ad785535301b7f21139eea5e88784d9e101c3ce3a&",
+    health: 1000,
+    attack: 13,
+    background: mushroomHallBG,
+  },
 ];
 
 export default function Game() {
-  const [currentBoss, setCurrentBoss] = useState(bosses[1]);
-  let [bossHealth, setBossHealth] = useState(currentBoss.health)
+  const [currentBoss, setCurrentBoss] = useState(bosses[0]);
+  let [bossHealth, setBossHealth] = useState(currentBoss.health);
+  const [userCards, setUserCards] = useState([]);
 
-  const handleClick = () => {
-    let newBossHealth = (bossHealth -= 100)
-    setBossHealth(newBossHealth)
-    console.log(bossHealth)
+  // Deal specified damage to boss
+  const handleAttack = (damage) => {
+    let newBossHealth = (bossHealth -= damage);
+    setBossHealth(newBossHealth);
+    console.log(bossHealth);
   };
 
+  // Get player cards on page load
   useEffect(() => {
-    console.log('change')
-  }, [bossHealth])
+    userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
+      setUserCards(res.data[0].cards);
+    });
+  }, []);
+
+  // Progress to next boss upon boss defeat
+  useEffect(() => {
+    if (bossHealth <= 0 && currentBoss === bosses[0]) {
+      setCurrentBoss(bosses[1]);
+      setBossHealth(bosses[1].health);
+    }
+    if (bossHealth <= 0 && currentBoss === bosses[1]) {
+      setCurrentBoss(bosses[2]);
+      setBossHealth(bosses[2].health);
+    }
+    if (bossHealth <= 0 && currentBoss === bosses[2]) {
+      alert("YOU BEAT THE GAME!");
+    }
+  }, [bossHealth]);
 
   return (
     <>
@@ -62,8 +84,16 @@ export default function Game() {
           maxHP={currentBoss.health}
           bossHealth={bossHealth}
         />
+        <div className="d-flex justify-content-center">
+          {userCards.map((creature, index) => (
+            <div key={index}>
+              <Card key={`creature_${creature._id}`} creature={creature} />
+              <AttackBtn target={currentBoss} attackDamage={creature.attack} onClick={() => handleAttack(creature.attack)}/>
+            </div>
+          ))}
+        </div>
       </div>
-      <AttackBtn target={currentBoss} attackDamage={100} onClick={() => handleClick()}/>
+
     </>
   );
 }

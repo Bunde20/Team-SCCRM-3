@@ -4,6 +4,7 @@ import userAPI from "../../utils/userAPI";
 import Boss from "../../components/GameComponents/Boss";
 import Card from "../../components/Card";
 import AttackBtn from "../../components/GameComponents/AttackBtn";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 import mushroomHallBG from "../../images/mushroomHallBG.png";
 import dungeonBG from "../../images/dungeonBG.png";
@@ -41,6 +42,8 @@ export default function Game() {
   const [currentBoss, setCurrentBoss] = useState(bosses[0]);
   let [bossHealth, setBossHealth] = useState(currentBoss.health);
   const [userCards, setUserCards] = useState([]);
+  const [userHealth, setUserHealth] = useState(0);
+  const [maxUserHP, setMaxUserHP] = useState(userHealth)
 
   // Deal specified damage to boss
   const handleAttack = (damage) => {
@@ -49,27 +52,39 @@ export default function Game() {
     console.log(bossHealth);
   };
 
-  // Get player cards on page load
+  // On page load...
   useEffect(() => {
     userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
       setUserCards(res.data[0].cards);
     });
   }, []);
 
+  // Set player health
+  useEffect(() => {
+    const healthArray = userCards.map((card) => card.health);
+    console.log(healthArray);
+    let totalHealth = 0;
+    healthArray.forEach((healthValue) => {
+      totalHealth += healthValue;
+    });
+    console.log(totalHealth);
+    setMaxUserHP(totalHealth);
+    setUserHealth(totalHealth);
+  }, [userCards]);
+
   // Progress to next boss upon boss defeat
   useEffect(() => {
-    if (bossHealth <= 0 && currentBoss === bosses[0]) {
-      setCurrentBoss(bosses[1]);
-      setBossHealth(bosses[1].health);
+    if (bossHealth <= 0) {
+      let currentIndex = bosses.indexOf(currentBoss);
+      if (currentIndex < bosses.length - 1) {
+        const nextBoss = bosses[currentIndex + 1];
+        setCurrentBoss(nextBoss);
+        setBossHealth(nextBoss.health);
+      } else {
+        alert("YOU BEAT THE GAME!");
+      }
     }
-    if (bossHealth <= 0 && currentBoss === bosses[1]) {
-      setCurrentBoss(bosses[2]);
-      setBossHealth(bosses[2].health);
-    }
-    if (bossHealth <= 0 && currentBoss === bosses[2]) {
-      alert("YOU BEAT THE GAME!");
-    }
-  }, [bossHealth]);
+  }, [bossHealth, currentBoss]);
 
   return (
     <>
@@ -88,12 +103,24 @@ export default function Game() {
           {userCards.map((creature, index) => (
             <div key={index}>
               <Card key={`creature_${creature._id}`} creature={creature} />
-              <AttackBtn target={currentBoss} attackDamage={creature.attack} onClick={() => handleAttack(creature.attack)} key={`attackBtn_${creature.id}`}/>
+              <AttackBtn
+                target={currentBoss}
+                attackDamage={creature.attack}
+                onClick={() => handleAttack(creature.attack)}
+                key={`attackBtn_${creature.id}`}
+              />
             </div>
           ))}
         </div>
+        <ProgressBar
+          className="my-3 col-12"
+          now={userHealth}
+          max={maxUserHP}
+          label={`${userHealth} HP`}
+          variant="danger"
+          animated
+        />
       </div>
-
     </>
   );
 }

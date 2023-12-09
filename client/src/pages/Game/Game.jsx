@@ -88,7 +88,7 @@ export default function Game() {
           {userCards.map((creature, index) => (
             <div key={index}>
               <Card key={`creature_${creature._id}`} creature={creature} />
-              <AttackBtn target={currentBoss} attackDamage={creature.attack} onClick={() => handleAttack(creature.attack)}/>
+              <AttackBtn target={currentBoss} attackDamage={creature.attack} onClick={() => handleAttack(creature.attack)} key={`attackBtn_${creature.id}`}/>
             </div>
           ))}
         </div>

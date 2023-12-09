@@ -24,6 +24,12 @@ const updateUserCoins = (userId, coins) => {
   });
 };
 
+const updateUserTeam = (userId, teamArray) => {
+  return axios.put(`/api/users/${userId}`, {
+    team: teamArray,
+  })
+}
+
 const addUserCard = (userId, cardId) => {
   return axios.put(`/api/users/${userId}/cards/${cardId}`);
 };
@@ -39,4 +45,5 @@ export default {
   addUserCard,
   deleteUserCard,
   updateUserCoins,
+  updateUserTeam
 };

@@ -2,6 +2,9 @@ require('dotenv').config()
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 const secretKey = process.env.SECRET_KEY
+
+// TODO: ADD TEAM ARRAY FOR CARD ID
+
 const userSchema = new Schema(
   {
     username: {
@@ -27,6 +30,7 @@ const userSchema = new Schema(
       default: 100,
       required: true,
     },
+    team: [{ type: Schema.Types.ObjectId, ref: "Card" }],
     cards: [{ type: Schema.Types.ObjectId, ref: "Card" }],
     tokens: [{ type: String }],
   },

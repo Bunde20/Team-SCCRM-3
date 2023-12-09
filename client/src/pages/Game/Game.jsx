@@ -10,14 +10,6 @@ import "./Game.css";
 
 const bosses = [
   {
-    name: "GLITCHBLIGHT: THE UNDEFINED",
-    image:
-      "https://cdn.discordapp.com/attachments/1062551659168944249/1183052268933750877/elrondhubbard_a_monstrous_QR_code_seeping_with_ooze_and_glowing_c15186bc-d4d6-489b-9776-7f81452c8609.png?ex=6586ee48&is=65747948&hm=2eb4078d6b2fcf7e5a33540ad785535301b7f21139eea5e88784d9e101c3ce3a&",
-    health: 1000,
-    attack: 13,
-    background: mushroomHallBG,
-  },
-  {
     name: "STANMANGA: SOURCE OF TRUTH",
     image:
       "https://cdn.discordapp.com/attachments/1062551659168944249/1183061338923221052/elrondhubbard_indescribable_horror_professor_hellbent_on_punish_126d99b6-2330-4081-9e0b-d68ebb89f6e1.png?ex=6586f6bb&is=657481bb&hm=258d50141f750a9131b309a37e338046493973e8211b771ce7d967682571c245&",
@@ -33,20 +25,38 @@ const bosses = [
     attack: 11,
     background: caveBG,
   },
+  {
+    name: "GLITCHBLIGHT: THE UNDEFINED",
+    image:
+      "https://cdn.discordapp.com/attachments/1062551659168944249/1183052268933750877/elrondhubbard_a_monstrous_QR_code_seeping_with_ooze_and_glowing_c15186bc-d4d6-489b-9776-7f81452c8609.png?ex=6586ee48&is=65747948&hm=2eb4078d6b2fcf7e5a33540ad785535301b7f21139eea5e88784d9e101c3ce3a&",
+    health: 1000,
+    attack: 13,
+    background: mushroomHallBG,
+  },
 ];
 
 export default function Game() {
-  const [currentBoss, setCurrentBoss] = useState(bosses[1]);
+  const [currentBoss, setCurrentBoss] = useState(bosses[0]);
   let [bossHealth, setBossHealth] = useState(currentBoss.health)
 
-  const handleClick = () => {
+  const handleAttack = () => {
     let newBossHealth = (bossHealth -= 100)
     setBossHealth(newBossHealth)
     console.log(bossHealth)
   };
 
   useEffect(() => {
-    console.log('change')
+    if (bossHealth <= 0 && currentBoss === bosses[0]) {
+        setCurrentBoss(bosses[1])
+        setBossHealth(bosses[1].health)
+    }
+    if (bossHealth <= 0 && currentBoss === bosses[1]) {
+        setCurrentBoss(bosses[2])
+        setBossHealth(bosses[2].health)
+    }
+    if (bossHealth <= 0 && currentBoss === bosses[2]) {
+        alert('YOU BEAT THE GAME!')
+    }
   }, [bossHealth])
 
   return (
@@ -63,7 +73,7 @@ export default function Game() {
           bossHealth={bossHealth}
         />
       </div>
-      <AttackBtn target={currentBoss} attackDamage={100} onClick={() => handleClick()}/>
+      <AttackBtn target={currentBoss} attackDamage={100} onClick={() => handleAttack()}/>
     </>
   );
 }

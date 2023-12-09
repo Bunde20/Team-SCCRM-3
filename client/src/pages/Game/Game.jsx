@@ -40,51 +40,91 @@ const bosses = [
 
 export default function Game() {
   const [currentBoss, setCurrentBoss] = useState(bosses[0]);
+  const [currentBossAttack, setCurrentBossAttack] = useState(currentBoss.attack)
   let [bossHealth, setBossHealth] = useState(currentBoss.health);
+const[playerAttacked, setPlayerAttacked] = useState(false)
   const [userCards, setUserCards] = useState([]);
   const [userHealth, setUserHealth] = useState(0);
   const [maxUserHP, setMaxUserHP] = useState(userHealth)
 
+
   // Deal specified damage to boss
   const handleAttack = (damage) => {
     let newBossHealth = (bossHealth -= damage);
-    setBossHealth(newBossHealth);
-    console.log(bossHealth);
+    // stops the progress bar from going into the negatives
+    setBossHealth(newBossHealth >= 0 ? newBossHealth : 0);
+    // lets us keep track of when the player has attacked
+    setPlayerAttacked(true)
+    console.log("bosshealth",bossHealth);
   };
 
   // On page load...
   useEffect(() => {
     userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
       setUserCards(res.data[0].cards);
+     
     });
   }, []);
 
   // Set player health
   useEffect(() => {
     const healthArray = userCards.map((card) => card.health);
-    console.log(healthArray);
+    console.log("health array",healthArray);
     let totalHealth = 0;
     healthArray.forEach((healthValue) => {
       totalHealth += healthValue;
     });
-    console.log(totalHealth);
+    
     setMaxUserHP(totalHealth);
     setUserHealth(totalHealth);
   }, [userCards]);
 
   // Progress to next boss upon boss defeat
   useEffect(() => {
-    if (bossHealth <= 0) {
+    // have to set a timeout otherwise the player will be attacked when the new boss is loaded
+    setTimeout(() => {
+      if (bossHealth <= 0) {
+       
+      
       let currentIndex = bosses.indexOf(currentBoss);
       if (currentIndex < bosses.length - 1) {
         const nextBoss = bosses[currentIndex + 1];
+        const newBossHealth = nextBoss.health;
         setCurrentBoss(nextBoss);
-        setBossHealth(nextBoss.health);
+        setBossHealth(newBossHealth);
       } else {
         alert("YOU BEAT THE GAME!");
       }
-    }
+ 
+      }
+  },1500)
   }, [bossHealth, currentBoss]);
+
+  // attack back 
+  useEffect (() => {
+    if (playerAttacked) {
+    //  const randomIndex = Math.floor(Math.random() * currentBoss.attack.length)
+    //  console.log("random index", randomIndex);
+    //  setCurrentBossAttack(currentBoss.attack[randomIndex])
+    //  console.log("current boss attack", currentBossAttack);
+      
+    setTimeout(() => {
+      if(bossHealth > 0){
+      setUserHealth(userHealth => {
+        let newUserHealth = userHealth - currentBossAttack
+        if (newUserHealth < 0) {
+          newUserHealth = 0
+        }
+        return newUserHealth
+    })
+  }
+  setPlayerAttacked(false)
+    // setCurrentBossAttack(currentBoss.attack[0])
+
+    }, 1000)
+  }
+
+    }),[playerAttacked]
 
   return (
     <>
@@ -105,6 +145,7 @@ export default function Game() {
               <Card key={`creature_${creature._id}`} creature={creature} />
               <AttackBtn
                 target={currentBoss}
+                index={index}
                 attackDamage={creature.attack}
                 onClick={() => handleAttack(creature.attack)}
                 key={`attackBtn_${creature.id}`}

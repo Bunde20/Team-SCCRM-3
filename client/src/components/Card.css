@@ -12,7 +12,7 @@
     margin: 5px;
     text-align: center;
     max-width: 270px;
-    height: 370px;
+    height: 380px;
     display: inline-block;
   }
 
@@ -61,11 +61,37 @@
     border: 2px solid black;
   }
 
+  .stats {
+    max-width: 80%;
+    margin-right: 0px !important;
+    margin-left: 10% !important;
+  }
+
+  .attack, .health {
+    width: auto !important;
+    font-size: 28px !important;
+  }
+
+  .health-container {
+    margin-right: 10%;
+    margin-top: 0px !important;
+    font-size: 28px !important;
+  }
+
+  .attack-container {
+    font-size: 28px !important;
+  }
+
+  .health-icon, .attack-icon {
+    width: 28px;
+    height: 28px;
+  }
+
 /* Media Queries for Responsive Cards */
 @media (max-width: 768px) {
   .creature {
     max-width: 200px;
-    height: 300px;
+    height: 280px;
   }
 
   .creature-image {
@@ -79,12 +105,39 @@
   .purchase-button {
     width: 200px;
   }
+
+  .stats {
+    max-width: 80% !important;
+    margin-right: 0px !important;
+    margin-left: 10% !important;
+  }
+
+  .attack, .health {
+    width: auto !important;
+    font-size: 20px !important;
+  }
+
+  .health-container {
+    margin-right: 10%;
+    margin-top: 0px !important;
+    font-size: 20px !important;
+  }
+
+  .attack-container {
+    font-size: 20px !important;
+  }
+
+  .health-icon, .attack-icon {
+    width: 22px;
+    height: 22px;
+  }
 }
+
 
 @media (max-width: 480px) {
   .creature {
     max-width: 100px;
-    height: 200px;
+    height: 190px;
     padding-top: 0px;
     margin: 1px 4px 1px 4px;
   }
@@ -94,18 +147,40 @@
   }
 
   .card-title, .purchase-button {
-    font-size: 14px; 
+    font-size: 14px !important; 
     margin-bottom: 0px;
     margin-top: 0px;
     padding: 0px;
   }
 
-  /* .purchase-button::before {
-    content: "Purchase"; 
-  } */
-
   .purchase-button {
     width: 100px;
+  }
+
+  .stats {
+    max-width: 80% !important;
+    margin-right: 0px !important;
+    margin-left: 3% !important;
+  }
+
+  .attack, .health {
+    width: auto !important;
+    font-size: 14px !important;
+  }
+
+  .health-container {
+    margin-right: 10%;
+    margin-top: 0px !important;
+    font-size: 14px !important;
+  }
+
+  .attack-container {
+    font-size: 14px !important;
+  }
+
+  .health-icon, .attack-icon {
+    width: 15px;
+    height: 15px;
   }
 
 }

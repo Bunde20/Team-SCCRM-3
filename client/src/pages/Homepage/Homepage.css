@@ -47,3 +47,12 @@
         font-size: 33px
     }
 }
+
+@media only screen and (max-width: 480px) {
+    .homeTitle {
+        font-size: 50px
+    }
+    .home-btn-cstm {
+        font-size: 25px
+    }
+}

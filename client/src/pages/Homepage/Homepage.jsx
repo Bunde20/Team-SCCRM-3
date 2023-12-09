@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import LogModal from "../../components/Modal.jsx";
 import AlertModal from "../../components/AlertModal.jsx";
 import LogOutBtn from "../../components/LogOutBtn.jsx";
+import AlertModal2 from "../../components/AlertModal2.jsx";
 
 const btnLoggedOutTxt = [
   {
@@ -35,12 +36,46 @@ export default function Homepage() {
   // const isLoggedIn = true
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [showAlert2, setShowAlert2] = useState(false);
   const [modalContent, setModalContent] = useState({
     heading: "Uh Oh!",
     message: "Wrong Username or Password. Please try again!",
   });
+  
 
   const handleCloseAlert = () => setShowAlert(false);
+  const handleCloseAlert2 = () => setShowAlert2(false); 
+
+  async function generateRandomCards(newUser) {
+    try {
+      const res = await cardApi.getAllCards();
+      const cardArr = res.data;
+      
+      // Ensure that there are at least 3 cards available
+      if (cardArr.length < 3) {
+        console.error('Not enough cards available');
+        return;
+      }
+  
+      const cardIdArr = cardArr.map((card) => card._id);
+  
+      // Generate and add 3 random cards
+      for (let i = 0; i < 3; i++) {
+        const randomCardId =
+          cardIdArr[Math.floor(Math.random() * cardIdArr.length)];
+        await userApi.addUserCard(newUser._id, randomCardId);
+    
+      }
+      await newUser.save()
+  
+      console.log('Successfully added 3 random cards');
+    } catch (error) {
+      console.error('Error generating random cards:', error.message);
+    }
+  }
+  
+
+  
 
   const handleLogin = async (username, password) => {
     try {
@@ -52,7 +87,11 @@ export default function Homepage() {
         },
       });
       const user = await res.json();
-      if (user) {
+      const logToken = await user.token
+      console.log(logToken);
+      
+      if (logToken) {
+        console.log(user);
         setIsLoggedIn(true);
         console.log(`${user.user.username} login successful`);
         const currentUserId = user.user._id;
@@ -61,6 +100,9 @@ export default function Homepage() {
         localStorage.setItem("currentUser", currentUserId);
         localStorage.setItem("currentUsername", currentUsername);
       } else {
+        localStorage.removeItem("token");
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("currentUsername");
         setShowAlert(true);
       }
     } catch (err) {
@@ -68,6 +110,35 @@ export default function Homepage() {
     }
   };
 
+
+  const handleSignup = async (username, password, email) => {
+    try { 
+      const res = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        body: JSON.stringify({ username, password, email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const newUser = await res.json(); 
+      if(newUser._id) {
+        console.log(newUser);
+        handleLogin(username, password);
+        generateRandomCards(newUser);
+        
+        
+     
+       
+      } else {
+        setShowAlert2(true);
+       
+      }
+    } catch (err) {
+      setIsLoggedIn(false);
+      setShowAlert2(true);
+      console.error("Error signing up", err);
+    }
+  }
   function homepageBtnRender() {
     if (isLoggedIn) {
       return btnLoggedInTxt.map((obj, index) => (
@@ -94,7 +165,7 @@ export default function Homepage() {
   }
   function loginBtnRender() {
     if (!isLoggedIn) {
-      return <div><LogModal onLogin={handleLogin} key='0' /></div>;
+      return <div><LogModal onLogin={handleLogin} onSignup={handleSignup} key='0' /></div>;
     } 
   }
   const currentUser = localStorage.getItem("currentUsername");
@@ -137,6 +208,12 @@ export default function Homepage() {
         show={showAlert}
         handleClose={handleCloseAlert}
       />
+      <AlertModal2
+        heading="Uh oh!"
+        message="Something Went Wrong. Please Try Again!"
+        show={showAlert2}
+        handleClose={handleCloseAlert2}
+        />
     </>
   );
 }

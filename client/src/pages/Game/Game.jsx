@@ -16,65 +16,72 @@ const bosses = [
     name: "STANMANGA: SOURCE OF TRUTH",
     image:
       "https://cdn.discordapp.com/attachments/1062551659168944249/1183061338923221052/elrondhubbard_indescribable_horror_professor_hellbent_on_punish_126d99b6-2330-4081-9e0b-d68ebb89f6e1.png?ex=6586f6bb&is=657481bb&hm=258d50141f750a9131b309a37e338046493973e8211b771ce7d967682571c245&",
-    health: 750,
-    attack: 9,
+    health: 500,
+    attack: 15,
     background: dungeonBG,
+    bossIntro: "A CHALLENGER APPROACHES!"
   },
   {
     name: "GOGOL: DATA DEVOURER",
     image:
       "https://cdn.discordapp.com/attachments/1062551659168944249/1183067107349516358/elrondhubbard_horrifying_devourer_of_souls_pokemon_cartoon_game_752ea817-0d3a-4707-b550-2c051e467624.png?ex=6586fc1a&is=6574871a&hm=12d8b930db932780ef381f19ec2b80bc2c3a803986b8bcb74464d66bd4be72db&",
-    health: 875,
-    attack: 11,
+    health: 625,
+    attack: 17,
     background: caveBG,
+    bossIntro: "GOGOL'S REACH KNOWS NO BOUNDS!"
   },
   {
     name: "GLITCHBLIGHT: THE UNDEFINED",
     image:
       "https://cdn.discordapp.com/attachments/1062551659168944249/1183052268933750877/elrondhubbard_a_monstrous_QR_code_seeping_with_ooze_and_glowing_c15186bc-d4d6-489b-9776-7f81452c8609.png?ex=6586ee48&is=65747948&hm=2eb4078d6b2fcf7e5a33540ad785535301b7f21139eea5e88784d9e101c3ce3a&",
-    health: 1000,
-    attack: 13,
+    health: 750,
+    attack: 19,
     background: mushroomHallBG,
+    bossIntro: "DON'T LOOK DIRECTLY AT IT!!!"
   },
 ];
 
 export default function Game() {
   const [currentBoss, setCurrentBoss] = useState(bosses[0]);
-  const [currentBossAttack, setCurrentBossAttack] = useState(currentBoss.attack)
+  const [currentBossAttack, setCurrentBossAttack] = useState(
+    currentBoss.attack
+  );
   let [bossHealth, setBossHealth] = useState(currentBoss.health);
-const[playerAttacked, setPlayerAttacked] = useState(false)
+  const [playerAttacked, setPlayerAttacked] = useState(false);
   const [userCards, setUserCards] = useState([]);
   const [userHealth, setUserHealth] = useState(0);
-  const [maxUserHP, setMaxUserHP] = useState(userHealth)
-
+  const [maxUserHP, setMaxUserHP] = useState(userHealth);
+  const [combatMessage, setCombatMessage] = useState(currentBoss.bossIntro)
 
   // Deal specified damage to boss
-  const handleAttack = (damage) => {
+  const handleAttack = (creature, damage) => {
     let newBossHealth = (bossHealth -= damage);
     // stops the progress bar from going into the negatives
     setBossHealth(newBossHealth >= 0 ? newBossHealth : 0);
     // lets us keep track of when the player has attacked
-    setPlayerAttacked(true)
-    console.log("bosshealth",bossHealth);
+    setPlayerAttacked(true);
+    // Display attack message
+    let creatureName = creature.name
+    setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`)
+    console.log("bosshealth", bossHealth);
   };
 
   // On page load...
   useEffect(() => {
     userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
       setUserCards(res.data[0].cards);
-     
     });
   }, []);
 
   // Set player health
   useEffect(() => {
     const healthArray = userCards.map((card) => card.health);
-    console.log("health array",healthArray);
+    console.log("health array", healthArray);
     let totalHealth = 0;
     healthArray.forEach((healthValue) => {
       totalHealth += healthValue;
     });
-    
+
     setMaxUserHP(totalHealth);
     setUserHealth(totalHealth);
   }, [userCards]);
@@ -84,47 +91,45 @@ const[playerAttacked, setPlayerAttacked] = useState(false)
     // have to set a timeout otherwise the player will be attacked when the new boss is loaded
     setTimeout(() => {
       if (bossHealth <= 0) {
-       
-      
-      let currentIndex = bosses.indexOf(currentBoss);
-      if (currentIndex < bosses.length - 1) {
-        const nextBoss = bosses[currentIndex + 1];
-        const newBossHealth = nextBoss.health;
-        setCurrentBoss(nextBoss);
-        setBossHealth(newBossHealth);
-      } else {
-        alert("YOU BEAT THE GAME!");
+        let currentIndex = bosses.indexOf(currentBoss);
+        if (currentIndex < bosses.length - 1) {
+          const nextBoss = bosses[currentIndex + 1];
+          const newBossHealth = nextBoss.health;
+          setCurrentBoss(nextBoss);
+          setBossHealth(newBossHealth);
+          setCombatMessage(nextBoss.bossIntro)
+        } else {
+          alert("YOU BEAT THE GAME!");
+        }
       }
- 
-      }
-  },1500)
+    }, 1500);
   }, [bossHealth, currentBoss]);
 
-  // attack back 
-  useEffect (() => {
+  // attack back
+  useEffect(() => {
     if (playerAttacked) {
-    //  const randomIndex = Math.floor(Math.random() * currentBoss.attack.length)
-    //  console.log("random index", randomIndex);
-    //  setCurrentBossAttack(currentBoss.attack[randomIndex])
-    //  console.log("current boss attack", currentBossAttack);
-      
-    setTimeout(() => {
-      if(bossHealth > 0){
-      setUserHealth(userHealth => {
-        let newUserHealth = userHealth - currentBossAttack
-        if (newUserHealth < 0) {
-          newUserHealth = 0
+      //  const randomIndex = Math.floor(Math.random() * currentBoss.attack.length)
+      //  console.log("random index", randomIndex);
+      //  setCurrentBossAttack(currentBoss.attack[randomIndex])
+      //  console.log("current boss attack", currentBossAttack);
+
+      setTimeout(() => {
+        if (bossHealth > 0) {
+            setCombatMessage(`${currentBoss.name} RETALIATED!!!`)
+          setUserHealth((userHealth) => {
+            let newUserHealth = userHealth - currentBossAttack;
+            if (newUserHealth < 0) {
+              newUserHealth = 0;
+            }
+            return newUserHealth;
+          });
         }
-        return newUserHealth
-    })
-  }
-  setPlayerAttacked(false)
-    // setCurrentBossAttack(currentBoss.attack[0])
-
-    }, 1000)
-  }
-
-    }),[playerAttacked]
+        setPlayerAttacked(false);
+        // setCurrentBossAttack(currentBoss.attack[0])
+      }, 1000);
+    }
+  }),
+    [playerAttacked];
 
   return (
     <>
@@ -132,12 +137,20 @@ const[playerAttacked, setPlayerAttacked] = useState(false)
         className="game-bg col-12"
         style={{ backgroundImage: `url(${currentBoss.background})` }}
       >
-        <p className="text-light">This is the main game screen.</p>
         <Boss
           bossName={currentBoss.name}
           bossImage={currentBoss.image}
           maxHP={currentBoss.health}
           bossHealth={bossHealth}
+        />
+        <p className="fs-4 text-light col-xl-3 mx-auto text-center">{combatMessage}</p>
+        <ProgressBar
+          className="my-3 mx-auto col-xl-3"
+          now={userHealth}
+          max={maxUserHP}
+          label={`${userHealth} HP`}
+          variant="primary"
+          animated
         />
         <div className="d-flex justify-content-center">
           {userCards.map((creature, index) => (
@@ -147,20 +160,12 @@ const[playerAttacked, setPlayerAttacked] = useState(false)
                 target={currentBoss}
                 index={index}
                 attackDamage={creature.attack}
-                onClick={() => handleAttack(creature.attack)}
+                onClick={() => handleAttack(creature, creature.attack)}
                 key={`attackBtn_${creature.id}`}
               />
             </div>
           ))}
         </div>
-        <ProgressBar
-          className="my-3 col-12"
-          now={userHealth}
-          max={maxUserHP}
-          label={`${userHealth} HP`}
-          variant="danger"
-          animated
-        />
       </div>
     </>
   );

@@ -6,7 +6,7 @@ export default function AttackBtn(props) {
     <>
       <div className="button-container">
         <button className="rounded purchase-button" onClick={props.onClick}>
-          Attack {props.target.name}
+          ATTACK!
         </button>
       </div>
     </>

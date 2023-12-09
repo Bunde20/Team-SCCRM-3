@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import userAPI from "../../utils/userAPI";
 
 import Boss from "../../components/GameComponents/Boss";
+import Card from "../../components/Card";
 import AttackBtn from "../../components/GameComponents/AttackBtn";
 
 import mushroomHallBG from "../../images/mushroomHallBG.png";
@@ -37,27 +39,37 @@ const bosses = [
 
 export default function Game() {
   const [currentBoss, setCurrentBoss] = useState(bosses[0]);
-  let [bossHealth, setBossHealth] = useState(currentBoss.health)
+  let [bossHealth, setBossHealth] = useState(currentBoss.health);
+  const [userCards, setUserCards] = useState([]);
 
-  const handleAttack = () => {
-    let newBossHealth = (bossHealth -= 100)
-    setBossHealth(newBossHealth)
-    console.log(bossHealth)
+  // Deal specified damage to boss
+  const handleAttack = (damage) => {
+    let newBossHealth = (bossHealth -= damage);
+    setBossHealth(newBossHealth);
+    console.log(bossHealth);
   };
 
+  // Get player cards on page load
+  useEffect(() => {
+    userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
+      setUserCards(res.data[0].cards);
+    });
+  }, []);
+
+  // Progress to next boss upon boss defeat
   useEffect(() => {
     if (bossHealth <= 0 && currentBoss === bosses[0]) {
-        setCurrentBoss(bosses[1])
-        setBossHealth(bosses[1].health)
+      setCurrentBoss(bosses[1]);
+      setBossHealth(bosses[1].health);
     }
     if (bossHealth <= 0 && currentBoss === bosses[1]) {
-        setCurrentBoss(bosses[2])
-        setBossHealth(bosses[2].health)
+      setCurrentBoss(bosses[2]);
+      setBossHealth(bosses[2].health);
     }
     if (bossHealth <= 0 && currentBoss === bosses[2]) {
-        alert('YOU BEAT THE GAME!')
+      alert("YOU BEAT THE GAME!");
     }
-  }, [bossHealth])
+  }, [bossHealth]);
 
   return (
     <>
@@ -72,8 +84,16 @@ export default function Game() {
           maxHP={currentBoss.health}
           bossHealth={bossHealth}
         />
+        <div className="d-flex justify-content-center">
+          {userCards.map((creature, index) => (
+            <div key={index}>
+              <Card key={`creature_${creature._id}`} creature={creature} />
+              <AttackBtn target={currentBoss} attackDamage={creature.attack} onClick={() => handleAttack(creature.attack)}/>
+            </div>
+          ))}
+        </div>
       </div>
-      <AttackBtn target={currentBoss} attackDamage={100} onClick={() => handleAttack()}/>
+
     </>
   );
 }

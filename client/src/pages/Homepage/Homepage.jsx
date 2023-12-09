@@ -8,7 +8,7 @@ import LogOutBtn from "../../components/LogOutBtn.jsx";
 
 const btnLoggedOutTxt = [
   {
-    id: 0,
+    id: 2,
     text: "How to Play",
     path: "/tutorial",
   },
@@ -16,17 +16,17 @@ const btnLoggedOutTxt = [
 
 const btnLoggedInTxt = [
   {
-    id: 0,
+    id: 1,
     text: "Play",
     path: "/lobby",
   },
   {
-    id: 1,
+    id: 2,
     text: "How to Play",
     path: "/tutorial",
   },
   {
-    id: 2,
+    id: 3,
     text: "Marketplace",
     path: "/marketplace",
   },
@@ -70,14 +70,12 @@ export default function Homepage() {
 
   function homepageBtnRender() {
     if (isLoggedIn) {
-      return btnLoggedInTxt.map((obj) => (
-        <HomepageButton {...obj} key={obj.id} />
+      return btnLoggedInTxt.map((obj, index) => (
+        <div key= {index}><HomepageButton {...obj} key={obj.id} /></div>
       ));
     } else {
-      return btnLoggedOutTxt.map((obj) => (
-        <>
-          <HomepageButton {...obj} key={obj.id} />
-        </>
+      return btnLoggedOutTxt.map((obj, index) => (
+        <div key={index}><HomepageButton {...obj} key={obj.id} /></div>
       ));
     }
   }
@@ -90,13 +88,13 @@ export default function Homepage() {
   };
   function logoutBtnRender() {
     if (isLoggedIn) {
-    return <LogOutBtn onLogout={handleLogout} />; 
+    return <div><LogOutBtn onLogout={handleLogout} key='4' /></div>; 
   }
     
   }
   function loginBtnRender() {
     if (!isLoggedIn) {
-      return <LogModal onLogin={handleLogin} />;
+      return <div><LogModal onLogin={handleLogin} key='0' /></div>;
     } 
   }
   const currentUser = localStorage.getItem("currentUsername");

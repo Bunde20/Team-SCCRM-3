@@ -6,6 +6,8 @@ import LogModal from "../../components/Modal.jsx";
 import AlertModal from "../../components/AlertModal.jsx";
 import LogOutBtn from "../../components/LogOutBtn.jsx";
 import AlertModal2 from "../../components/AlertModal2.jsx";
+import cardAPI from "../../utils/cardAPI.js";
+import userAPI from "../../utils/userAPI.js";
 
 const btnLoggedOutTxt = [
   {
@@ -48,7 +50,7 @@ export default function Homepage() {
 
   async function generateRandomCards(newUser) {
     try {
-      const res = await cardApi.getAllCards();
+      const res = await cardAPI.getAllCards();
       const cardArr = res.data;
       
       // Ensure that there are at least 3 cards available
@@ -63,7 +65,7 @@ export default function Homepage() {
       for (let i = 0; i < 3; i++) {
         const randomCardId =
           cardIdArr[Math.floor(Math.random() * cardIdArr.length)];
-        await userApi.addUserCard(newUser._id, randomCardId);
+        await userAPI.addUserCard(newUser._id, randomCardId);
     
       }
       await newUser.save()

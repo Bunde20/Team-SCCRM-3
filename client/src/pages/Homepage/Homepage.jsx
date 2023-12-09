@@ -35,7 +35,7 @@ const btnLoggedInTxt = [
   },
 ];
 export default function Homepage() {
-  // const isLoggedIn = true
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlert2, setShowAlert2] = useState(false);
@@ -81,7 +81,7 @@ export default function Homepage() {
 
   const handleLogin = async (username, password) => {
     try {
-      const res = await fetch("http://localhost:3000/api/login", {
+      const res = await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({ username, password }),
         headers: {
@@ -115,7 +115,7 @@ export default function Homepage() {
 
   const handleSignup = async (username, password, email) => {
     try { 
-      const res = await fetch("http://localhost:3000/api/users", {
+      const res = await fetch("/api/users", {
         method: "POST",
         body: JSON.stringify({ username, password, email }),
         headers: {

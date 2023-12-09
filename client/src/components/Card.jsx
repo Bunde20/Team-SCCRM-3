@@ -12,7 +12,7 @@ import {
 
 function Card({ creature }) {
   return (
-    <div className="card-container">
+    <div className="card-container" id='creatureCard'>
       <div className={`card creature ${creature.type}-bg`}>
         <div className="card-header creature-header">
           <h2 className="card-title creature-title" style={creature.style}>

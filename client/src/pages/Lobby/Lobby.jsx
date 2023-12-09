@@ -9,7 +9,33 @@ import './Lobby.css'
 
 
 export default function Lobby() {
+    const pageLoad = ''
+
     const [cards, setCards] = useState([])
+    const [cardsChosen, setCardsChosen] = useState([])
+
+    useEffect(() => {
+        const fetchCards = async () => {
+            try {
+                const res = await userAPI.getOneUser(localStorage.getItem('currentUser'))
+                const userCards = res.data[0].cards
+                console.log('fetchCards was run.')
+                setCards(userCards)
+            } catch (err) {
+                console.error("Error fetching User's cards.", err)
+            }
+        }
+        fetchCards();
+
+    }, [pageLoad])
+
+    useEffect(()=> {
+    const cardEl = document.getElementById('cardContainer')
+    cardEl.addEventListener('click', (e)=>{
+        console.log(e.target)
+        // if (e.target)
+    })
+    }, [])
 
     const lobbyText = [
         {
@@ -22,36 +48,21 @@ export default function Lobby() {
         return lobbyText.map((obj) => <Paragraph {...obj} key={obj.id} />)
     }
 
-    useEffect(() => {
-        const fetchCards = async () => {
-            try {
-                const res = await userAPI.getOneUser(localStorage.getItem('currentUser'))
-                const userCards = res.data[0].cards
-                console.log(userCards)
-                setCards(userCards)
-            } catch (err) {
-                console.error("Error fetching User's cards.", err)
-            }
-        }
-        fetchCards();
-
-    }, [cards])
-
     return (
         <>
             <div className='lobby-bg'>
                 <div className='col-12 text-center'>
                     <BackButton />
                 </div>
-                <h1 className='homeTitle'>Prepare for the Palace</h1>
+                <h1 className='homeTitle text-center col-12'>Prepare for the Palace</h1>
                 <main className='col-10 mx-auto'>
                     <div>
                         {lobbyParagraphRender()}
                     </div>
                     <div>
                         <h2 className='text-center text-white fs-1 col-12 my-5 paragraph-text'>Select your Prográmon</h2>
-                        <div className='col-12 text-center border border-white row'>
-                            {cards.map( (obj) => <div className='col-4 col-lg-3'><Card creature={obj} key={obj._id} /></div> )}
+                        <div className='col-12 text-center border border-white row' id='cardContainer'>
+                            {cards.map( (obj, index) => <div className='col-xl-3 col-lg-4 col-6' key={index}><Card creature={obj} key={obj._id} /></div> )}
                         </div>
                     </div>
                     <div className='text-center'>
@@ -62,6 +73,5 @@ export default function Lobby() {
                 </main>
             </div>
         </>
-
     )
 }

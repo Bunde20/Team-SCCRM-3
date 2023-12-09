@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import Boss from "../../components/GameComponents/Boss";
+import AttackBtn from "../../components/GameComponents/AttackBtn";
+
 import mushroomHallBG from "../../images/mushroomHallBG.png";
 import dungeonBG from "../../images/dungeonBG.png";
 import caveBG from "../../images/caveBG.png";
@@ -35,6 +37,17 @@ const bosses = [
 
 export default function Game() {
   const [currentBoss, setCurrentBoss] = useState(bosses[1]);
+  let [bossHealth, setBossHealth] = useState(currentBoss.health)
+
+  const handleClick = () => {
+    let newBossHealth = (bossHealth -= 100)
+    setBossHealth(newBossHealth)
+    console.log(bossHealth)
+  };
+
+  useEffect(() => {
+    console.log('change')
+  }, [bossHealth])
 
   return (
     <>
@@ -46,9 +59,11 @@ export default function Game() {
         <Boss
           bossName={currentBoss.name}
           bossImage={currentBoss.image}
-          bossHealth={currentBoss.health}
+          maxHP={currentBoss.health}
+          bossHealth={bossHealth}
         />
       </div>
+      <AttackBtn target={currentBoss} attackDamage={100} onClick={() => handleClick()}/>
     </>
   );
 }

@@ -13,6 +13,7 @@ export default function Boss(props) {
       <ProgressBar
         className="my-3 col-12"
         now={props.bossHealth}
+        max={props.maxHP}
         label={`${props.bossHealth} HP`}
         variant="danger"
         animated

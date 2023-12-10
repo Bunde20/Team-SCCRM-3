@@ -15,7 +15,7 @@ export default function TradeCarousel({ tradeOffers, currentUser }) {
     <Carousel slide={false}>
       {tradeOffers.map((offer) => (
         <Carousel.Item key={offer._id}>
-          <TradeOffer offer={offer} currentUser={currentUser} matchCards={matchCards} />
+          <TradeOffer offer={offer} currentUser={currentUser} matchCards={matchCards(offer.seekingCardId, offer.userId)} />
         </Carousel.Item>
       ))}
     </Carousel>

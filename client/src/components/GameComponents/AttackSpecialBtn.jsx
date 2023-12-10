@@ -5,7 +5,7 @@ export default function AttackSpecialBtn(props) {
   return (
     <>
       <div className="button-container">
-        <button className="rounded purchase-button" onClick={props.onClick}>
+        <button className="rounded purchase-button" disabled={props.disabled} onClick={props.onClick}>
           SPECIAL ATTACK!
         </button>
       </div>

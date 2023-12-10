@@ -34,6 +34,7 @@ export default function Lobby() {
     function selectClickHandler(e) {
         if (cardsChosen.length > 0) { setCardsChosen([...cardsChosen, { _id: e.target.id }]) }
         else { setCardsChosen([{ _id: e.target.id }]) }
+
     }
 
     function confirmHandler() {
@@ -47,7 +48,7 @@ export default function Lobby() {
         } else if (cardsChosen.length === 3) {
             setBeginToggle(true)
             confirmEl.innerHTML = ''
-            async function setTeam () {
+            async function setTeam() {
                 try {
                     userAPI.updateUserTeam(localStorage.getItem('currentUser'), cardsChosen)
                 } catch (err) {
@@ -59,7 +60,7 @@ export default function Lobby() {
             warningEl.textContent = `You can only have 3 cards.`
             setBeginToggle(false)
         }
-        
+
     }
 
     const lobbyText = [
@@ -85,21 +86,15 @@ export default function Lobby() {
                         {lobbyParagraphRender()}
                     </div>
                     <div>
-                        <h2 className='text-center text-white fs-1 col-12 my-5 paragraph-text border-bottom border-white border-4 rounded-pill'>Your Team</h2>
-                        <div className='col-12 text-center row'>
-                            <div className='col-xl-3 col-lg-4 col-6' id='cardsChosenContainer'>
-
-                            </div>
-                        </div>
                         <div className='text-center col-10 mx-auto' id='beginBtns'>
-                            <p className='col-5 mx-auto warning-cstm text-white fs-3 rounded' id='warningDiv'></p>
-                            <button className='home-btn-cstm rounded' onClick={confirmHandler}>Confirm</button>                        
+                            <button className='home-btn-cstm rounded' onClick={confirmHandler}>Confirm Team</button>
+                            <p className='col-5 mx-auto warning-cstm text-white fs-3 rounded mt-4' id='warningDiv'></p>
                         </div>
                         <div className='text-center col-10 mx-auto'>
                             {beginToggle === true ? <BeginButton /> : null}
                         </div>
-                        <h3 className='text-center text-white fs-1 col-12 my-5 paragraph-text border-bottom border-white border-4 rounded-pill'>Select 3 Prográmon</h3>
-                        <div className='col-12 text-center row' id='cardContainer'>
+                        <h3 className='text-center text-white fs-1 col-12 my-4 paragraph-text border-bottom border-white border-4 rounded-pill'>Select 3 Prográmon</h3>
+                        <div className='col-12 text-center row py-3' id='cardContainer'>
                             {cards.map((obj, index) =>
                                 <div className='col-xl-3 col-lg-4 col-6' key={index}>
                                     <Card creature={obj} key={obj._id} />

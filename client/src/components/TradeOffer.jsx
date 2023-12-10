@@ -25,14 +25,14 @@ export default function TradeOffer(props) {
 
   return (
     <>
-      <section className="border rounded m-4 p-4 bg-light text-center">
+      <section className="border rounded m-4 p-4 text-center trade-container">
         <h2 className="text-center text-capitalize">{`${user.username} wants to trade!`}</h2>
-        <div className="d-flex">
+        <div className="d-flex trade-card-container">
           <div>
             <h3 className="text-center">Offering</h3>
             <Card creature={offeredCard} />
           </div>
-          <FontAwesomeIcon icon={faArrowsLeftRight} className="align-self-start fs-1" />
+          <FontAwesomeIcon icon={faArrowsLeftRight} className="align-self-start fs-1 arrows" />
           <div>
             <h3 className="text-center">Seeking</h3>
             <Card creature={seekingCard} />

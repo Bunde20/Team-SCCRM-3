@@ -1,38 +1,39 @@
 /* CARD */
-.card-container, .button-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.card-container,
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .creature {
-    border: 2px solid black;
-    padding: 4px;
-    margin: 5px;
-    text-align: center;
-    max-width: 270px;
-    height: 380px;
-    display: inline-block;
-  }
+.creature {
+  border: 2px solid black;
+  padding: 4px;
+  margin: 5px;
+  text-align: center;
+  max-width: 270px;
+  height: 380px;
+  display: inline-block;
+}
 
-    .trickster-bg {
-      /* background-color: #f99d77; */
-      background: rgb(249, 157, 119);
-      background: linear-gradient(35deg, rgba(249, 157, 119, 1) 0%, rgba(88, 56, 43, 1) 52%, rgba(249, 157, 119, 1) 94%);
-    }
-  
-    .defender-bg {
-      /* background-color: #E6D89Bff; */
-      background: rgb(236, 221, 154);
-      background: linear-gradient(35deg, rgba(236, 221, 154, 1) 0%, rgba(88, 56, 43, 1) 52%, rgba(236, 221, 154, 1) 94%);
-    }
-  
-    .attacker-bg {
-      /* background-color: #B1E0D6ff; */
-      background: rgb(177, 224, 214);
-      background: linear-gradient(35deg, rgba(177, 224, 214, 1) 0%, rgba(49, 62, 59, 1) 55%, rgba(177, 224, 214, 1) 100%);
-    }
+.trickster-bg {
+  /* background-color: #f99d77; */
+  background: rgb(249, 157, 119);
+  background: linear-gradient(35deg, rgba(249, 157, 119, 1) 0%, rgba(88, 56, 43, 1) 52%, rgba(249, 157, 119, 1) 94%);
+}
+
+.defender-bg {
+  /* background-color: #E6D89Bff; */
+  background: rgb(236, 221, 154);
+  background: linear-gradient(35deg, rgba(236, 221, 154, 1) 0%, rgba(88, 56, 43, 1) 52%, rgba(236, 221, 154, 1) 94%);
+}
+
+.attacker-bg {
+  /* background-color: #B1E0D6ff; */
+  background: rgb(177, 224, 214);
+  background: linear-gradient(35deg, rgba(177, 224, 214, 1) 0%, rgba(49, 62, 59, 1) 55%, rgba(177, 224, 214, 1) 100%);
+}
 
 .creature-image {
   border: 2px solid black;
@@ -40,52 +41,54 @@
   height: auto;
   margin-bottom: 10px;
 }
-  
-  .creature-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    max-width: 100%;
-  }
 
-  .purchase-button {
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    max-width: 100%;
-    width: 270px;
-    border: 2px solid black;
-  }
+.creature-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  max-width: 100%;
+}
 
-  .stats {
-    max-width: 80%;
-    margin-right: 0px !important;
-    margin-left: 10% !important;
-  }
+.purchase-button {
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  max-width: 100%;
+  width: 270px;
+  border: 2px solid black;
+}
 
-  .attack, .health {
-    width: auto !important;
-    font-size: 28px !important;
-  }
+.stats {
+  max-width: 80%;
+  margin-right: 0px !important;
+  margin-left: 10% !important;
+}
 
-  .health-container {
-    margin-right: 10%;
-    margin-top: 0px !important;
-    font-size: 28px !important;
-  }
+.attack,
+.health {
+  width: auto !important;
+  font-size: 28px !important;
+}
 
-  .attack-container {
-    font-size: 28px !important;
-  }
+.health-container {
+  margin-right: 10%;
+  margin-top: 0px !important;
+  font-size: 28px !important;
+}
 
-  .health-icon, .attack-icon {
-    width: 28px;
-    height: 28px;
-  }
+.attack-container {
+  font-size: 28px !important;
+}
+
+.health-icon,
+.attack-icon {
+  width: 28px;
+  height: 28px;
+}
 
 /* Media Queries for Responsive Cards */
 @media (max-width: 768px) {
@@ -112,7 +115,8 @@
     margin-left: 10% !important;
   }
 
-  .attack, .health {
+  .attack,
+  .health {
     width: auto !important;
     font-size: 20px !important;
   }
@@ -127,7 +131,8 @@
     font-size: 20px !important;
   }
 
-  .health-icon, .attack-icon {
+  .health-icon,
+  .attack-icon {
     width: 22px;
     height: 22px;
   }
@@ -146,8 +151,9 @@
     max-width: 100%;
   }
 
-  .card-title, .purchase-button {
-    font-size: 14px !important; 
+  .card-title,
+  .purchase-button {
+    font-size: 14px !important;
     margin-bottom: 0px;
     margin-top: 0px;
     padding: 0px;
@@ -163,7 +169,8 @@
     margin-left: 3% !important;
   }
 
-  .attack, .health {
+  .attack,
+  .health {
     width: auto !important;
     font-size: 14px !important;
   }
@@ -178,7 +185,8 @@
     font-size: 14px !important;
   }
 
-  .health-icon, .attack-icon {
+  .health-icon,
+  .attack-icon {
     width: 15px;
     height: 15px;
   }

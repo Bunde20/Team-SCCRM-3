@@ -4,6 +4,10 @@ import userAPI from "../../utils/userAPI";
 import Boss from "../../components/GameComponents/Boss";
 import Card from "../../components/Card";
 import AttackBtn from "../../components/GameComponents/AttackBtn";
+import AttackSpecialBtn from "../../components/GameComponents/AttackSpecialBtn";
+import DefenseSpecialBtn from "../../components/GameComponents/DefenseSpecialBtn";
+import TricksterSpecialBtn from "../../components/GameComponents/TricksterSpecialBtn";
+
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 import mushroomHallBG from "../../images/mushroomHallBG.png";
@@ -19,39 +23,38 @@ const bosses = [
     health: 500,
     attack: 15,
     background: dungeonBG,
-    bossIntro: "A CHALLENGER APPROACHES!"
+    bossIntro: "A CHALLENGER APPROACHES!",
   },
   {
     name: "GOGOL: DATA DEVOURER",
     image:
       "https://cdn.discordapp.com/attachments/1062551659168944249/1183067107349516358/elrondhubbard_horrifying_devourer_of_souls_pokemon_cartoon_game_752ea817-0d3a-4707-b550-2c051e467624.png?ex=6586fc1a&is=6574871a&hm=12d8b930db932780ef381f19ec2b80bc2c3a803986b8bcb74464d66bd4be72db&",
     health: 625,
-    attack: 17,
+    attack: 25,
     background: caveBG,
-    bossIntro: "GOGOL'S REACH KNOWS NO BOUNDS!"
+    bossIntro: "GOGOL'S REACH KNOWS NO BOUNDS!",
   },
   {
     name: "GLITCHBLIGHT: THE UNDEFINED",
     image:
       "https://cdn.discordapp.com/attachments/1062551659168944249/1183052268933750877/elrondhubbard_a_monstrous_QR_code_seeping_with_ooze_and_glowing_c15186bc-d4d6-489b-9776-7f81452c8609.png?ex=6586ee48&is=65747948&hm=2eb4078d6b2fcf7e5a33540ad785535301b7f21139eea5e88784d9e101c3ce3a&",
     health: 750,
-    attack: 19,
+    attack: 35,
     background: mushroomHallBG,
-    bossIntro: "DON'T LOOK DIRECTLY AT IT!!!"
+    bossIntro: "DON'T LOOK DIRECTLY AT IT!!!",
   },
 ];
 
 export default function Game() {
   const [currentBoss, setCurrentBoss] = useState(bosses[0]);
-  const [currentBossAttack, setCurrentBossAttack] = useState(
-    currentBoss.attack
-  );
+  const [currentBossAttack, setCurrentBossAttack] = useState(currentBoss.attack );
   let [bossHealth, setBossHealth] = useState(currentBoss.health);
   const [playerAttacked, setPlayerAttacked] = useState(false);
   const [userCards, setUserCards] = useState([]);
   const [userHealth, setUserHealth] = useState(0);
   const [maxUserHP, setMaxUserHP] = useState(userHealth);
-  const [combatMessage, setCombatMessage] = useState(currentBoss.bossIntro)
+  const [combatMessage, setCombatMessage] = useState(currentBoss.bossIntro);
+  const [cardType, setCardType] = useState("");
 
   // Deal specified damage to boss
   const handleAttack = (creature, damage) => {
@@ -61,8 +64,8 @@ export default function Game() {
     // lets us keep track of when the player has attacked
     setPlayerAttacked(true);
     // Display attack message
-    let creatureName = creature.name
-    setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`)
+    let creatureName = creature.name;
+    setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`);
     console.log("bosshealth", bossHealth);
   };
 
@@ -70,6 +73,7 @@ export default function Game() {
   useEffect(() => {
     userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
       setUserCards(res.data[0].cards);
+
     });
   }, []);
 
@@ -96,8 +100,9 @@ export default function Game() {
           const nextBoss = bosses[currentIndex + 1];
           const newBossHealth = nextBoss.health;
           setCurrentBoss(nextBoss);
+          setCurrentBossAttack(nextBoss.attack);
           setBossHealth(newBossHealth);
-          setCombatMessage(nextBoss.bossIntro)
+          setCombatMessage(nextBoss.bossIntro);
         } else {
           alert("YOU BEAT THE GAME!");
         }
@@ -108,19 +113,22 @@ export default function Game() {
   // attack back
   useEffect(() => {
     if (playerAttacked) {
-      //  const randomIndex = Math.floor(Math.random() * currentBoss.attack.length)
-      //  console.log("random index", randomIndex);
-      //  setCurrentBossAttack(currentBoss.attack[randomIndex])
-      //  console.log("current boss attack", currentBossAttack);
-
       setTimeout(() => {
         if (bossHealth > 0) {
-            setCombatMessage(`${currentBoss.name} RETALIATED!!!`)
+          setCombatMessage(`${currentBoss.name} RETALIATED!!!`);
           setUserHealth((userHealth) => {
-            let newUserHealth = userHealth - currentBossAttack;
-            if (newUserHealth < 0) {
-              newUserHealth = 0;
-            }
+            // generate a random attack value based on the boss's attack
+            const randomMultiplier = Math.random() * 0.5 + 1;
+
+            let randomAttack = currentBossAttack * randomMultiplier;
+
+            let newUserHealth = userHealth - randomAttack;
+
+            // Round to the nearest even number
+            newUserHealth = Math.round(newUserHealth / 2) * 2;
+
+            // Ensure newUserHealth is not negative
+            newUserHealth = Math.max(0, newUserHealth);
             return newUserHealth;
           });
         }
@@ -143,7 +151,9 @@ export default function Game() {
           maxHP={currentBoss.health}
           bossHealth={bossHealth}
         />
-        <p className="fs-4 text-light col-xl-3 mx-auto text-center">{combatMessage}</p>
+        <p className="fs-4 text-light col-xl-3 mx-auto text-center">
+          {combatMessage}
+        </p>
         <ProgressBar
           className="my-3 mx-auto col-xl-3"
           now={userHealth}
@@ -156,6 +166,7 @@ export default function Game() {
           {userCards.map((creature, index) => (
             <div key={index}>
               <Card key={`creature_${creature._id}`} creature={creature} />
+              {console.log("creatureType",creature.type)}
               <AttackBtn
                 target={currentBoss}
                 index={index}
@@ -163,6 +174,28 @@ export default function Game() {
                 onClick={() => handleAttack(creature, creature.attack)}
                 key={`attackBtn_${creature.id}`}
               />
+              {creature.type === "attacker"  && (
+                <AttackSpecialBtn
+                    target={currentBoss}
+                    attackDamage={creature.attack}
+                    onClick={() => handleSpecialAttack(creature)}   
+                    key={`AttackSpecialBtn_${creature.id}`}             
+                />)}
+                {creature.type === "defender"  && (
+                  <DefenseSpecialBtn
+                      target={currentBoss}
+                      attackDamage={creature.attack}
+                      onClick={() => handleSpecialAttack(creature)}   
+                      key={`DefenseSpecialBtn_${creature.id}`}             
+                  />
+              )}
+               {creature.type === "trickster"  && (
+                <TricksterSpecialBtn
+                    target={currentBoss}
+                    attackDamage={creature.attack}
+                    onClick={() => handleSpecialAttack(creature)}   
+                    key={`attackSpecialBtn_${creature.id}`}             
+                />)}
             </div>
           ))}
         </div>

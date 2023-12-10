@@ -34,7 +34,7 @@ export default function TradeButton(props) {
             props.offerId
           )
         }
-        className="fs-1 home-btn-cstm rounded p-1"
+        className="fs-1 home-btn-cstm rounded p-1 complete-trade-btn"
       >
         COMPLETE TRADE
       </button>

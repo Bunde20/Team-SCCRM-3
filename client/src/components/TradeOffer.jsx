@@ -32,7 +32,7 @@ export default function TradeOffer(props) {
             <h3 className="text-center">Offering</h3>
             <Card creature={offeredCard} />
           </div>
-          <FontAwesomeIcon icon={faArrowsLeftRight} className="align-self-start fs-1" />
+          <FontAwesomeIcon icon={faArrowsLeftRight} className="align-self-start fs-1 arrows" />
           <div>
             <h3 className="text-center">Seeking</h3>
             <Card creature={seekingCard} />

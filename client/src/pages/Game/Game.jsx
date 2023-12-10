@@ -23,7 +23,7 @@ const bosses = [
     health: 500,
     attack: 15,
     background: dungeonBG,
-    bossIntro: "A CHALLENGER APPROACHES!",
+    bossIntro: "A WICKED PROFESSOR APPROACHES!",
   },
   {
     name: "GOGOL: DATA DEVOURER",

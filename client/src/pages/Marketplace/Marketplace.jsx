@@ -51,7 +51,7 @@ export default function Marketplace() {
           <BackButton text='Back to Home' />
         </div>
         <h1 className="text-center align-items-center justify-content-center homeTitle">
-          Marketplace
+          Buy
         </h1>
         <MarketplaceNav />
         <h3 className="text-center">COINS: {userCoins}</h3>

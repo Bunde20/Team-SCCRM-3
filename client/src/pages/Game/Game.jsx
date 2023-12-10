@@ -54,7 +54,10 @@ export default function Game() {
   const [userHealth, setUserHealth] = useState(0);
   const [maxUserHP, setMaxUserHP] = useState(userHealth);
   const [combatMessage, setCombatMessage] = useState(currentBoss.bossIntro);
-  const [cardType, setCardType] = useState("");
+const [attackSpecialDisabled, setAttackSpecialDisabled] = useState(false);
+const [defenseSpecialDisabled, setDefenseSpecialDisabled] = useState(false);
+const [attackTricksterDisabled, setTricksterSpecialDisabled] = useState(false);
+const [bossIsSleepy, setBossIsSleepy] = useState(false);
 
   // Deal specified damage to boss
   const handleAttack = (creature, damage) => {
@@ -68,6 +71,36 @@ export default function Game() {
     setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`);
     console.log("bosshealth", bossHealth);
   };
+  
+  const handleSpecialAttack = (creature) => {
+    let creatureType = creature.type;
+    let creatureName = creature.name.toUpperCase();
+    console.log("special was clicked", creatureType)
+    if (creatureType === "attacker") {
+      setAttackSpecialDisabled(true);
+      let newBossHealth = (bossHealth -= 150);
+      setBossHealth(newBossHealth >= 0 ? newBossHealth : 0);
+      setPlayerAttacked(true);
+      setCombatMessage(`${creatureName} USED SPECIAL ATTACK!`);
+    }
+    if (creatureType === "defender") {
+      setDefenseSpecialDisabled(true)
+      setUserHealth((userHealth) => {
+        let newUserHealth = userHealth + 100;
+        newUserHealth = Math.min(newUserHealth, maxUserHP);
+        return newUserHealth;
+      });
+      setDefenseSpecialDisabled(true);
+      setPlayerAttacked(true);
+      setCombatMessage(`${creatureName} USED HEAL!`);
+    }
+    if (creatureType === "trickster") {
+      setTricksterSpecialDisabled(true);
+      setBossIsSleepy(true);
+      setPlayerAttacked(true);
+      setCombatMessage(`${creatureName} USED SLEEP!`);
+    }
+  }
 
   // On page load...
   useEffect(() => {
@@ -101,6 +134,7 @@ export default function Game() {
           const newBossHealth = nextBoss.health;
           setCurrentBoss(nextBoss);
           setCurrentBossAttack(nextBoss.attack);
+          setAttackSpecialDisabled(false);
           setBossHealth(newBossHealth);
           setCombatMessage(nextBoss.bossIntro);
         } else {
@@ -112,7 +146,7 @@ export default function Game() {
 
   // attack back
   useEffect(() => {
-    if (playerAttacked) {
+    if (playerAttacked && bossIsSleepy === false) {
       setTimeout(() => {
         if (bossHealth > 0) {
           setCombatMessage(`${currentBoss.name} RETALIATED!!!`);
@@ -135,6 +169,14 @@ export default function Game() {
         setPlayerAttacked(false);
         // setCurrentBossAttack(currentBoss.attack[0])
       }, 1000);
+    }
+    if (playerAttacked && bossIsSleepy === true) {
+      setCombatMessage(`${currentBoss.name} is sleeping! Shhhh...`);
+      setPlayerAttacked(false);
+      setTimeout(() => {
+        setBossIsSleepy(false);
+      },5000)
+      
     }
   }),
     [playerAttacked];
@@ -179,14 +221,17 @@ export default function Game() {
                     target={currentBoss}
                     attackDamage={creature.attack}
                     onClick={() => handleSpecialAttack(creature)}   
-                    key={`AttackSpecialBtn_${creature.id}`}             
+                    key={`AttackSpecialBtn_${creature.id}`} 
+                    disabled={attackSpecialDisabled}  
+                             
                 />)}
                 {creature.type === "defender"  && (
                   <DefenseSpecialBtn
                       target={currentBoss}
                       attackDamage={creature.attack}
                       onClick={() => handleSpecialAttack(creature)}   
-                      key={`DefenseSpecialBtn_${creature.id}`}             
+                      key={`DefenseSpecialBtn_${creature.id}`}   
+                      disabled={defenseSpecialDisabled}          
                   />
               )}
                {creature.type === "trickster"  && (
@@ -194,7 +239,8 @@ export default function Game() {
                     target={currentBoss}
                     attackDamage={creature.attack}
                     onClick={() => handleSpecialAttack(creature)}   
-                    key={`attackSpecialBtn_${creature.id}`}             
+                    key={`attackSpecialBtn_${creature.id}`} 
+                    disabled={attackTricksterDisabled}            
                 />)}
             </div>
           ))}

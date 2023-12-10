@@ -7,6 +7,7 @@ import Paragraph from '../../components/Paragraph'
 import Card from '../../components/Card'
 import userAPI from '../../utils/userAPI'
 import './Lobby.css'
+import BeginButton from '../../components/BeginButton.jsx'
 
 
 export default function Lobby() {
@@ -14,6 +15,7 @@ export default function Lobby() {
 
     const [cards, setCards] = useState([])
     const [cardsChosen, setCardsChosen] = useState([])
+    const [beginToggle, setBeginToggle] = useState(false)
 
     useEffect(() => {
         const fetchCards = async () => {
@@ -30,13 +32,34 @@ export default function Lobby() {
     }, [pageLoad])
 
     function selectClickHandler(e) {
-        console.log(e.target.id)
         if (cardsChosen.length > 0) { setCardsChosen([...cardsChosen, { _id: e.target.id }]) }
         else { setCardsChosen([{ _id: e.target.id }]) }
     }
 
-    function beginHandler () {
+    function confirmHandler() {
+        const warningEl = document.getElementById('warningDiv')
+        const confirmEl = document.getElementById('beginBtns')
         console.log(cardsChosen)
+        if (cardsChosen.length < 3) {
+            console.log('setting 3 cards.')
+            warningEl.textContent = `You need at least 3 cards.`
+            setBeginToggle(false)
+        } else if (cardsChosen.length === 3) {
+            setBeginToggle(true)
+            confirmEl.innerHTML = ''
+            async function setTeam () {
+                try {
+                    userAPI.updateUserTeam(localStorage.getItem('currentUser'), cardsChosen)
+                } catch (err) {
+                    console.error('Error setting team.', err)
+                }
+            }
+            setTeam()
+        } else {
+            warningEl.textContent = `You can only have 3 cards.`
+            setBeginToggle(false)
+        }
+        
     }
 
     const lobbyText = [
@@ -57,27 +80,32 @@ export default function Lobby() {
                     <BackButton text='Back to Home' />
                 </div>
                 <h1 className='homeTitle text-center col-12'>Prepare for the Palace</h1>
-                <div className='text-center'>
-                    <button onClick={beginHandler}>test</button>
-                </div>
                 <main className='col-10 mx-auto'>
                     <div>
                         {lobbyParagraphRender()}
                     </div>
                     <div>
-                        <h2 className='text-center text-white fs-1 col-12 my-5 paragraph-text'>Select your 3 Prográmon</h2>
-                        <div className='col-12 text-center border border-white row' id='cardContainer'>
+                        <h2 className='text-center text-white fs-1 col-12 my-5 paragraph-text border-bottom border-white border-4 rounded-pill'>Your Team</h2>
+                        <div className='col-12 text-center row'>
+                            <div className='col-xl-3 col-lg-4 col-6' id='cardsChosenContainer'>
+
+                            </div>
+                        </div>
+                        <div className='text-center col-10 mx-auto' id='beginBtns'>
+                            <p className='col-5 mx-auto warning-cstm text-white fs-3 rounded' id='warningDiv'></p>
+                            <button className='home-btn-cstm rounded' onClick={confirmHandler}>Confirm</button>                        
+                        </div>
+                        <div className='text-center col-10 mx-auto'>
+                            {beginToggle === true ? <BeginButton /> : null}
+                        </div>
+                        <h3 className='text-center text-white fs-1 col-12 my-5 paragraph-text border-bottom border-white border-4 rounded-pill'>Select 3 Prográmon</h3>
+                        <div className='col-12 text-center row' id='cardContainer'>
                             {cards.map((obj, index) =>
                                 <div className='col-xl-3 col-lg-4 col-6' key={index}>
                                     <Card creature={obj} key={obj._id} />
                                     <CardSelectButton text='Select' clickHandler={selectClickHandler} id={`${obj._id}`} />
                                 </div>)}
                         </div>
-                    </div>
-                    <div className='text-center'>
-                        <Link to='/game'>
-                            <button className='continue-btn-cstm rounded'>Begin</button>
-                        </Link>
                     </div>
                 </main>
             </div>

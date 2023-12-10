@@ -23,6 +23,12 @@
     border: solid 2px black;
 }
 
+.warning-cstm {
+    background-color: rgba(118, 13, 13, 0.5);
+    text-shadow: 4px 5px black;
+    -webkit-text-stroke-color: black;
+}
+
 @media only screen and (max-width: 750px) {
     .continue-btn-cstm {
         font-size: 33px

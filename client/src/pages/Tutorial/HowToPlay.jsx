@@ -32,7 +32,7 @@ export default function HowToPlay() {
         <>
             <div className='col-12 mx-auto p-1 homepage-bg'>
                 <div className='col-10 mx-auto text-center'>
-                    <BackButton />
+                    <BackButton text='Back to Home' />
                     <p className='homeTitle'>Prográmon Palace</p>
                 </div>
                 <div className='col-12 mx-auto'>

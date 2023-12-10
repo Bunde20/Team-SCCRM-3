@@ -48,7 +48,7 @@ export default function Marketplace() {
     <>
       <div className="col-12 marketplace-bg">
         <div className="col-12 mx-auto text-center">
-          <BackButton />
+          <BackButton text='Back to Home' />
         </div>
         <h1 className="text-center align-items-center justify-content-center homeTitle">
           Marketplace

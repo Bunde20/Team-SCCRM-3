@@ -135,6 +135,8 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
           setCurrentBoss(nextBoss);
           setCurrentBossAttack(nextBoss.attack);
           setAttackSpecialDisabled(false);
+          setDefenseSpecialDisabled(false);
+          setTricksterSpecialDisabled(false);
           setBossHealth(newBossHealth);
           setCombatMessage(nextBoss.bossIntro);
         } else {

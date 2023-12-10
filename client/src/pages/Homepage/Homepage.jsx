@@ -81,7 +81,7 @@ export default function Homepage() {
 
   const handleLogin = async (username, password) => {
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch("http://localhost:3001/api/login", {
         method: "POST",
         body: JSON.stringify({ username, password }),
         headers: {
@@ -115,7 +115,7 @@ export default function Homepage() {
 
   const handleSignup = async (username, password, email) => {
     try { 
-      const res = await fetch("/api/users", {
+      const res = await fetch("http://localhost:3001/api/users", {
         method: "POST",
         body: JSON.stringify({ username, password, email }),
         headers: {

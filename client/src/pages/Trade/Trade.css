@@ -29,3 +29,52 @@
 .carousel-indicators {
     padding: 3px;
 }
+
+@media (max-width: 768px) {
+    .trade-card-container {
+        padding: 10px;
+    }
+
+    .carousel-control-prev-icon {
+        width: 25px !important;
+        height: 25px !important;
+        margin-left: 10% !important;
+    }
+
+    .carousel-control-next-icon {
+        width: 25px !important;
+        height: 25px !important;
+        margin-right: 10% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .trade-card-container {
+        padding: 0px !important;
+        margin: 3px auto !important;
+        justify-content: center !important;
+        max-width: 80% !important;
+    }
+
+    .carousel-control-prev-icon {
+        width: 20px !important;
+        height: 20px !important;
+        margin-left: 30% !important;
+    }
+
+    .carousel-control-next-icon {
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 30% !important;
+    }
+
+    .arrows {
+        width: 25px !important;
+        height: 25px !important;
+    }
+
+    .complete-trade-btn {
+        width: 65% !important;
+        font-size: 18px !important;
+    }
+}

@@ -6,6 +6,8 @@ import TradeButton from "./TradeBtn";
 import cardAPI from "../utils/cardAPI";
 import userAPI from "../utils/userAPI";
 
+import "animate.css"
+
 export default function TradeOffer(props) {
   const [offeredCard, setOfferedCard] = useState({});
   const [seekingCard, setSeekingCard] = useState({});
@@ -26,7 +28,7 @@ export default function TradeOffer(props) {
   return (
     <>
       <section className="border rounded m-4 p-4 text-center trade-container">
-        <h2 className="text-center text-capitalize">{`${user.username} wants to trade!`}</h2>
+        <h2 className="text-center text-capitalize animate__animated animate__bounceIn animate__faster">{`${user.username} wants to trade!`}</h2>
         <div className="d-flex trade-card-container">
           <div>
             <h3 className="text-center">Offering</h3>

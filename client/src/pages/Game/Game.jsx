@@ -209,7 +209,7 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
         />
         <div className="d-flex justify-content-center">
           {userCards.map((creature, index) => (
-            <div key={index}>
+            <div key={index} className={`animate__animated animate__fadeInLeftBig animate__delay-${index}s`}>
               <Card key={`creature_${creature._id}`} creature={creature} />
               {console.log("creatureType",creature.type)}
               <AttackBtn

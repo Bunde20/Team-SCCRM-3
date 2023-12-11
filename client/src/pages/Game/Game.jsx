@@ -105,7 +105,8 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
   // On page load...
   useEffect(() => {
     userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
-      setUserCards(res.data[0].cards);
+      setUserCards(res.data[0].team);
+      console.log(res.data[0].cards)
 
     });
   }, []);

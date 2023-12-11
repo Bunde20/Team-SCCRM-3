@@ -15,7 +15,7 @@ export default function SeekCardBtn(props) {
 
   return (
     <>
-      <div className="button-container">
+      <div className="button-container mb-2">
         <button className="rounded purchase-button" onClick={handleClick}>
           Seek {props.creature.name}!
         </button>

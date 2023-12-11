@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import BackButton from '../../components/BackButton/BackButton'
+import BeginButton from '../../components/Buttons/BeginButton'
+import BackButton from '../../components/Buttons/BackButton'
 import Paragraph from '../../components/Paragraph'
-import Card from '../../components/Card'
+import Card from '../../components/Card/'
 import userAPI from '../../utils/userAPI'
-import './Lobby.css'
-import BeginButton from '../../components/BeginButton.jsx'
 
+import './Lobby.css'
 
 export default function Lobby() {
     const pageLoad = ''
@@ -52,36 +52,16 @@ export default function Lobby() {
         const warningEl = document.getElementById('warningDiv')
         const confirmEl = document.getElementById('beginBtns')
         if (cardsChosen.length < 3) {
-            console.log('setting 3 cards.')
             warningEl.textContent = `You need at least 3 cards.`
             setBeginToggle(false)
         } else if (cardsChosen.length === 3) {
             setBeginToggle(true)
             confirmEl.innerHTML = ''
-            async function setTeam() {
-                try {
-                    userAPI.updateUserTeam(localStorage.getItem('currentUser'), cardsChosen)
-                } catch (err) {
-                    console.error('Error setting team.', err)
-                }
-            }
-            setTeam()
+            userAPI.updateUserTeam(localStorage.getItem('currentUser'), cardsChosen)
         } else {
             warningEl.textContent = `You can only have 3 cards.`
             setBeginToggle(false)
         }
-
-    }
-
-    const lobbyText = [
-        {
-            id: 0,
-            text: "Pick your team, adventurer! Remember, you must choose 3 Prográmon to take with you. Choose wisely and good luck in there!"
-        }
-    ]
-
-    function lobbyParagraphRender() {
-        return lobbyText.map((obj) => <Paragraph {...obj} key={obj.id} />)
     }
 
     return (
@@ -93,7 +73,7 @@ export default function Lobby() {
                 <h1 className='homeTitle text-center col-12'>Prepare for the Palace</h1>
                 <main className='col-10 mx-auto'>
                     <div>
-                        {lobbyParagraphRender()}
+                        <Paragraph text='Pick your team, adventurer! Remember, you must choose 3 Prográmon to take with you. Choose wisely and good luck in there!'/>
                     </div>
                     <div>
                         <div className='text-center col-10 mx-auto' id='beginBtns'>

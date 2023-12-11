@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Card from "../components/Card";
-import SeekCardBtn from "./SeekCardBtn";
-import "./createOfferModal.css";
-import createOfferModalBtn from "./createOfferModalBtn";
+import Card from "../../../Card";
+import SeekCardBtn from "../../SeekCardBtn";
+import "./style.css";
 
-import cardAPI from "../utils/cardAPI";
-import GoBack from "./createOfferModalBtn";
+import cardAPI from "../../../../utils/cardAPI";
+import GoBack from "../CreateOfferModalBtn";
 
 export default function CreateOfferModal({
   heading = "SEEKING",

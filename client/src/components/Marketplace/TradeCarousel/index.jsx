@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import TradeOffer from "./TradeOffer";
+import TradeOffer from "../TradeOffer";
 
 export default function TradeCarousel({ tradeOffers, currentUser }) {
   const matchCards = (seekingCardId, userOfferId) => {

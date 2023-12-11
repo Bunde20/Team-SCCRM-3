@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faArrowsLeftRight}  from "@fortawesome/free-solid-svg-icons";
-import Card from "./Card";
-import TradeButton from "./TradeBtn";
-import cardAPI from "../utils/cardAPI";
-import userAPI from "../utils/userAPI";
+import Card from "../../Card";
+import TradeButton from "../TradeBtn";
+import cardAPI from "../../../utils/cardAPI";
+import userAPI from "../../../utils/userAPI";
 
 import "animate.css"
 

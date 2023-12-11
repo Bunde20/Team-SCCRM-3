@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import tradeAPI from "../utils/tradeAPI";
+import tradeAPI from "../../../utils/tradeAPI";
 
 export default function SeekCardBtn(props) {
     

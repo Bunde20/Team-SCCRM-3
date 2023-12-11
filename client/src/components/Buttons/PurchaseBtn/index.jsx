@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import userAPI from "../utils/userAPI";
-import CoinIcon from "../components/CoinIcon";
-import AlertModal from "./AlertModal";
+import userAPI from "../../../utils/userAPI";
+import CoinIcon from "../../CoinIcon/CoinIcon";
+import AlertModal from "../../AlertModal";
 
 export default function PurchaseBtn(props) {
 

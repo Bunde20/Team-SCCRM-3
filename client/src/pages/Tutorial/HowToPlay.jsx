@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import Paragraph from '../../components/Paragraph'
 
+import Paragraph from '../../components/Paragraph'
+import BackButton from '../../components/Buttons/BackButton'
 import './HowToPlay.css'
-import BackButton from '../../components/BackButton/BackButton'
+
 
 export default function HowToPlay() {
     const tutorialParagraphs = [

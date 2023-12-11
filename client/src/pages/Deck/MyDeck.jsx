@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MarketplaceNav from "../../components/MarketplaceNav";
-import BackButton from "../../components/BackButton/BackButton";
+import MarketplaceNav from "../../components/Marketplace/MarketplaceNav";
+import BackButton from "../../components/Buttons/BackButton";
 import Card from "../../components/Card";
-import CreateOfferBtn from "../../components/createOfferBtn";
+import CreateOfferBtn from "../../components/Marketplace/CreateOffer/CreateOfferBtn";
 import userAPI from "../../utils/userAPI";
 
 export default function MyDeck() {

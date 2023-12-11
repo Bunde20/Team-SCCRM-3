@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faWandMagicSparkles,
-  faBurst,
-  faShield,
-} from "@fortawesome/free-solid-svg-icons";
+
 import cardAPI from "../../utils/cardAPI";
-import tradeAPI from "../../utils/tradeAPI";
 import userAPI from "../../utils/userAPI";
 import Card from "../../components/Card";
-import PurchaseBtn from "../../components/PurchaseBtn";
-import BackButton from "../../components/BackButton/BackButton";
-import MarketplaceNav from "../../components/MarketplaceNav";
-import Timer from "../../components/Timer/Timer";
+import PurchaseBtn from "../../components/Marketplace/PurchaseBtn";
+import BackButton from "../../components/Buttons/BackButton";
+import MarketplaceNav from "../../components/Marketplace/MarketplaceNav";
+import Timer from "../../components/Timer";
 
 export default function Marketplace() {
   const [cards, setCards] = useState([]);

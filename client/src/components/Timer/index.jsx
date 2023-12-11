@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Timer.css'; 
+import './style.css'; 
 
 const Timer = ({ setTimerReachedZero }) => {
   const initialTime = 30; // (24hrs = 24 * 60 * 60)

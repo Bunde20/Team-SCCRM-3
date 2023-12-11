@@ -13,7 +13,7 @@ export default function CreateOfferBtn(props) {
   return (
     <>
       <div className="button-container">
-        <button className="rounded purchase-button" onClick={handleClick}>
+        <button className="rounded purchase-button mb-2" onClick={handleClick}>
           Offer Trade
         </button>
       </div>

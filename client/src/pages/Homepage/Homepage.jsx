@@ -44,7 +44,6 @@ export default function Homepage() {
     message: "Wrong Username or Password. Please try again!",
   });
   
-
   const handleCloseAlert = () => setShowAlert(false);
   const handleCloseAlert2 = () => setShowAlert2(false); 
 
@@ -66,7 +65,6 @@ export default function Homepage() {
         const randomCardId =
           cardIdArr[Math.floor(Math.random() * cardIdArr.length)];
         await userAPI.addUserCard(newUser._id, randomCardId);
-    
       }
       await newUser.save()
   
@@ -76,9 +74,6 @@ export default function Homepage() {
     }
   }
   
-
-  
-
   const handleLogin = async (username, password) => {
     try {
       const res = await fetch("/api/login", {
@@ -112,7 +107,6 @@ export default function Homepage() {
     }
   };
 
-
   const handleSignup = async (username, password, email) => {
     try { 
       const res = await fetch("/api/users", {
@@ -127,13 +121,8 @@ export default function Homepage() {
         console.log(newUser);
         handleLogin(username, password);
         generateRandomCards(newUser);
-        
-        
-     
-       
       } else {
-        setShowAlert2(true);
-       
+        setShowAlert2(true);      
       }
     } catch (err) {
       setIsLoggedIn(false);
@@ -186,16 +175,16 @@ export default function Homepage() {
       <div className="col-12 homepage-bg">
         <div className="col-11 mx-auto">
           <div id="welcomeEl">
-            <p className="text-end">Welcome {currentUser}!</p>
+            <p className="text-end p-2 paragraph-text text-white fs-3">{ currentUser ? `Welcome back, ${currentUser}!` : null }</p>
           </div>
-          <div className="col-12 row align-items-center mx-auto">
+          <div className="col-12 row align-items-center mx-auto py-4">
             <div className="col-12 col-lg-6 text-center">
               <p className="homeTitle">Prográmon Palace</p>
               <div>
                 <p className="fs-3 home-subhead">Gotta fetch 'em all!</p>
               </div>
             </div>
-            <div className="col-12 col-lg-6 mx-auto my-5 rounded text-center">
+            <div className="col-12 col-lg-6 mx-auto my-1 rounded text-center">
               {homepageBtnRender()}
               {loginBtnRender()}
               {logoutBtnRender()}

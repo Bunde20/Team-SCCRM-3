@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -13,7 +13,7 @@ import HowToPlay from './pages/Tutorial/HowToPlay.jsx'
 import Trade from './pages/Trade/Trade.jsx'
 import MyDeck from './pages/Deck/MyDeck.jsx'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <App />,

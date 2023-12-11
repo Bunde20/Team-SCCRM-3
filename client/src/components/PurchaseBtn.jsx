@@ -30,7 +30,7 @@ export default function PurchaseBtn(props) {
 
   return (
     <>
-      <div className="button-container">
+      <div className="button-container mb-2">
         <button
           className="rounded purchase-button"
           onClick={() =>

@@ -24,9 +24,19 @@
 }
 
 .warning-cstm {
-    background-color: rgba(118, 13, 13, 0.5);
+    background-color: rgba(118, 13, 13, 0.6);
     text-shadow: 4px 5px black;
     -webkit-text-stroke-color: black;
+}
+
+.cardBtn {
+    background-color: rgba(171, 41, 41, 0);
+    border: none;
+}
+
+.cardBtn-active {
+    background-color: rgba(171, 41, 41, .8);
+    border: none;
 }
 
 @media only screen and (max-width: 750px) {

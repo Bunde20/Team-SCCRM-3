@@ -32,15 +32,27 @@ export default function Lobby() {
     }, [pageLoad])
 
     function selectClickHandler(e) {
-        if (cardsChosen.length > 0) { setCardsChosen([...cardsChosen, { _id: e.target.id }]) }
-        else { setCardsChosen([{ _id: e.target.id }]) }
-
+        const cardExists = cardsChosen.filter((obj) => obj._id === e.target.id).length > 0
+        if (beginToggle) {
+            return
+        } else {
+            if (cardsChosen.length > 0) {
+                if (cardExists) {
+                    const filteredCards = cardsChosen.filter((obj) => obj._id !== e.target.id)
+                    setCardsChosen(filteredCards)
+                } else {
+                    setCardsChosen([...cardsChosen, { _id: e.target.id }])
+                }
+            } else {
+                setCardsChosen([{ _id: e.target.id }])
+            }
+            e.target.classList.toggle('cardBtn-active')
+        }
     }
 
     function confirmHandler() {
         const warningEl = document.getElementById('warningDiv')
         const confirmEl = document.getElementById('beginBtns')
-        console.log(cardsChosen)
         if (cardsChosen.length < 3) {
             console.log('setting 3 cards.')
             warningEl.textContent = `You need at least 3 cards.`
@@ -97,8 +109,9 @@ export default function Lobby() {
                         <div className='col-12 text-center row py-3' id='cardContainer'>
                             {cards.map((obj, index) =>
                                 <div className='col-xl-3 col-lg-4 col-6' key={index}>
-                                    <Card creature={obj} key={obj._id} />
-                                    <CardSelectButton text='Select' clickHandler={selectClickHandler} id={`${obj._id}`} />
+                                    <button className={`cardBtn rounded my-1`} onClick={selectClickHandler} id={obj._id}>
+                                        <Card creature={obj} key={obj._id} />
+                                    </button>
                                 </div>)}
                         </div>
                     </div>

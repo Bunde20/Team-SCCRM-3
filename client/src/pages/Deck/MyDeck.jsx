@@ -27,7 +27,7 @@ export default function MyDeck() {
           {userName}'s Deck
         </h1>
         <MarketplaceNav />
-        <div className="d-flex flex-wrap justify-content-center">
+        <div className="d-flex flex-wrap justify-content-center pb-4">
           {userCards.map((creature, index) => (
               <div key={index}>
                 <Card key={`creature_${creature._id}`} creature={creature} />

@@ -1,0 +1,55 @@
+/* src/Timer.css */
+.timer-container {
+    font-size: 28px;
+    background-color: transparent;
+    padding: 8px;
+    padding-bottom: 0px;
+    margin: 0px;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: static; 
+    text-align: center; 
+    width: 100%;
+  }
+  
+  /* Responsive Styling */
+  @media screen and (max-width: 760px) {
+    .timer-container {
+      font-size: 18px;
+      position: static; 
+      text-align: center; 
+      width: 100%; 
+      border-radius: 0px !important;
+      border-bottom: 2px solid black !important;
+      border: none;
+    }
+
+    .timer-container h3 {
+      font-size: 18px;
+    }
+
+    .timer-container p {
+        margin-bottom: 5px !important;
+      }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .timer-container {
+      font-size: 14px;
+      top: auto; 
+      position: static; 
+      text-align: center; 
+      border-radius: 0px !important;
+      border-bottom: 2px solid black !important;
+      border: none;
+    }
+
+    .timer-container h3 {
+        font-size: 14px;
+      }
+
+    .timer-container p {
+        margin-bottom: 3px !important;
+      }
+  }
+  

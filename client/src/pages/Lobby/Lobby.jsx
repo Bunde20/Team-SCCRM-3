@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 
 import BackButton from '../../components/BackButton/BackButton'
-import CardSelectButton from '../../components/CardSelectButton/CardSelectButton'
 import Paragraph from '../../components/Paragraph'
 import Card from '../../components/Card'
 import userAPI from '../../utils/userAPI'

@@ -16,5 +16,3 @@ export default defineConfig({
     },
   },
 });
-
-// "https://programon-palace.onrender.com/"

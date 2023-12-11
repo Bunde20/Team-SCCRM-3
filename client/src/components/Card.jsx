@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.css";
+import "animate.css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +13,7 @@ import {
 
 function Card({ creature }) {
   return (
-    <div className="card-container" id='creatureCard'>
+    <div className="card-container animate__animated animate__flipInY animate__faster" id='creatureCard'>
       <div className={`card creature ${creature.type}-bg`}>
         <div className="card-header creature-header">
           <h2 className="card-title creature-title" style={creature.style}>

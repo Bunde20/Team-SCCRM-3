@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Homepage.css";
+import "animate.css"
 import HomepageButton from "../../components/HomepageButton.jsx";
 import { Link } from "react-router-dom";
 import LogModal from "../../components/Modal.jsx";
@@ -179,9 +180,9 @@ export default function Homepage() {
           </div>
           <div className="col-12 row align-items-center mx-auto py-4">
             <div className="col-12 col-lg-6 text-center">
-              <p className="homeTitle">Prográmon Palace</p>
+              <p className="homeTitle animate__animated animate__zoomIn">Prográmon Palace</p>
               <div>
-                <p className="fs-3 home-subhead">Gotta fetch 'em all!</p>
+                <p className="fs-3 home-subhead animate__animated animate__lightSpeedInLeft animate__delay-1s">Gotta fetch 'em all!</p>
               </div>
             </div>
             <div className="col-12 col-lg-6 mx-auto my-1 rounded text-center">

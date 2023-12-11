@@ -6,7 +6,7 @@ import "animate.css"
 
 export default function Boss(props) {
   return (
-    <div className="col-12 col-xl-3 mx-auto d-flex flex-column align-items-center">
+    <div className={`col-12 col-xl-3 mx-auto d-flex flex-column align-items-center animate__animated ${props.animation}`}>
       <h2 className="text-light">{props.bossName}</h2>
       <div>
         <img className="boss-image img-fluid animate__animated animate__zoomIn animate__slow animate__delay-3s" src={props.bossImage} alt="" />

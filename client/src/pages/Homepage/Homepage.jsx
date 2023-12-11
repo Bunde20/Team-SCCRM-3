@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Homepage.css";
 import "animate.css"
-import HomepageButton from "../../components/HomepageButton.jsx";
-import { Link } from "react-router-dom";
-import LogModal from "../../components/Modal.jsx";
-import AlertModal from "../../components/AlertModal.jsx";
-import LogOutBtn from "../../components/LogOutBtn.jsx";
-import AlertModal2 from "../../components/AlertModal2.jsx";
+import HomepageButton from "../../components/Buttons/HomepageButton/";
+import LogModal from "../../components/Modal/index.jsx";
+import AlertModal from "../../components/AlertModals/AlertModal/index.jsx";
+import LogOutBtn from "../../components/Buttons/LogOutBtn";
+import AlertModal2 from "../../components/AlertModals/AlertModal2/index.jsx";
 import cardAPI from "../../utils/cardAPI.js";
 import userAPI from "../../utils/userAPI.js";
 

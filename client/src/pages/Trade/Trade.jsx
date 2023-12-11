@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import tradeAPI from "../../utils/tradeAPI";
 import userAPI from "../../utils/userAPI";
-import TradeCarousel from "../../components/TradeCarousel";
-import MarketplaceNav from "../../components/MarketplaceNav";
-import BackButton from "../../components/BackButton/BackButton";
+import TradeCarousel from "../../components/Marketplace/TradeCarousel";
+import MarketplaceNav from "../../components/Marketplace/MarketplaceNav";
+import BackButton from "../../components/Buttons/BackButton";
 import "./Trade.css";
 
 export default function Trade() {

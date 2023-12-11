@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import tradeAPI from "../utils/tradeAPI";
-import AlertModal from "./AlertModal";
-import Trade from "../pages/Trade/Trade"
+import tradeAPI from "../../../utils/tradeAPI";
+import AlertModal from "../../AlertModals/AlertModal";
+import Trade from "../../../pages/Trade/Trade"
 
 export default function TradeButton(props) {
   const [showAlert, setShowAlert] = useState(false);

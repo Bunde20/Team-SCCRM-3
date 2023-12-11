@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CreateOfferModal from "./createOfferModal";
+import CreateOfferModal from '../CreateOfferModal'
 
 export default function CreateOfferBtn(props) {
   const [showModal, setShowModal] = useState(false);

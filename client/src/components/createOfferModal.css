@@ -1,0 +1,10 @@
+.seeking-container {
+    background: rgb(240,222,191);
+    background: linear-gradient(90deg, rgba(240,222,191,1) 0%, rgba(128,119,103,1) 52%, rgba(240,222,191,1) 100%);
+ }
+
+ .seeking-header {
+    background: rgb(240,222,191);
+    background: linear-gradient(90deg, rgba(240,222,191,1) 0%, rgba(128,119,103,1) 52%, rgba(240,222,191,1) 100%);
+    border-bottom: 2px solid black !important;
+ }

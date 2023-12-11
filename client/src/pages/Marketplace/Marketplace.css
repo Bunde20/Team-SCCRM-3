@@ -5,3 +5,15 @@
     background-size: cover;
     background-position: center;
 }
+
+@media (max-width: 768px) {
+    .purchase-button {
+        color: black;
+    }
+}
+
+@media (max-width: 768px) {
+    .purchase-button {
+        color: black;
+    }
+}

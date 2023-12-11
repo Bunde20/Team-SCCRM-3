@@ -17,6 +17,7 @@ function getAllUsers(req, res) {
 function getOneUser(req, res) {
   User.find({ _id: req.params.id })
     .populate("cards")
+    .populate("team")
     .then((data) => res.json(data))
     .catch((err) => {
       console.log(err);

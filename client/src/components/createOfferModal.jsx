@@ -3,8 +3,11 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Card from "../components/Card";
 import SeekCardBtn from "./SeekCardBtn";
+import "./createOfferModal.css";
+import createOfferModalBtn from "./createOfferModalBtn";
 
 import cardAPI from "../utils/cardAPI";
+import GoBack from "./createOfferModalBtn";
 
 export default function CreateOfferModal({
   heading = "SEEKING",
@@ -23,12 +26,12 @@ export default function CreateOfferModal({
   return (
     <>
       <Modal className="text-center" size="xl" show={show} onHide={handleClose}>
-        <Modal.Header>
+        <Modal.Header className="seeking-header">
           <Modal.Title>{heading}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="seeking-container">
           {message}
-          <div className="d-flex flex-wrap justify-content-center">
+          <div className="d-flex flex-wrap justify-content-center ">
             {cards.map((creature, index) => (
               <div key={index}>
                 <Card creature={creature} key={creature._id} />
@@ -41,8 +44,8 @@ export default function CreateOfferModal({
               </div>
             ))}
           </div>
+          <GoBack />
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );

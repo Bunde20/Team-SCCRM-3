@@ -39,6 +39,37 @@
     border: none;
 }
 
+.signup-cstm {
+    background-color: rgb(171, 41, 41);
+    border: solid 1px rgb(171, 41, 41);
+}
+
+.signup-cstm:hover {
+    background-color: rgb(144, 17, 17);
+    border: solid 1px rgb(144, 17, 17);
+}
+
+.modalBg-header, .modalBg-body, .modalBg-footer, .signupBg-footer {
+    background-image: url(../../images/homeBG.png);
+    border: none;
+}
+
+.modalBg-header {
+    background-position: top;
+}
+
+.modalBg-body {
+    background-position: right top;
+}
+
+.modalBg-footer {
+    background-position: 100% 18.5%;
+}
+
+.signupBg-footer {
+    background-position: 100% 26.5%;
+}
+
 @media only screen and (max-width: 750px) {
     .continue-btn-cstm {
         font-size: 33px

@@ -30,12 +30,11 @@ function LogModal({ onClose, onLogin, onSignup }) {
   };
 
   const handleLoginClick = () => {
-  
+
     onLogin(username, password);
 
     // Close the modal
     handleClose();
-    // console.log('login successful')
   };
   const handleSignUpClick = () => {
     onSignup(username, password, email);
@@ -50,13 +49,13 @@ function LogModal({ onClose, onLogin, onSignup }) {
       </Button>
 
       <Modal show={showLoginModal} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>Programon Login</Modal.Title>
+        <Modal.Header className='modalBg-header'>
+          <Modal.Title className='paragraph-text text-white fw-bold fs-2'>Programon Login</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className='modalBg-body'>
           <Form>
             <Form.Group className="mb-3" controlId="LoginForm.Username">
-              <Form.Label>Username</Form.Label>
+              <Form.Label className='paragraph-text text-white fs-4 fw-bold'>Username</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="CatchEmAll1123"
@@ -66,7 +65,7 @@ function LogModal({ onClose, onLogin, onSignup }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="LoginForm.Password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className='paragraph-text text-white fs-4 fw-bold'>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password123"
@@ -77,27 +76,31 @@ function LogModal({ onClose, onLogin, onSignup }) {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleLoginClick}>
-            Login
-          </Button>
-          <Button variant="success" onClick={handleShowSignup}>
-            Sign Up
-          </Button>
+        <Modal.Footer className="d-flex justify-content-between modalBg-footer">
+          <div className='mx-3'>
+            <Button onClick={handleShowSignup} className='fw-bold signup-cstm'>
+              Sign Up
+            </Button>
+          </div>
+          <div className='mx-3'>
+            <Button variant="primary" onClick={handleLoginClick} className='me-2 fw-bold'>
+              Login
+            </Button>
+            <Button variant="secondary" onClick={handleClose} className='fw-bold'>
+              Close
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
       {/* signUpModal */}
       <Modal show={showSignupModal} onHide={handleSignUpClose}>
-      <Modal.Header>
-          <Modal.Title>Create A New Account</Modal.Title>
+        <Modal.Header className='modalBg-header'>
+          <Modal.Title className='paragraph-text text-white fw-bold fs-2'>Create A New Account</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className='modalBg-body'>
           <Form>
-          <Form.Group className="mb-3" controlId="SignUpForm.Email">
-              <Form.Label>Email</Form.Label>
+            <Form.Group className="mb-3" controlId="SignUpForm.Email">
+              <Form.Label className='paragraph-text text-white fs-4 fw-bold'>Email</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="CatchEmAll@gmail.com"
@@ -107,7 +110,7 @@ function LogModal({ onClose, onLogin, onSignup }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="SignUpForm.Username">
-              <Form.Label>Username</Form.Label>
+              <Form.Label className='paragraph-text text-white fs-4 fw-bold'>Username</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="CatchEmAll1123"
@@ -117,7 +120,7 @@ function LogModal({ onClose, onLogin, onSignup }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="SignUpForm.Password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className='paragraph-text text-white fs-4 fw-bold'>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password123"
@@ -128,16 +131,15 @@ function LogModal({ onClose, onLogin, onSignup }) {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className='signupBg-footer'>
+          <Button onClick={handleSignUpClick} className='signup-cstm'>
+            Sign Up
+          </Button>
           <Button variant="secondary" onClick={handleSignUpClose}>
             Close
           </Button>
-    
-          <Button variant="success" onClick={handleSignUpClick}>
-            Sign Up
-          </Button>
         </Modal.Footer>
-        </Modal>
+      </Modal>
     </>
   );
 }

@@ -9,12 +9,10 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://programon-palace.onrender.com/",
         secure: false,
         changeOrigin: true,
       },
     },
   },
 });
-
-// https://programon-palace.onrender.com/

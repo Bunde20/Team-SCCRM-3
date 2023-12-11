@@ -55,7 +55,6 @@ export default function Marketplace() {
   return (
     <>
       <div className="col-12 marketplace-bg">
-        <Timer setTimerReachedZero={setTimerReachedZero} />
         <div className="col-12 mx-auto text-center">
           <BackButton text="Back to Home" />
         </div>
@@ -79,6 +78,7 @@ export default function Marketplace() {
               )}
             </div>
           ))}
+          <Timer setTimerReachedZero={setTimerReachedZero} />
         </div>
       </div>
     </>

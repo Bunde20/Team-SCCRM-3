@@ -42,7 +42,7 @@ export default function TradeOffer(props) {
           <TradeButton
             user1={props.offer.userId}
             card1={props.offer.offeredCardId}
-            user2={props.currentUser}
+            user2={props.currentUser._id}
             card2={props.offer.seekingCardId}
             offerId={props.offer._id}
           />

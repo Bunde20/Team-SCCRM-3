@@ -46,21 +46,26 @@ const bosses = [
 ];
 
 export default function Game() {
+  const [bossAnimation, setBossAnimation] = useState(null)
   const [currentBoss, setCurrentBoss] = useState(bosses[0]);
-  const [currentBossAttack, setCurrentBossAttack] = useState(currentBoss.attack );
+  const [currentBossAttack, setCurrentBossAttack] = useState(
+    currentBoss.attack
+  );
   let [bossHealth, setBossHealth] = useState(currentBoss.health);
   const [playerAttacked, setPlayerAttacked] = useState(false);
   const [userCards, setUserCards] = useState([]);
   const [userHealth, setUserHealth] = useState(0);
   const [maxUserHP, setMaxUserHP] = useState(userHealth);
   const [combatMessage, setCombatMessage] = useState(currentBoss.bossIntro);
-const [attackSpecialDisabled, setAttackSpecialDisabled] = useState(false);
-const [defenseSpecialDisabled, setDefenseSpecialDisabled] = useState(false);
-const [attackTricksterDisabled, setTricksterSpecialDisabled] = useState(false);
-const [bossIsSleepy, setBossIsSleepy] = useState(false);
+  const [attackSpecialDisabled, setAttackSpecialDisabled] = useState(false);
+  const [defenseSpecialDisabled, setDefenseSpecialDisabled] = useState(false);
+  const [attackTricksterDisabled, setTricksterSpecialDisabled] =
+    useState(false);
+  const [bossIsSleepy, setBossIsSleepy] = useState(false);
 
   // Deal specified damage to boss
   const handleAttack = (creature, damage) => {
+    setBossAnimation("animate__headShake")
     let newBossHealth = (bossHealth -= damage);
     // stops the progress bar from going into the negatives
     setBossHealth(newBossHealth >= 0 ? newBossHealth : 0);
@@ -71,11 +76,11 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
     setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`);
     console.log("bosshealth", bossHealth);
   };
-  
+
   const handleSpecialAttack = (creature) => {
     let creatureType = creature.type;
     let creatureName = creature.name.toUpperCase();
-    console.log("special was clicked", creatureType)
+    console.log("special was clicked", creatureType);
     if (creatureType === "attacker") {
       setAttackSpecialDisabled(true);
       let newBossHealth = (bossHealth -= 150);
@@ -84,7 +89,7 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
       setCombatMessage(`${creatureName} USED SPECIAL ATTACK!`);
     }
     if (creatureType === "defender") {
-      setDefenseSpecialDisabled(true)
+      setDefenseSpecialDisabled(true);
       setUserHealth((userHealth) => {
         let newUserHealth = userHealth + 100;
         newUserHealth = Math.min(newUserHealth, maxUserHP);
@@ -100,14 +105,13 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
       setPlayerAttacked(true);
       setCombatMessage(`${creatureName} USED SLEEP!`);
     }
-  }
+  };
 
   // On page load...
   useEffect(() => {
     userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
       setUserCards(res.data[0].team);
-      console.log(res.data[0].cards)
-
+      console.log(res.data[0].cards);
     });
   }, []);
 
@@ -141,7 +145,7 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
           setBossHealth(newBossHealth);
           setCombatMessage(nextBoss.bossIntro);
         } else {
-          alert("YOU BEAT THE GAME!");
+          setBossAnimation("animate__hinge")
         }
       }
     }, 1500);
@@ -152,18 +156,15 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
     if (playerAttacked && bossIsSleepy === false) {
       setTimeout(() => {
         if (bossHealth > 0) {
+          setBossAnimation("animate__bounceIn")
           setCombatMessage(`${currentBoss.name} RETALIATED!!!`);
           setUserHealth((userHealth) => {
             // generate a random attack value based on the boss's attack
             const randomMultiplier = Math.random() * 0.5 + 1;
-
             let randomAttack = currentBossAttack * randomMultiplier;
-
             let newUserHealth = userHealth - randomAttack;
-
             // Round to the nearest even number
             newUserHealth = Math.round(newUserHealth / 2) * 2;
-
             // Ensure newUserHealth is not negative
             newUserHealth = Math.max(0, newUserHealth);
             return newUserHealth;
@@ -178,8 +179,7 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
       setPlayerAttacked(false);
       setTimeout(() => {
         setBossIsSleepy(false);
-      },5000)
-      
+      }, 5000);
     }
   }),
     [playerAttacked];
@@ -191,6 +191,7 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
         style={{ backgroundImage: `url(${currentBoss.background})` }}
       >
         <Boss
+          animation={bossAnimation}
           bossName={currentBoss.name}
           bossImage={currentBoss.image}
           maxHP={currentBoss.health}
@@ -209,9 +210,12 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
         />
         <div className="d-flex justify-content-center">
           {userCards.map((creature, index) => (
-            <div key={index} className={`animate__animated animate__fadeInLeftBig animate__delay-${index}s`}>
+            <div
+              key={index}
+              className={`animate__animated animate__fadeInLeftBig animate__delay-${index}s`}
+            >
               <Card key={`creature_${creature._id}`} creature={creature} />
-              {console.log("creatureType",creature.type)}
+              {console.log("creatureType", creature.type)}
               <AttackBtn
                 target={currentBoss}
                 index={index}
@@ -219,32 +223,33 @@ const [bossIsSleepy, setBossIsSleepy] = useState(false);
                 onClick={() => handleAttack(creature, creature.attack)}
                 key={`attackBtn_${creature.id}`}
               />
-              {creature.type === "attacker"  && (
+              {creature.type === "attacker" && (
                 <AttackSpecialBtn
-                    target={currentBoss}
-                    attackDamage={creature.attack}
-                    onClick={() => handleSpecialAttack(creature)}   
-                    key={`AttackSpecialBtn_${creature.id}`} 
-                    disabled={attackSpecialDisabled}  
-                             
-                />)}
-                {creature.type === "defender"  && (
-                  <DefenseSpecialBtn
-                      target={currentBoss}
-                      attackDamage={creature.attack}
-                      onClick={() => handleSpecialAttack(creature)}   
-                      key={`DefenseSpecialBtn_${creature.id}`}   
-                      disabled={defenseSpecialDisabled}          
-                  />
+                  target={currentBoss}
+                  attackDamage={creature.attack}
+                  onClick={() => handleSpecialAttack(creature)}
+                  key={`AttackSpecialBtn_${creature.id}`}
+                  disabled={attackSpecialDisabled}
+                />
               )}
-               {creature.type === "trickster"  && (
+              {creature.type === "defender" && (
+                <DefenseSpecialBtn
+                  target={currentBoss}
+                  attackDamage={creature.attack}
+                  onClick={() => handleSpecialAttack(creature)}
+                  key={`DefenseSpecialBtn_${creature.id}`}
+                  disabled={defenseSpecialDisabled}
+                />
+              )}
+              {creature.type === "trickster" && (
                 <TricksterSpecialBtn
-                    target={currentBoss}
-                    attackDamage={creature.attack}
-                    onClick={() => handleSpecialAttack(creature)}   
-                    key={`attackSpecialBtn_${creature.id}`} 
-                    disabled={attackTricksterDisabled}            
-                />)}
+                  target={currentBoss}
+                  attackDamage={creature.attack}
+                  onClick={() => handleSpecialAttack(creature)}
+                  key={`attackSpecialBtn_${creature.id}`}
+                  disabled={attackTricksterDisabled}
+                />
+              )}
             </div>
           ))}
         </div>

@@ -1,0 +1,6 @@
+.errorBg {
+    background-image: url(../../images/404-anime.gif);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}

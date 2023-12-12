@@ -1,0 +1,34 @@
+.rewardsBg {
+    background-image: url('../../images/treasureVaultBG.png'), url('../../images/treasureVaultMin.png');
+    background-color: grey;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.chestImageStyle {
+    transition: 450ms;
+}
+
+.chestImageStyle:hover {
+    transform: scale(1.2);
+    transition: 150ms;
+}
+
+.leave-btn-cstm {
+    color: white;
+    text-shadow: 3px 3px black;
+    -webkit-text-stroke-width: .005px;
+    -webkit-text-stroke-color: black;
+    font-weight: bold;
+    font-size: 3vw;
+    background-color: rgba(245, 216, 55, 0.75);
+    border: solid 2px rgb(0, 0, 0);
+}
+
+.leave-btn-cstm:hover {
+    transition: 250ms;
+    background-color: rgba(245, 216, 55, 0.85);
+    border: solid 2px black;
+}

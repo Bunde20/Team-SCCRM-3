@@ -187,7 +187,7 @@ export default function Game() {
   return (
     <>
       <div
-        className="game-bg col-12"
+        className="game-bg col-12 bg-dark"
         style={{ backgroundImage: `url(${currentBoss.background})` }}
       >
         <Boss

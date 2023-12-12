@@ -15,9 +15,11 @@ router.route("/").get(jwtAuth, getAllUsers).post(createNewUser);
 
 // NEVER EVER EVER UPDATE CARDS FROM THIS ENDPOINT.
 // DOING SO WILL WIPE THE PLAYER'S ENTIRE COLLECTION.
-router.route("/:id").get(getOneUser).put(updateUser).delete(deleteUser);
+router.route("/:id").get(jwtAuth,getOneUser).put(jwtAuth,updateUser).delete(jwtAuth,deleteUser);
 
 // ALWAYS ALWAYS ALWAYS UPDATE CARDS HERE
-router.route("/:userId/cards/:cardId").put(addUserCard).delete(deleteUserCard)
+router.route("/:userId/cards/:cardId").put(jwtAuth,addUserCard).delete(jwtAuth,deleteUserCard)
 
 module.exports = router;
+
+// 6577a1c6d1b1ef90945d9f2a

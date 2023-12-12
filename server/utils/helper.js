@@ -6,7 +6,7 @@ const secretKey = process.env.SECRET_KEY;
 const jwtAuth = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        res.redirect('/')
+        // res.redirect('/')
         return res.status(401).json({ message: 'No token provided' })
 
     }

@@ -11,8 +11,11 @@ import TricksterSpecialBtn from "../../components/GameComponents/TricksterSpecia
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 import mushroomHallBG from "../../images/mushroomHallBG.png";
+import mushroomMin from "../../images/mushroomMin.png"
 import dungeonBG from "../../images/dungeonBG.png";
+import dungeonMin from "../../images/dungeonMin.png"
 import caveBG from "../../images/caveBG.png";
+import caveMin from "../../images/caveMin.png"
 import "./Game.css";
 
 const bosses = [
@@ -23,6 +26,7 @@ const bosses = [
     health: 500,
     attack: 15,
     background: dungeonBG,
+    bgMin: dungeonMin,
     bossIntro: "A WICKED PROFESSOR APPROACHES!",
   },
   {
@@ -32,6 +36,7 @@ const bosses = [
     health: 625,
     attack: 25,
     background: caveBG,
+    bgMin: caveMin,
     bossIntro: "GOGOL'S REACH KNOWS NO BOUNDS!",
   },
   {
@@ -41,6 +46,7 @@ const bosses = [
     health: 750,
     attack: 35,
     background: mushroomHallBG,
+    bgMin: mushroomMin,
     bossIntro: "DON'T LOOK DIRECTLY AT IT!!!",
   },
 ];
@@ -188,7 +194,7 @@ export default function Game() {
     <>
       <div
         className="game-bg col-12 bg-dark"
-        style={{ backgroundImage: `url(${currentBoss.background})` }}
+        style={{ backgroundImage: `url(${currentBoss.background}), url(${currentBoss.bgMin})` }}
       >
         <Boss
           animation={bossAnimation}

@@ -1,6 +1,6 @@
 .marketplace-bg {
     background-color: skyblue;
-    background-image: url('../../images/marketplaceBG.png'); 
+    background-image: url('../../images/marketplaceBG.png'), url("../../images/marketplaceMin.png"); 
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;

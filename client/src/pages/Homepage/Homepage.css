@@ -1,6 +1,6 @@
 .homepage-bg {
     background-color: skyblue;
-    background-image: url('../../images/homeBG.png'); 
+    background-image: url('../../images/homeBG.png'), url('../../images/homeMin.png'); 
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,10 +1,10 @@
 import GithubLogo from '../../images/GitHub-logo.png'
 
-export default function Footer() {
+export default function RepoLogo () {
     return (
-        <div className='text-center p-5'>
+        <div className='text-center p-3'>
             <a href='https://github.com/Bunde20/Team-SCCRM-3' target='_blank'>
-                <img src={GithubLogo} className='col-md-1 col-sm-2 col-3 github-logo'></img>
+                <img src={GithubLogo} className='col-sm-2 col-3 github-logo'></img>
             </a>
         </div>
     )

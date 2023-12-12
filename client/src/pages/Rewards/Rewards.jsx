@@ -7,7 +7,7 @@ import userAPI from '../../utils/userAPI'
 
 export default function Rewards() {
     const [reward, setReward] = useState()
-    const [chestClick, setChestClick] = useState(false)
+    const [chestClick, setChestClick] = useState(rewardsChestImage)
 
     function setCoins() {
         if (!reward) {
@@ -25,13 +25,8 @@ export default function Rewards() {
     }
     setCoins()
 
-    function imageClick (e) {
-        if (!chestClick) {
-            e.target.src = rewardsCoinsImage
-            setChestClick(true)
-        } else {
-            return
-        }
+    function imageClick () {
+        setChestClick(rewardsCoinsImage)
     }
 
     function leaveHandler() {
@@ -44,9 +39,9 @@ export default function Rewards() {
                 <h1 className='homeTitle text-center'>Rewards</h1>
                 <main className='text-center text-white py-3'>
                     <div className='col-xl-6 col-lg-8 col-md-10 col-12 mx-auto'>
-                        <img src={rewardsChestImage} className='chestImageStyle col-12' id='rewardsImage' onClick={imageClick}/>
+                        <img src={chestClick} className='chestImageStyle col-12' id='rewardsImage' onClick={imageClick}/>
                     </div>
-                    <p className='paragraph-text my-3 fs-3 fw-bold'>{!chestClick ? 'Click the chest for your rewards.' : `You've received ${reward} coins.` }</p>
+                    <p className='paragraph-text my-3 fs-3 fw-bold'>{chestClick === rewardsChestImage ? 'Click the chest for your rewards.' : `You've received ${reward} coins.` }</p>
                     <div className='mt-3 col-md-6 col-8 mx-auto'>
                         <LeaveRewardsButton text='Leave' path='/' leaveHandler={leaveHandler} />
                     </div>

@@ -8,7 +8,7 @@ import LogOutBtn from "../../components/Buttons/LogOutBtn";
 import AlertModal2 from "../../components/AlertModals/AlertModal2/index.jsx";
 import cardAPI from "../../utils/cardAPI.js";
 import userAPI from "../../utils/userAPI.js";
-import Footer from "../../components/Footer/index.jsx";
+import RepoLogo from "../../components/GitHubLogo/index.jsx";
 
 const btnLoggedOutTxt = [
   {
@@ -163,9 +163,10 @@ export default function Homepage() {
             <main className="col-12 col-lg-6 mx-auto my-1 rounded text-center">
               {isLoggedIn ? btnLoggedInTxt.map((obj, index) => (<div key= {index}><HomepageButton {...obj} key={obj.id} /></div>)) : btnLoggedOutTxt.map((obj, index) => (<div key={index}><HomepageButton {...obj} key={obj.id} /></div>)) }
               {isLoggedIn ? <div><LogOutBtn onLogout={handleLogout} /></div> : <div><LogModal onLogin={handleLogin} onSignup={handleSignup} /></div> }
+              <RepoLogo />
             </main>
           </div>
-          <Footer />
+          
         </div>
       </div>
       <AlertModal

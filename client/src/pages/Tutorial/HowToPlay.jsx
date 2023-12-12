@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Paragraph from '../../components/Paragraph'
 import BackButton from '../../components/Buttons/BackButton'
 import './HowToPlay.css'
-import Footer from '../../components/Footer'
+import RepoLogo from '../../components/GitHubLogo'
 
 
 export default function HowToPlay() {
@@ -36,7 +36,9 @@ export default function HowToPlay() {
                 <main className='col-12 mx-auto'>
                     {tutorialParagraphs.map((obj) => <Paragraph {...obj} key={obj.id}/>)}
                 </main>
-                <Footer />
+                <footer className='col-md-6 col-10 mx-auto'>
+                    <RepoLogo />
+                </footer>
             </div>
         </>
     )

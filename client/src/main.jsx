@@ -13,7 +13,7 @@ import HowToPlay from './pages/Tutorial/HowToPlay.jsx'
 import Trade from './pages/Trade/Trade.jsx'
 import MyDeck from './pages/Deck/MyDeck.jsx'
 import AuthPathing from './utils/authPathing.jsx'
-
+import Rewards from './pages/Rewards/Rewards.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -47,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/mydeck',
         element: <AuthPathing component={MyDeck} />
+      },
+      {
+        path: '/rewards',
+        element: <Rewards />
       }
     ]
   }

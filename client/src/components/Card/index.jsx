@@ -8,7 +8,8 @@ import {
   faBurst,
   faShield,
   faHeart,
-  faBullseye
+  faBullseye,
+  faBone
 } from "@fortawesome/free-solid-svg-icons";
 
 function Card({ creature }) {
@@ -26,6 +27,9 @@ function Card({ creature }) {
             )}
             {creature.type === "trickster" && (
               <FontAwesomeIcon icon={faWandMagicSparkles} className="" />
+            )}
+            {creature.type === "friend" && (
+              <FontAwesomeIcon icon={faBone} />
             )}
           </h2>
         </div>

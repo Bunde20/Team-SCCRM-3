@@ -13,6 +13,7 @@ import HowToPlay from './pages/Tutorial/HowToPlay.jsx'
 import Trade from './pages/Trade/Trade.jsx'
 import MyDeck from './pages/Deck/MyDeck.jsx'
 import Rewards from './pages/Rewards/Rewards.jsx'
+// import AuthPathing from './utils/authPathing.jsx'
 
 const router = createHashRouter([
   {
@@ -24,16 +25,20 @@ const router = createHashRouter([
         index: true,
         element: <Homepage />
       },
+      
       {
         path: '/marketplace',
+        // element: <AuthPathing component={Marketplace} />
         element: <Marketplace />
       },
       {
         path: '/lobby',
+        // element: <AuthPathing component={Lobby} />
         element: <Lobby />
       },
       {
         path: '/game',
+        // element: <AuthPathing component={Game} />
         element: <Game />
       },
       {
@@ -42,11 +47,14 @@ const router = createHashRouter([
       },
       {
         path: '/trade',
-        element: <Trade /> 
+        // element: <AuthPathing component={Trade} />
+        element: <Trade />
       },
       {
         path: '/mydeck',
+        // element: <AuthPathing component={MyDeck} />
         element: <MyDeck />
+
       },
       {
         path: '/rewards',

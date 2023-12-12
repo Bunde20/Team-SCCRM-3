@@ -7,6 +7,13 @@
     background-position: center;
 }
 
+
+
+.purchase-button {
+    background: rgb(240,222,191);
+    background: linear-gradient(90deg, rgba(240,222,191,1) 0%, rgba(128,119,103,1) 52%, rgba(240,222,191,1) 100%);
+}
+
 @media (max-width: 768px) {
     .purchase-button {
         color: black;

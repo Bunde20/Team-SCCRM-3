@@ -7,6 +7,7 @@ import PurchaseBtn from "../../components/Marketplace/PurchaseBtn";
 import BackButton from "../../components/Buttons/BackButton";
 import MarketplaceNav from "../../components/Marketplace/MarketplaceNav";
 import Timer from "../../components/Timer";
+import "./Marketplace.css";
 
 export default function Marketplace() {
   const [cards, setCards] = useState([]);
@@ -56,7 +57,7 @@ export default function Marketplace() {
           Buy
         </h1>
         <MarketplaceNav />
-        <h3 className="text-center">COINS: {userCoins}</h3>
+        <h3 className="text-center paragraph-text text-white fs-1 timer-text">COINS: {userCoins}</h3>
         <div className="d-flex justify-content-center flex-row flex-wrap pb-4">
           {cards.map((creature, index) => (
             <div key={index}>

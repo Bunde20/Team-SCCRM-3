@@ -71,7 +71,7 @@ export default function Lobby() {
                     <BackButton text='Back to Home' />
                 </div>
                 <h1 className='homeTitle text-center col-12'>Prepare for the Palace</h1>
-                <main className='col-10 mx-auto'>
+                <main className='col-12 mx-auto'>
                     <div>
                         <Paragraph text='Pick your team, adventurer! Remember, you must choose 3 Prográmon to take with you. Choose wisely and good luck in there!'/>
                     </div>
@@ -84,9 +84,9 @@ export default function Lobby() {
                             {beginToggle === true ? <BeginButton /> : null}
                         </div>
                         <h3 className='text-center text-white fs-1 col-12 my-4 paragraph-text border-bottom border-white border-4'>Select 3 Prográmon</h3>
-                        <div className='col-12 text-center row py-3' id='cardContainer'>
+                        <div className='d-flex flex-wrap justify-content-center pb-4' id='cardContainer'>
                             {cards.map((obj, index) =>
-                                <div className='col-xl-3 col-lg-4 col-6' key={index}>
+                                <div className='' key={index}>
                                     <button className={`cardBtn rounded my-1`} onClick={selectClickHandler} id={obj._id}>
                                         <Card creature={obj} key={obj._id} />
                                     </button>

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -12,9 +12,9 @@ import Game from './pages/Game/Game.jsx'
 import HowToPlay from './pages/Tutorial/HowToPlay.jsx'
 import Trade from './pages/Trade/Trade.jsx'
 import MyDeck from './pages/Deck/MyDeck.jsx'
-import AuthPathing from './utils/authPathing.jsx'
 import Rewards from './pages/Rewards/Rewards.jsx'
-const router = createBrowserRouter([
+
+const router = createHashRouter([
   {
     path: '/',
     element: <App />,
@@ -26,15 +26,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/marketplace',
-        element: <AuthPathing component={Marketplace} />
+        element: <Marketplace />
       },
       {
         path: '/lobby',
-        element: <AuthPathing component={Lobby} />
+        element: <Lobby />
       },
       {
         path: '/game',
-        element: <AuthPathing component={Game} />
+        element: <Game />
       },
       {
         path: '/tutorial',
@@ -42,11 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/trade',
-        element: <AuthPathing component={Trade} />
+        element: <Trade /> 
       },
       {
         path: '/mydeck',
-        element: <AuthPathing component={MyDeck} />
+        element: <MyDeck />
       },
       {
         path: '/rewards',
@@ -54,8 +54,8 @@ const router = createBrowserRouter([
       }
     ]
   }
-]);
+])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-);
+)

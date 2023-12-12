@@ -8,6 +8,7 @@ import LogOutBtn from "../../components/Buttons/LogOutBtn";
 import AlertModal2 from "../../components/AlertModals/AlertModal2/index.jsx";
 import cardAPI from "../../utils/cardAPI.js";
 import userAPI from "../../utils/userAPI.js";
+import Footer from "../../components/Footer/index.jsx";
 
 const btnLoggedOutTxt = [
   {
@@ -126,18 +127,6 @@ export default function Homepage() {
     }
   }
 
-  function homepageBtnRender() {
-    if (isLoggedIn) {
-      return btnLoggedInTxt.map((obj, index) => (
-        <div key= {index}><HomepageButton {...obj} key={obj.id} /></div>
-      ));
-    } else {
-      return btnLoggedOutTxt.map((obj, index) => (
-        <div key={index}><HomepageButton {...obj} key={obj.id} /></div>
-      ));
-    }
-  }
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
@@ -165,17 +154,18 @@ export default function Homepage() {
             <p className="text-end p-2 paragraph-text text-white fs-3">{ currentUser ? `Welcome back, ${currentUser}!` : null }</p>
           </div>
           <div className="col-12 row align-items-center mx-auto py-4">
-            <div className="col-12 col-lg-6 text-center">
-              <p className="homeTitle animate__animated animate__zoomIn">Prográmon Palace</p>
+            <header className="col-12 col-lg-6 text-center">
+              <h1 className="homeTitle animate__animated animate__zoomIn">Prográmon Palace</h1>
               <div>
                 <p className="fs-3 home-subhead animate__animated animate__lightSpeedInLeft animate__delay-1s">Gotta fetch 'em all!</p>
               </div>
-            </div>
-            <div className="col-12 col-lg-6 mx-auto my-1 rounded text-center">
-              {homepageBtnRender()}
+            </header>
+            <main className="col-12 col-lg-6 mx-auto my-1 rounded text-center">
+              {isLoggedIn ? btnLoggedInTxt.map((obj, index) => (<div key= {index}><HomepageButton {...obj} key={obj.id} /></div>)) : btnLoggedOutTxt.map((obj, index) => (<div key={index}><HomepageButton {...obj} key={obj.id} /></div>)) }
               {isLoggedIn ? <div><LogOutBtn onLogout={handleLogout} /></div> : <div><LogModal onLogin={handleLogin} onSignup={handleSignup} /></div> }
-            </div>
+            </main>
           </div>
+          <Footer />
         </div>
       </div>
       <AlertModal

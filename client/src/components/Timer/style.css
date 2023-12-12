@@ -15,8 +15,7 @@
       position: static; 
       text-align: center; 
       width: 100%; 
-      border-radius: 0px !important;
-      border-bottom: 2px solid black !important;
+      border-radius: 0px !important; 
       border: none;
     }
 
@@ -27,6 +26,10 @@
     .timer-container p {
         margin-bottom: 5px !important;
       }
+
+    .timer-text {
+      font-size: 18px !important;
+    }
   }
   
   @media screen and (max-width: 480px) {
@@ -36,7 +39,6 @@
       position: static; 
       text-align: center; 
       border-radius: 0px !important;
-      border-bottom: 2px solid black !important;
       border: none;
     }
 
@@ -47,5 +49,9 @@
     .timer-container p {
         margin-bottom: 3px !important;
       }
+    
+    .timer-text {
+      font-size: 14px !important;
+    }
   }
   

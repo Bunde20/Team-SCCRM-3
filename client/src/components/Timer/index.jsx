@@ -45,12 +45,12 @@ const Timer = ({ setTimerReachedZero }) => {
   }, [setTimerReachedZero]);
 
   return (
-    <div className="timer-container">
-      <h3>NEW CARDS IN:</h3>
-      <p>
-        {String(time.hours).padStart(2, '0')}:{String(time.minutes).padStart(2, '0')}:{String(time.seconds).padStart(2, '0')}
-      </p>
-    </div>
+  <div className="timer-container">
+  <h3 className="paragraph-text text-white fs-1 timer-text">NEW CARDS IN:</h3>
+  <p className="paragraph-text text-white fs-1 timer-text">
+    {String(time.hours).padStart(2, '0')}:{String(time.minutes).padStart(2, '0')}:{String(time.seconds).padStart(2, '0')}
+  </p>
+</div>
   );
 };
 

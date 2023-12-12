@@ -63,6 +63,7 @@ export default function Game() {
   const [userHealth, setUserHealth] = useState(0);
   const [maxUserHP, setMaxUserHP] = useState(userHealth);
   const [combatMessage, setCombatMessage] = useState(currentBoss.bossIntro);
+  const [attackButtonDisabled, setAttackButtonDisabled] = useState(false)
   const [attackSpecialDisabled, setAttackSpecialDisabled] = useState(false);
   const [defenseSpecialDisabled, setDefenseSpecialDisabled] = useState(false);
   const [attackTricksterDisabled, setTricksterSpecialDisabled] =
@@ -80,6 +81,8 @@ export default function Game() {
     // Display attack message
     let creatureName = creature.name;
     setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`);
+    // Disable attack button until boss retaliates
+    setAttackButtonDisabled(true)
     console.log("bosshealth", bossHealth);
   };
 
@@ -157,7 +160,7 @@ export default function Game() {
     }, 1500);
   }, [bossHealth, currentBoss]);
 
-  // attack back
+  // Boss attacks back
   useEffect(() => {
     if (playerAttacked && bossIsSleepy === false) {
       setTimeout(() => {
@@ -176,6 +179,8 @@ export default function Game() {
             return newUserHealth;
           });
         }
+        // reset player status to complete turn loop
+        setAttackButtonDisabled(false)
         setPlayerAttacked(false);
         // setCurrentBossAttack(currentBoss.attack[0])
       }, 1000);
@@ -184,6 +189,10 @@ export default function Game() {
       setCombatMessage(`${currentBoss.name} is sleeping! Shhhh...`);
       setPlayerAttacked(false);
       setTimeout(() => {
+        // attack button enabled when boss wakes up to prevent soft-lock
+        setAttackButtonDisabled(false)
+        // Boss wakes up
+        setCombatMessage(`${currentBoss.name} WOKE UP!`)
         setBossIsSleepy(false);
       }, 5000);
     }
@@ -227,6 +236,7 @@ export default function Game() {
                 index={index}
                 attackDamage={creature.attack}
                 onClick={() => handleAttack(creature, creature.attack)}
+                disabled={attackButtonDisabled}
                 key={`attackBtn_${creature.id}`}
               />
               {creature.type === "attacker" && (

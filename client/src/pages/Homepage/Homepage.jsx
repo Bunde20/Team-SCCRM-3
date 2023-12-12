@@ -68,7 +68,6 @@ export default function Homepage() {
       }
       await newUser.save()
   
-      console.log('Successfully added 3 random cards');
     } catch (error) {
       console.error('Error generating random cards:', error.message);
     }
@@ -85,12 +84,9 @@ export default function Homepage() {
       });
       const user = await res.json();
       const logToken = await user.token
-      console.log(logToken);
       
       if (logToken) {
-        console.log(user);
         setIsLoggedIn(true);
-        console.log(`${user.user.username} login successful`);
         const currentUserId = user.user._id;
         const currentUsername = user.user.username;
         localStorage.setItem("token", user.token);
@@ -118,7 +114,6 @@ export default function Homepage() {
       });
       const newUser = await res.json(); 
       if(newUser._id) {
-        console.log(newUser);
         handleLogin(username, password);
         generateRandomCards(newUser);
       } else {
@@ -130,6 +125,7 @@ export default function Homepage() {
       console.error("Error signing up", err);
     }
   }
+
   function homepageBtnRender() {
     if (isLoggedIn) {
       return btnLoggedInTxt.map((obj, index) => (
@@ -148,17 +144,7 @@ export default function Homepage() {
     localStorage.removeItem("currentUsername");
     setIsLoggedIn(false);
   };
-  function logoutBtnRender() {
-    if (isLoggedIn) {
-    return <div><LogOutBtn onLogout={handleLogout} key='4' /></div>; 
-  }
-    
-  }
-  function loginBtnRender() {
-    if (!isLoggedIn) {
-      return <div><LogModal onLogin={handleLogin} onSignup={handleSignup} key='0' /></div>;
-    } 
-  }
+
   const currentUser = localStorage.getItem("currentUsername");
   function checkToken() {
     const token = localStorage.getItem("token");
@@ -166,6 +152,7 @@ export default function Homepage() {
       setIsLoggedIn(true);
     }
   }
+
   useEffect(() => {
     checkToken();
   }, []);
@@ -186,8 +173,7 @@ export default function Homepage() {
             </div>
             <div className="col-12 col-lg-6 mx-auto my-1 rounded text-center">
               {homepageBtnRender()}
-              {loginBtnRender()}
-              {logoutBtnRender()}
+              {isLoggedIn ? <div><LogOutBtn onLogout={handleLogout} /></div> : <div><LogModal onLogin={handleLogin} onSignup={handleSignup} /></div> }
             </div>
           </div>
         </div>

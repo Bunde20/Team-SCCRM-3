@@ -83,7 +83,7 @@ export default function Lobby() {
                         <div className='text-center col-10 mx-auto'>
                             {beginToggle === true ? <BeginButton /> : null}
                         </div>
-                        <h3 className='text-center text-white fs-1 col-12 my-4 paragraph-text border-bottom border-white border-4 rounded-pill'>Select 3 Prográmon</h3>
+                        <h3 className='text-center text-white fs-1 col-12 my-4 paragraph-text border-bottom border-white border-4'>Select 3 Prográmon</h3>
                         <div className='col-12 text-center row py-3' id='cardContainer'>
                             {cards.map((obj, index) =>
                                 <div className='col-xl-3 col-lg-4 col-6' key={index}>

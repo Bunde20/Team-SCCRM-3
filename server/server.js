@@ -11,15 +11,24 @@ const router = require("./routes");
 
 const db = require('./config/connection')
 app.use(cookieParser())
-app.use((req, res, next) => {
-    // Iterate over all cookies and clear them so users dont "stay logged in"
-    const cookies = Object.keys(req.cookies);
-    cookies.forEach((cookieName) => {
-        res.clearCookie(cookieName);
-    });
 
-    next();
-});
+// app.use((req, res, next) => {
+//     // Iterate over all cookies and clear them so users dont "stay logged in"
+//     const cookies = Object.keys(req.cookies);
+//     cookies.forEach((cookieName) => {
+//         res.clearCookie(cookieName);
+//     });
+
+// app.use((req, res, next) => {
+//     // Iterate over all cookies and clear them so users dont "stay logged in"
+//     const cookies = Object.keys(req.cookies);
+//     cookies.forEach((cookieName) => {
+//         res.clearCookie(cookieName);
+//     });
+
+//     next();
+// });
+
 app.use(cors())
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const jwtAuth = require("../../utils/helper");
+// const jwtAuth = require("../../utils/helper");
 const {
   getAllCards,
   createNewCard,
@@ -9,8 +9,8 @@ const {
 } = require("../../controllers/cardControllers");
 
 
-router.route("/").get(jwtAuth,getAllCards).post(createNewCard);
+router.route("/").get(getAllCards).post(createNewCard);
 
-router.route("/:id").get(jwtAuth,getOneCard).put(jwtAuth,updateCard).delete(jwtAuth,deleteCard);
+router.route("/:id").get(getOneCard).put(updateCard).delete(deleteCard);
 
 module.exports = router;

@@ -1,52 +1,102 @@
 # Prográmon Palace
 
+![image](./client/src/images/homeMin.png)
+
 ## Description
-Welcome to Team SCCRM's Prográmon Palace, an exhilarating card game that combines strategy, collection, and intense duels! Immerse yourself in a world where you collect powerful creatures, build your deck, and face off against other players in epic battles. Prográmon Palace is not just a game; it's an adventure into a realm of mythical creatures and strategic gameplay. Prográmon Palace sets itself apart by offering a unique gaming experience centered around collecting creatures, each possessing distinctive abilities, and engaging in strategic duels. As a player, you'll delve into a vast database that meticulously stores creature data, user information, and duel outcomes for comprehensive score-tracking and leaderboards.
+Welcome to Team SCCRM's Prográmon Palace, a Creature-Battler Card Game built with the MERN stack. Immerse yourself in a mythical world where your collection of powerful creatures face off against terrible foes in epic combat! Prográmon Palace leverages MongoDB and Express to support discrete user accounts and card trading features, React's state management system for complex realtime interactions, and MidJourney's generative image AI for rapid deployment of creature art assets. The project aims to establish a scaleable baseline for what could eventually be built into an entertaining and feature-rich gaming product.
+
+**Deployed Link:**  https://programon-palace.onrender.com/
 
 ## Table of Contents
-- [Installation](#installation)
-- [Features](#features)
+- [Log In](#login)
+- [Marketplace](#marketplace)
+- [Trading](#trading)
+- [Lobby](#lobby)
+- [Combat](#combat)
 - [Credits](#credits)
 - [License](#license)
 
-## Installation
+## Login
 
-To get started with Prográmon Palace, follow these installation steps:
+![image](./client/src/images/screenshots/screenshot1.jpg)
 
-1. Clone the Repository: `git@github.com:Bunde20/Team-SCCRM-3.git`
-2. Install Dependencies: Navigate to the frontend directory: `cd prográmon-palace/frontend`
-- Install frontend dependencies: `npm install`
-- Navigate to the backend directory: `cd ../backend` 
-- Install backend dependencies: `npm install` 
-3. Configure the Database and Environment Variables: Set up your MongoDB database and update the configuration in the backend. 
-4. Start the Backend Server: Navigate to the backend directory: `cd backend` start the backend server: `npm start` 
-5. Start the Frontend Development Server: Navigate to the frontend directory: `cd ../frontend` Start the frontend development server: `npm run dev`
-6. Access the Application: Open your web browser and visit http://localhost:3000. 
-7. Create an Account: Sign up for a Prográmon Palace account to start collecting creatures and building your deck. 
-8. Enjoy the Game: Once registered, explore the game, collect creatures, build your deck, and challenge other players to exciting duels. Now you're ready to embark on your Prográmon Palace adventure! Enjoy the game and may the best creatures prevail!
+To get started with Prográmon Palace, follow these steps:
+- Select "Log In" from the main menu screen.
+- Input your login credentials.
+- If you are new to the Palace, select "Sign Up" and create a new account.
+- If you would prefer to use our demo account, log in using the following credentials:  
+
+    ```Username: AshKetchum || Password: missingno```
 ---
-## Features
 
-**Creature Database:**
+## Marketplace
 
-- Explore a diverse library of creatures, each characterized by attributes such as HP, Attack Power, image URL, and a unique function for Special Abilities.
+![image](./client/src/images/screenshots/screenshot2.jpg)
 
-**Card Collection:**
-
-- Immerse yourself in the thrill of collecting cards and strategically building a formidable 6-card hand for epic duels.
-
-**Duels:**
-
-- Engage in riveting duels with straightforward game rules that emphasize strategy and quick thinking.
-
-**Score-tracking and Leaderboards:**
-
-- Your triumphs and defeats are meticulously recorded in the database, allowing for precise score-tracking and the generation of leaderboards.
-
-**Card Art Generation:**
-
-- Experience the seamless production of captivating card art using the powerful combination of MidJourney and MongoDB technologies.
+Here you can find new creatures to add to your deck!
+- In this demo version of the game, four new cards become available every 30 seconds.
+- If you have enough coin, simply press the "Purchase" button to obtain the card of your choice.
+- If you find your wallet is a little light, you'll need to head for the Palace to collect more treasure!
 ---
+
+## Trading
+
+![image](./client/src/images/screenshots/screenshot3.jpg)
+
+**Completing Trades:**
+
+- The trade board allows you to browse current trade offers created by other players.
+- If you are eligible for a trade, select "Complete Trade" to swap creatures.
+- If you are not eligible for any trades, check the Marketplace. Perhaps you can find the card you need!
+
+![image](./client/src/images/screenshots/screenshot4.jpg)
+
+**Creating Trade Offers:**
+
+- You can create your own trade offers in the "My Deck" screen.
+- First, select "Offer Trade" for the Prográmon you'd like to offer.
+- Next, select the Prográmon you'd like in return.
+- Congratulations, you've created a trade offer! Be sure to check your deck regularly. If another player completes your offer, you may have a new friend waiting for you!
+---
+
+## Lobby
+
+![image](./client/src/images/screenshots/screenshot5.jpg)
+
+Before entering the Palace, you'll need to select a team of three Prográmon to bring with you.
+- Choose your strongest Prográmon. Good Attack and Health stats can mean the difference between victory and defeat.
+- There are three types of Prográmon: Attackers, Defenders, and Tricksters. Try to build a team that includes all three, as their special abilities will synergize in battle!
+---
+
+## Combat
+
+![image](./client/src/images/screenshots/screenshot6.jpg)
+
+It is said that untold treasures lie deep beneath Prográmon Palace. If those treasures are to be yours, you will have to face three Palace Guardians!
+  
+**Each Prográmon type has a different special ability:**
+- Attackers can perform a Critical Hit. This deals massive damage to the enemy!
+- Defenders can Heal your party, recovering precious HP needed to survive!
+- Tricksters can put your enemy to sleep, leaving them vulnerable to attack!  
+
+A good Prográmon team can win any battle. Try the following combo to improve your odds of success:
+1. First, put your opponent to sleep with a Trickster. This will buy you time to take other actions.
+2. Next, heal your team with a Defender. You wont have to worry about the enemy retaliating.
+3. Finally, deal a Critical Hit with your Attacker.
+4. If you're quick, you may have time for one more basic Attack before the Guardian wakes up. Make it count!
+
+**Good luck in there, Adventurer!**
+---
+
+## Credits
+
+- <a href="https://github.com/Bunde20">Steven Bunde</a>
+- <a href="https://github.com/CambiG1123">Campbell Gilliland</a>
+- <a href="https://github.com/ChrisDeHaan">Christopher DeHaan</a>
+- <a href="https://github.com/RachelCodes42">Rachel Hochman</a>
+- <a href="https://github.com/Elrond-Hubbard">Michael Marsolo</a>
+---
+
 ## Technologies Used
 
 **Frontend**
@@ -61,19 +111,12 @@ To get started with Prográmon Palace, follow these installation steps:
 
 - Node
 - Express
-- MongoDB (with MidJourney for rapid card art generation)
+- MongoDB
 - bcrypt.js (for password hashing)
+- Axios
 - cors (Cross-Origin Resource Sharing)
 - JWT (JSON Web Tokens)
-- Axios (HTTP client)
----
-## Credits
-
-- <a href="https://github.com/Elrond-Hubbard">Michael Marsolo</a>
-- <a href="https://github.com/ChrisDeHaan">Christopher DeHaan</a>
-- <a href="https://github.com/RachelCodes42">Rachel Hochman</a>
-- <a href="https://github.com/Bunde20">Steven Bunde</a>
-- <a href="https://github.com/CambiG1123">Campbell Gilliland</a>
+- MidJourney
 ---
 ## License
 <!-- Add license badge and explanation here -->

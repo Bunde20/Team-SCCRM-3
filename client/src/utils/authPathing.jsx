@@ -9,15 +9,19 @@ const AuthPathing = ({ component: PageComponent, ...rest }) => {
   const [renderComponent, setRenderComponent] = useState(null);
 
   useEffect(() => {
+    console.log("AuthPathing useEffect")
     const token = localStorage.getItem("token");
+    console.log("token", token);
 // checks if the token exists 
-    if (token ) {
-      setRenderComponent(<PageComponent {...rest} />);
-    } else if (!token ) {
-      setRenderComponent(<Homepage />);
-      navigate("/"); // Navigate to homepage if not authenticated
+if (token ===null  ) {
+    console.log("redirecting to homepage");
+    setRenderComponent(<Homepage />);
+    navigate("/");
+  } else {
+    console.log("rendering page component");
+    setRenderComponent(<PageComponent {...rest} />);
     }
-  }, []);
+  }, [navigate,]);
 
   return renderComponent;
 };

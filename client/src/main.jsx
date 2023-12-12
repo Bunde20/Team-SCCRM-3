@@ -12,6 +12,7 @@ import Game from './pages/Game/Game.jsx'
 import HowToPlay from './pages/Tutorial/HowToPlay.jsx'
 import Trade from './pages/Trade/Trade.jsx'
 import MyDeck from './pages/Deck/MyDeck.jsx'
+import Rewards from './pages/Rewards/Rewards.jsx'
 
 const router = createHashRouter([
   {
@@ -46,6 +47,10 @@ const router = createHashRouter([
       {
         path: '/mydeck',
         element: <MyDeck />
+      },
+      {
+        path: '/rewards',
+        element: <Rewards />
       }
     ]
   }

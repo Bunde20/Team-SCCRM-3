@@ -8,19 +8,19 @@ const userData = [
     username: "AshKetchum",
     email: "veryBest151@yahoo.com",
     password: "missingno",
-    coins: 100
+    coins: 3000
   },
   {
     username: "BrockRock",
     email: "geoDude@gmail.com",
     password: "missingno",
-    coins: 100
+    coins: 3000
   },
   {
     username: "SeaMisty",
     email: "goldeengoldeen@hotmail.com",
     password: "missingno",
-    coins: 100
+    coins: 3000
   },
 ];
 
@@ -249,6 +249,69 @@ const cardData = [
     health: "89",
     coinCost: "12",
     type: "trickster"
+  },
+  {
+    dexNo: "026",
+    name: "Cyberian",
+    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184236794582147223/elrondhubbard_ferocious_siberian_tiger_lounging_in_kingly_suspi_da9bab79-e231-40a1-a8a5-9b19561d8ac9.png?ex=658b3d75&is=6578c875&hm=2fc3dec62555dca1b3caad6aadd9ae3c5daa0510a8e657aec4cef6b70dc60ebe&",
+    attack: "76",
+    health: "95",
+    coinCost: "20",
+    type: "defender"
+  },
+  {
+    dexNo: "027",
+    name: "Rhyspace",
+    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184234993082450021/elrondhubbard_glowing_cosmic_rhinocerous_charging_through_the_s_41a3ab48-d34f-4f1b-a44c-5a201839b9bc.png?ex=658b3bc8&is=6578c6c8&hm=b8a38d838c29db41f594b52432ff501eae8ef9f4bcc2d422cd9e583b27c05178&",
+    attack: "90",
+    health: "78",
+    coinCost: "13",
+    type: "attacker"
+  },
+  {
+    dexNo: "028",
+    name: "Tweeter",
+    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184233907810484275/elrondhubbard_glistening_icy_crane_bird_coveting_the_moon_pokem_1ffc6df9-5bfe-4324-aa1e-10dadf3287f4.png?ex=658b3ac5&is=6578c5c5&hm=ddcec997b855224e5fcf2b0f61a43096977c468fd1ca9ee2263081e45dcd478f&",
+    attack: "82",
+    health: "88",
+    coinCost: "16",
+    type: "trickster"
+  },
+  {
+    dexNo: "029",
+    name: "Terrabite",
+    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184245418989715586/elrondhubbard_a_terrible_lizard_stands_atop_a_pool_of_toxic_slu_09f95111-747f-4104-8c16-bf39b82f88f9.png?ex=658b457e&is=6578d07e&hm=311a67e75e26686390a5be886c742caef7a36c831d9e30816e5da99c41c18ea2&",
+    attack: "124",
+    health: "86",
+    coinCost: "100",
+    type: "attacker"
+  },
+  {
+    dexNo: "030",
+    name: "Assemblus",
+    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184253464134553712/elrondhubbard_menacing_deep_sea_kraken_collecting_ships_pokemon_2e4ca9e4-07ad-497c-8fce-68e058a6f12d.png?ex=658b4cfc&is=6578d7fc&hm=c4741a15ede954b51046d29c863d062d07e8c7823129ac118c6ab316ad68c3a1&",
+    attack: "97",
+    health: "98",
+    coinCost: "100",
+    type: "trickster"
+  },
+  {
+    dexNo: "031",
+    name: "Serviroot",
+    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184250363319173240/elrondhubbard_a_massive_tree_grasping_at_the_earth_pokemon_cute_c902979a-b664-4f9c-80d3-a7c3ad5383d6.png?ex=658b4a18&is=6578d518&hm=70b3ac2f64fa1c1ee8d2dac8e6e9ffbae5aa78baa602a34037a11cb9d35cf842&",
+    attack: "89",
+    health: "134",
+    coinCost: "100",
+    type: "defender"
+  },
+  {
+    dexNo: "032",
+    name: "Gitfetch",
+    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184252270016221294/elrondhubbard_adorable_terrier_holding_bone_in_mouth_pokemon_cu_b946a97c-7723-44fc-92a7-095ee0c91589.png?ex=658b4bdf&is=6578d6df&hm=2fbd7ba2f68af0b354c40910da2e307998c9f02687978bd0cc655004940dac5f&",
+    attack: "5",
+    health: "5",
+    coinCost: "999",
+    type: "friend"
   }
 ];
 

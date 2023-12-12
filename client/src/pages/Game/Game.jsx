@@ -7,15 +7,16 @@ import AttackBtn from "../../components/GameComponents/AttackBtn";
 import AttackSpecialBtn from "../../components/GameComponents/AttackSpecialBtn";
 import DefenseSpecialBtn from "../../components/GameComponents/DefenseSpecialBtn";
 import TricksterSpecialBtn from "../../components/GameComponents/TricksterSpecialBtn";
+import AlertModal from "../../components/AlertModals/AlertModal";
 
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 import mushroomHallBG from "../../images/mushroomHallBG.png";
-import mushroomMin from "../../images/mushroomMin.png"
+import mushroomMin from "../../images/mushroomMin.png";
 import dungeonBG from "../../images/dungeonBG.png";
-import dungeonMin from "../../images/dungeonMin.png"
+import dungeonMin from "../../images/dungeonMin.png";
 import caveBG from "../../images/caveBG.png";
-import caveMin from "../../images/caveMin.png"
+import caveMin from "../../images/caveMin.png";
 import "./Game.css";
 
 const bosses = [
@@ -52,7 +53,7 @@ const bosses = [
 ];
 
 export default function Game() {
-  const [bossAnimation, setBossAnimation] = useState(null)
+  const [bossAnimation, setBossAnimation] = useState(null);
   const [currentBoss, setCurrentBoss] = useState(bosses[0]);
   const [currentBossAttack, setCurrentBossAttack] = useState(
     currentBoss.attack
@@ -60,19 +61,20 @@ export default function Game() {
   let [bossHealth, setBossHealth] = useState(currentBoss.health);
   const [playerAttacked, setPlayerAttacked] = useState(false);
   const [userCards, setUserCards] = useState([]);
-  const [userHealth, setUserHealth] = useState(0);
+  const [userHealth, setUserHealth] = useState(100);
   const [maxUserHP, setMaxUserHP] = useState(userHealth);
   const [combatMessage, setCombatMessage] = useState(currentBoss.bossIntro);
-  const [attackButtonDisabled, setAttackButtonDisabled] = useState(false)
+  const [attackButtonDisabled, setAttackButtonDisabled] = useState(false);
   const [attackSpecialDisabled, setAttackSpecialDisabled] = useState(false);
   const [defenseSpecialDisabled, setDefenseSpecialDisabled] = useState(false);
   const [attackTricksterDisabled, setTricksterSpecialDisabled] =
     useState(false);
   const [bossIsSleepy, setBossIsSleepy] = useState(false);
+  const [showRetreatModal, setShowRetreatModal] = useState(false);
 
   // Deal specified damage to boss
   const handleAttack = (creature, damage) => {
-    setBossAnimation("animate__headShake")
+    setBossAnimation("animate__headShake");
     let newBossHealth = (bossHealth -= damage);
     // stops the progress bar from going into the negatives
     setBossHealth(newBossHealth >= 0 ? newBossHealth : 0);
@@ -82,7 +84,7 @@ export default function Game() {
     let creatureName = creature.name;
     setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`);
     // Disable attack button until boss retaliates
-    setAttackButtonDisabled(true)
+    setAttackButtonDisabled(true);
     console.log("bosshealth", bossHealth);
   };
 
@@ -115,6 +117,11 @@ export default function Game() {
       setCombatMessage(`${creatureName} USED SLEEP!`);
     }
   };
+
+  // Take player back to lobby upon defeat
+  const handleRetreat = () => {
+    window.location.href = '../'
+  }
 
   // On page load...
   useEffect(() => {
@@ -154,7 +161,7 @@ export default function Game() {
           setBossHealth(newBossHealth);
           setCombatMessage(nextBoss.bossIntro);
         } else {
-          setBossAnimation("animate__hinge")
+          setBossAnimation("animate__hinge");
         }
       }
     }, 1500);
@@ -165,7 +172,7 @@ export default function Game() {
     if (playerAttacked && bossIsSleepy === false) {
       setTimeout(() => {
         if (bossHealth > 0) {
-          setBossAnimation("animate__bounceIn")
+          setBossAnimation("animate__bounceIn");
           setCombatMessage(`${currentBoss.name} RETALIATED!!!`);
           setUserHealth((userHealth) => {
             // generate a random attack value based on the boss's attack
@@ -176,11 +183,15 @@ export default function Game() {
             newUserHealth = Math.round(newUserHealth / 2) * 2;
             // Ensure newUserHealth is not negative
             newUserHealth = Math.max(0, newUserHealth);
+            // If boss attack will kill player, show modal
+            if (userHealth <= randomAttack) {
+              setShowRetreatModal(true);
+            }
             return newUserHealth;
           });
         }
         // reset player status to complete turn loop
-        setAttackButtonDisabled(false)
+        setAttackButtonDisabled(false);
         setPlayerAttacked(false);
         // setCurrentBossAttack(currentBoss.attack[0])
       }, 1000);
@@ -190,20 +201,22 @@ export default function Game() {
       setPlayerAttacked(false);
       setTimeout(() => {
         // attack button enabled when boss wakes up to prevent soft-lock
-        setAttackButtonDisabled(false)
+        setAttackButtonDisabled(false);
         // Boss wakes up
-        setCombatMessage(`${currentBoss.name} WOKE UP!`)
+        setCombatMessage(`${currentBoss.name} WOKE UP!`);
         setBossIsSleepy(false);
       }, 5000);
     }
   }),
-    [playerAttacked];
+    [playerAttacked, userHealth];
 
   return (
     <>
       <div
         className="game-bg col-12 bg-dark"
-        style={{ backgroundImage: `url(${currentBoss.background}), url(${currentBoss.bgMin})` }}
+        style={{
+          backgroundImage: `url(${currentBoss.background}), url(${currentBoss.bgMin})`,
+        }}
       >
         <Boss
           animation={bossAnimation}
@@ -270,6 +283,12 @@ export default function Game() {
           ))}
         </div>
       </div>
+      <AlertModal
+        show={showRetreatModal}
+        heading="RETREAT!"
+        message="Your Programon passed out! Run away!!!"
+        handleClose={handleRetreat}
+      />
     </>
   );
 }

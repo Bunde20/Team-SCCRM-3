@@ -120,8 +120,8 @@ export default function Game() {
 
   // Take player back to lobby upon defeat
   const handleRetreat = () => {
-    window.location.href = '../'
-  }
+    window.location.href = "../";
+  };
 
   // On page load...
   useEffect(() => {
@@ -163,8 +163,8 @@ export default function Game() {
         } else {
           setBossAnimation("animate__hinge");
           setTimeout(() => {
-            window.location.href = '/#/rewards'
-          }, 3000)
+            window.location.href = "/#/rewards";
+          }, 3000);
         }
       }
     }, 1500);
@@ -205,9 +205,14 @@ export default function Game() {
       setTimeout(() => {
         // attack button enabled when boss wakes up to prevent soft-lock
         setAttackButtonDisabled(false);
+      }, 5000);
+    }
+    // Set wake up message 5 seconds after boss wakes up.
+    if (bossIsSleepy === true) {
+      setTimeout(() => {
         // Boss wakes up
-        setCombatMessage(`${currentBoss.name} WOKE UP!`);
         setBossIsSleepy(false);
+        setCombatMessage("GET READY!");
       }, 5000);
     }
   }),

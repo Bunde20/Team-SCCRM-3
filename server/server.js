@@ -18,17 +18,10 @@ app.use((req, res, next) => {
     cookies.forEach((cookieName) => {
         res.clearCookie(cookieName);
     });
+    next();
 })
 
-// app.use((req, res, next) => {
-//     // Iterate over all cookies and clear them so users dont "stay logged in"
-//     const cookies = Object.keys(req.cookies);
-//     cookies.forEach((cookieName) => {
-//         res.clearCookie(cookieName);
-//     });
 
-//     next();
-// });
 
 app.use(cors())
 app.use(express.urlencoded({extended: true}))

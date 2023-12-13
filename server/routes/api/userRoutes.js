@@ -1,5 +1,5 @@
 const router = require("express").Router();
-// const jwtAuth = require("../../utils/helper");
+const jwtAuth = require("../../utils/helper");
 const {
   getAllUsers,
   getOneUser,
@@ -11,14 +11,14 @@ const {
 } = require("../../controllers/userControllers");
 
 
-router.route("/").get(getAllUsers).post(createNewUser);
+router.route("/").get(jwtAuth,getAllUsers).post(createNewUser);
 
 // NEVER EVER EVER UPDATE CARDS FROM THIS ENDPOINT.
 // DOING SO WILL WIPE THE PLAYER'S ENTIRE COLLECTION.
-router.route("/:id").get(getOneUser).put(updateUser).delete(deleteUser);
+router.route("/:id").get(jwtAuth,getOneUser).put(jwtAuth,updateUser).delete(deleteUser);
 
 // ALWAYS ALWAYS ALWAYS UPDATE CARDS HERE
-router.route("/:userId/cards/:cardId").put(addUserCard).delete(deleteUserCard)
+router.route("/:userId/cards/:cardId").put(jwtAuth,addUserCard).delete(deleteUserCard)
 
 module.exports = router;
 

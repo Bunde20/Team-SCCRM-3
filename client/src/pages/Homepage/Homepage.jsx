@@ -172,6 +172,9 @@ export default function Homepage() {
       <AlertModal
         heading={modalContent.heading}
         message={modalContent.message}
+        classHeader='home-alert-hd-bg paragraph-text text-white'
+        classBody='fw-bold'
+        classFooter='home-alert-ft-bg'
         updateContent={setModalContent}
         show={showAlert}
         handleClose={handleCloseAlert}
@@ -179,6 +182,9 @@ export default function Homepage() {
       <AlertModal2
         heading="Uh oh!"
         message="Something Went Wrong. Please Try Again!"
+        classHeader='home-alert-hd-bg paragraph-text text-white'
+        classBody='fw-bold'
+        classFooter='home-alert-ft-bg'
         show={showAlert2}
         handleClose={handleCloseAlert2}
         />

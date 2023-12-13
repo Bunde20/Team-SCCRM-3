@@ -48,6 +48,18 @@
     transform: scale(1.1);
 }
 
+.home-alert-hd-bg, .home-alert-ft-bg {
+    border: none;
+}
+
+.home-alert-hd-bg {
+    background-image: linear-gradient(rgb(40, 152, 218), white);
+}
+
+.home-alert-ft-bg {
+    background-image: linear-gradient(white, rgb(40, 152, 218));
+}
+
 @media only screen and (max-width: 750px) {
     .homeTitle {
         font-size: 67px

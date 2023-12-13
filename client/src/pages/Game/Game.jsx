@@ -296,6 +296,9 @@ export default function Game() {
         show={showRetreatModal}
         heading="RETREAT!"
         message="Your Programon passed out! Run away!!!"
+        classHeader='game-alert-hd-bg text-white paragraph-text'
+        classBody='bg-dark text-white fw-bold'
+        classFooter='game-alert-ft-bg'
         handleClose={handleRetreat}
       />
     </>

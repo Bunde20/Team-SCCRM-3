@@ -9,8 +9,8 @@ const {
 } = require("../../controllers/cardControllers");
 
 
-router.route("/").get(jwtAuth,getAllCards).post(createNewCard);
+router.route("/").get(getAllCards).post(createNewCard);
 
-router.route("/:id").get(jwtAuth, getOneCard).put(updateCard).delete(deleteCard);
+router.route("/:id").get(getOneCard).put(updateCard).delete(deleteCard);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import { useRouteError } from "react-router-dom";
 
 import './Error.css'
+import BackButton from "../../components/Buttons/BackButton";
 
 export default function Error() {
     const error = useRouteError()
@@ -13,6 +14,7 @@ export default function Error() {
             <p>
                 <i className='paragraph-text text-white fs-5'>{error.data || error.error.message}</i>
             </p>
+            <BackButton text='Back to Home' />
         </div>
     )
 }

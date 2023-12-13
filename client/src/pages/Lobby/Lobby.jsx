@@ -83,11 +83,11 @@ export default function Lobby() {
                         <div className='text-center col-10 mx-auto'>
                             {beginToggle === true ? <BeginButton /> : null}
                         </div>
-                        <h3 className='text-center text-white fs-1 col-12 my-4 paragraph-text border-bottom border-white border-4'>Select 3 Prográmon</h3>
-                        <div className='d-flex flex-wrap justify-content-center pb-4' id='cardContainer'>
+                        <h3 className='text-center text-white fs-1 col-md-11 col-10 mx-auto my-4 paragraph-text border-bottom border-white border-4'>Select 3 Prográmon</h3>
+                        <div className='d-flex flex-wrap justify-content-center pb-4 col-11 mx-auto' id='cardContainer'>
                             {cards.map((obj, index) =>
                                 <div className='' key={index}>
-                                    <button className={`cardBtn rounded my-1`} onClick={selectClickHandler} id={obj._id}>
+                                    <button className={`cardBtn rounded m-1`} onClick={selectClickHandler} id={obj._id}>
                                         <Card creature={obj} key={obj._id} />
                                     </button>
                                 </div>)}

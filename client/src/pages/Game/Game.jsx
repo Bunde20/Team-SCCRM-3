@@ -162,6 +162,7 @@ export default function Game() {
           setCombatMessage(nextBoss.bossIntro);
         } else {
           setBossAnimation("animate__hinge");
+          localStorage.setItem("playerVictory", true)
           setTimeout(() => {
             window.location.href = "/#/rewards";
           }, 3000);

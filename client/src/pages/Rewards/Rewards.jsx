@@ -4,26 +4,41 @@ import rewardsCoinsImage from '../../images/resized-coins.png'
 import LeaveRewardsButton from '../../components/Buttons/LeaveRewardsButton'
 import { useEffect, useState } from 'react'
 import userAPI from '../../utils/userAPI'
+import { useNavigate } from 'react-router-dom'
 
 export default function Rewards() {
     const [reward, setReward] = useState()
     const [chestClick, setChestClick] = useState(rewardsChestImage)
 
-    function setCoins() {
-        if (!reward) {
-            const value = (20 + Math.floor(Math.random() * 21))
-            setReward(value)
+    const pageLoad = ''
 
-            userAPI.getOneUser(localStorage.getItem('currentUser')).then( res => {
-                let currentCoins = res.data[0].coins
-                let newCoins = currentCoins + value
-                userAPI.updateUserCoins(res.data[0]._id, newCoins)
-            })
-        } else {
-            return
+    useEffect( () => {
+        function winValidation() {
+            let validation = localStorage.getItem('playerVictory')
+            if (validation) {
+                localStorage.removeItem('playerVictory')
+
+                function setCoins() {
+                    if (!reward) { console.log('no reward set')
+                        const value = (20 + Math.floor(Math.random() * 21))
+                        setReward(value)
+            
+                        userAPI.getOneUser(localStorage.getItem('currentUser')).then( res => {
+                            let currentCoins = res.data[0].coins
+                            let newCoins = currentCoins + value
+                            userAPI.updateUserCoins(res.data[0]._id, newCoins)
+                        })
+                    } else {
+                        return
+                    }
+                }
+                setCoins()
+            } else {
+                window.location.href = './#/error'
+            }
         }
-    }
-    setCoins()
+        winValidation()
+    }, [pageLoad])
 
     function imageClick () {
         setChestClick(rewardsCoinsImage)

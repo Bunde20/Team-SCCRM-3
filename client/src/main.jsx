@@ -57,9 +57,6 @@ const router = createHashRouter([
       {
         path: '/mydeck',
         element: <AuthPathing component={MyDeck} />
-        // element: <MyDeck />
-        
-
       },
       {
         path: '/rewards',

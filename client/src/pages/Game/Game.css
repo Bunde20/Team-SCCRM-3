@@ -5,3 +5,17 @@
   background-size: cover;
   background-position: center;
 }
+
+.game-alert-hd-bg, .game-alert-ft-bg {
+  background-image: url(./../../images/deathImage.jpg);
+  opacity: .8;
+  border: none;
+}
+
+ .game-alert-hd-bg {
+  background-position: 50% 25%;
+}
+
+.game-alert-ft-bg {
+  background-position: 50% 55%;
+} 

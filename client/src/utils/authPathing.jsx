@@ -15,7 +15,6 @@ const AuthPathing = ({ component: PageComponent, ...rest }) => {
       setRenderComponent(<Homepage />);
       navigate("/");
     } else {
-      console.log("rendering page component");
       setRenderComponent(<PageComponent {...rest} />);
     }
   }, [navigate]);

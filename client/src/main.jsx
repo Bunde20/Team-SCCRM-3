@@ -29,17 +29,17 @@ const router = createHashRouter([
       {
         path: '/marketplace',
         element: <AuthPathing component={Marketplace} />
-        // element: <Marketplace />
+        
       },
       {
         path: '/lobby',
         element: <AuthPathing component={Lobby} />
-        // element: <Lobby />
+       
       },
       {
         path: '/game',
         element: <AuthPathing component={Game} />
-        // element: <Game />
+      
       },
       {
         path: '/tutorial',
@@ -48,17 +48,17 @@ const router = createHashRouter([
       {
         path: '/trade',
         element: <AuthPathing component={Trade} />
-        // element: <Trade />
+        
       },
       {
         path: '/mydeck',
         element: <AuthPathing component={MyDeck} />
-        // element: <MyDeck />
+        
 
       },
       {
         path: '/rewards',
-        element: <Rewards />
+        element: <AuthPathing component={Rewards} />
       }
     ]
   }

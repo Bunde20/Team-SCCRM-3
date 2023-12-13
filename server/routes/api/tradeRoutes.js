@@ -8,10 +8,10 @@ const {
   deleteOneTradeOffer,
 } = require("../../controllers/tradeControllers");
 
-router.route("/offers").get(jwtAuth,getAllTradeOffers).post(jwtAuth,createNewTradeOffer);
+router.route("/offers").get( getAllTradeOffers).post(createNewTradeOffer);
 
-router.route("/offers/:id").get(jwtAuth,getOneTradeOffer).delete(deleteOneTradeOffer);
+router.route("/offers/:id").get(getOneTradeOffer).delete(deleteOneTradeOffer);
 
-router.route("/:user1/:card1/:user2/:card2").put(jwtAuth,completeTrade);
+router.route("/:user1/:card1/:user2/:card2").put(completeTrade);
 
 module.exports = router;

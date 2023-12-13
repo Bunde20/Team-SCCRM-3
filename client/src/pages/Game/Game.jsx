@@ -18,6 +18,7 @@ import dungeonMin from "../../images/dungeonMin.png";
 import caveBG from "../../images/caveBG.png";
 import caveMin from "../../images/caveMin.png";
 import "./Game.css";
+import "animate.css";
 
 const bosses = [
   {
@@ -120,8 +121,8 @@ export default function Game() {
 
   // Take player back to lobby upon defeat
   const handleRetreat = () => {
-    window.location.href = "../";
-  };
+    window.location.href = '../'
+  }
 
   // On page load...
   useEffect(() => {
@@ -162,10 +163,9 @@ export default function Game() {
           setCombatMessage(nextBoss.bossIntro);
         } else {
           setBossAnimation("animate__hinge");
-          localStorage.setItem("playerVictory", true)
           setTimeout(() => {
-            window.location.href = "/#/rewards";
-          }, 3000);
+            window.location.href = '/#/rewards'
+          }, 3000)
         }
       }
     }, 1500);
@@ -206,14 +206,9 @@ export default function Game() {
       setTimeout(() => {
         // attack button enabled when boss wakes up to prevent soft-lock
         setAttackButtonDisabled(false);
-      }, 5000);
-    }
-    // Set wake up message 5 seconds after boss wakes up.
-    if (bossIsSleepy === true) {
-      setTimeout(() => {
         // Boss wakes up
+        setCombatMessage(`${currentBoss.name} WOKE UP!`);
         setBossIsSleepy(false);
-        setCombatMessage("GET READY!");
       }, 5000);
     }
   }),
@@ -222,7 +217,7 @@ export default function Game() {
   return (
     <>
       <div
-        className="game-bg col-12 bg-dark"
+        className="game-bg bg-dark"
         style={{
           backgroundImage: `url(${currentBoss.background}), url(${currentBoss.bgMin})`,
         }}
@@ -234,18 +229,21 @@ export default function Game() {
           maxHP={currentBoss.health}
           bossHealth={bossHealth}
         />
-        <p className="fs-4 text-light col-xl-3 mx-auto text-center">
+        <p className="text-light text-center middle-text">
           {combatMessage}
         </p>
+        <div className="progress-bar-container">
         <ProgressBar
-          className="my-3 mx-auto col-xl-3"
+          className="my-3 progess team-bar"
           now={userHealth}
           max={maxUserHP}
           label={`${userHealth} HP`}
           variant="primary"
           animated
         />
-        <div className="d-flex justify-content-center">
+        </div>
+        <div className="team-container">
+        <div className="d-flex justify-content-center flex-wrap pb-2">
           {userCards.map((creature, index) => (
             <div
               key={index}
@@ -292,13 +290,11 @@ export default function Game() {
           ))}
         </div>
       </div>
+      </div>
       <AlertModal
         show={showRetreatModal}
         heading="RETREAT!"
         message="Your Programon passed out! Run away!!!"
-        classHeader='game-alert-hd-bg text-white paragraph-text'
-        classBody='bg-dark text-white fw-bold'
-        classFooter='game-alert-ft-bg'
         handleClose={handleRetreat}
       />
     </>

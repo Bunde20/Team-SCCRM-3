@@ -85,13 +85,12 @@ export default function Game() {
     setCombatMessage(`${creatureName.toUpperCase()} ATTACKED!`);
     // Disable attack button until boss retaliates
     setAttackButtonDisabled(true);
-    console.log("bosshealth", bossHealth);
   };
 
   const handleSpecialAttack = (creature) => {
     let creatureType = creature.type;
     let creatureName = creature.name.toUpperCase();
-    console.log("special was clicked", creatureType);
+
     if (creatureType === "attacker") {
       setAttackSpecialDisabled(true);
       let newBossHealth = (bossHealth -= 150);
@@ -127,14 +126,13 @@ export default function Game() {
   useEffect(() => {
     userAPI.getOneUser(localStorage.getItem("currentUser")).then((res) => {
       setUserCards(res.data[0].team);
-      console.log(res.data[0].cards);
     });
   }, []);
 
   // Set player health
   useEffect(() => {
     const healthArray = userCards.map((card) => card.health);
-    console.log("health array", healthArray);
+
     let totalHealth = 0;
     healthArray.forEach((healthValue) => {
       totalHealth += healthValue;
@@ -162,7 +160,7 @@ export default function Game() {
           setCombatMessage(nextBoss.bossIntro);
         } else {
           setBossAnimation("animate__hinge");
-          localStorage.setItem("playerVictory", true)
+          localStorage.setItem("playerVictory", true);
           setTimeout(() => {
             window.location.href = "/#/rewards";
           }, 3000);
@@ -252,7 +250,7 @@ export default function Game() {
               className={`animate__animated animate__fadeInLeftBig animate__delay-${index}s`}
             >
               <Card key={`creature_${creature._id}`} creature={creature} />
-              {console.log("creatureType", creature.type)}
+
               <AttackBtn
                 target={currentBoss}
                 index={index}
@@ -296,9 +294,9 @@ export default function Game() {
         show={showRetreatModal}
         heading="RETREAT!"
         message="Your Programon passed out! Run away!!!"
-        classHeader='game-alert-hd-bg text-white paragraph-text'
-        classBody='bg-dark text-white fw-bold'
-        classFooter='game-alert-ft-bg'
+        classHeader="game-alert-hd-bg text-white paragraph-text"
+        classBody="bg-dark text-white fw-bold"
+        classFooter="game-alert-ft-bg"
         handleClose={handleRetreat}
       />
     </>

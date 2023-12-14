@@ -232,7 +232,6 @@ export default function Game() {
           maxHP={currentBoss.health}
           bossHealth={bossHealth}
         />
-        <p className="text-light col-xl-3 mx-auto text-center" />
         <p className="text-light text-center middle-text">
           {combatMessage}
         </p>

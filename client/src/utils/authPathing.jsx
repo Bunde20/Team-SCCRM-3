@@ -11,7 +11,6 @@ const AuthPathing = ({ component: PageComponent, ...rest }) => {
 
     // checks if the token exists
     if (token === null) {
-      console.log("redirecting to homepage");
       setRenderComponent(<Homepage />);
       navigate("/");
     } else {

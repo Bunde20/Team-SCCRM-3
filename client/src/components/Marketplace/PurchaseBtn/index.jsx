@@ -21,7 +21,6 @@ export default function PurchaseBtn(props) {
     setUserCoins
   ) => {
     const newCoinTotal = userCoins - coinCost;
-    console.log(newCoinTotal);
     userAPI.addUserCard(userId, cardId);
     userAPI.updateUserCoins(userId, newCoinTotal);
     setUserCoins(newCoinTotal);

@@ -16,7 +16,7 @@ export default function Rewards() {
                 localStorage.removeItem('playerVictory')
 
                 function setCoins() {
-                    if (!reward) { console.log('no reward set')
+                    if (!reward) {
                         const value = (20 + Math.floor(Math.random() * 21))
                         setReward(value)
             

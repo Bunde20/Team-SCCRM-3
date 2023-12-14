@@ -13,15 +13,11 @@ class Programon {
 
     this.dealDamage = function (target) {
       target.health -= this.attack;
-      console.log(
-        `${this.name} attacked! ${target.name} has ${target.health} health!`
-      );
       if (gameState.playerTurn === true) {
         gameState.playerTurn = false;
       } else {
         gameState.player = true;
       }
-      console.log(`${this.name}'s turn is over!`);
     };
 
   }

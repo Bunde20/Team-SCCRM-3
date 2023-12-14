@@ -4,13 +4,10 @@ import rewardsCoinsImage from '../../images/resized-coins.png'
 import LeaveRewardsButton from '../../components/Buttons/LeaveRewardsButton'
 import { useEffect, useState } from 'react'
 import userAPI from '../../utils/userAPI'
-import { useNavigate } from 'react-router-dom'
 
 export default function Rewards() {
     const [reward, setReward] = useState()
     const [chestClick, setChestClick] = useState(rewardsChestImage)
-
-    const pageLoad = ''
 
     useEffect( () => {
         function winValidation() {
@@ -38,14 +35,10 @@ export default function Rewards() {
             }
         }
         winValidation()
-    }, [pageLoad])
+    }, [])
 
     function imageClick () {
         setChestClick(rewardsCoinsImage)
-    }
-
-    function leaveHandler() {
-        console.log('im useless')
     }
 
     return (
@@ -58,7 +51,7 @@ export default function Rewards() {
                     </div>
                     <p className='paragraph-text my-3 fs-3 fw-bold'>{chestClick === rewardsChestImage ? 'Click the chest for your rewards.' : `You've received ${reward} coins.` }</p>
                     <div className='mt-3 col-md-6 col-8 mx-auto'>
-                        <LeaveRewardsButton text='Leave' path='/' leaveHandler={leaveHandler} />
+                        <LeaveRewardsButton text='Leave' path='/' />
                     </div>
                 </main>
             </div>

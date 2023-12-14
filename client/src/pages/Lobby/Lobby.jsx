@@ -9,8 +9,6 @@ import userAPI from '../../utils/userAPI'
 import './Lobby.css'
 
 export default function Lobby() {
-    const pageLoad = ''
-
     const [cards, setCards] = useState([])
     const [cardsChosen, setCardsChosen] = useState([])
     const [beginToggle, setBeginToggle] = useState(false)
@@ -27,7 +25,7 @@ export default function Lobby() {
         }
         fetchCards();
 
-    }, [pageLoad])
+    }, [])
 
     function selectClickHandler(e) {
         const cardExists = cardsChosen.filter((obj) => obj._id === e.target.id).length > 0

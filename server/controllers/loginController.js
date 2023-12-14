@@ -5,8 +5,6 @@ const User = require("../models/User");
 const jwt = require('jsonwebtoken')
 const secretKey = process.env.SECRET_KEY
 
-
-
 const getUserPasswordCheck = async (req, res) => {
     try{
         const {username, password} = req.body
@@ -27,12 +25,7 @@ if (!passMatch) {
 }
 if (userMatch && passMatch) {
     const token = jwt.sign({ _id: userMatch._id }, secretKey, { expiresIn: '24h' });
-    console.log('password matches')
 //    now it should be adding the token to the user's tokens array
-
-   
-    
-res.cookie('token', token, { httpOnly: true })
     
     res.status(200).json({ user: userMatch, token });
 }

@@ -87,17 +87,19 @@ export default function Game() {
     setAttackButtonDisabled(true);
   };
 
+  // Special attack effects are applied conditionally based on creature type
   const handleSpecialAttack = (creature) => {
     let creatureType = creature.type;
     let creatureName = creature.name.toUpperCase();
-
+    // Attackers deal a flat 150 damage upon critical hit
     if (creatureType === "attacker") {
       setAttackSpecialDisabled(true);
       let newBossHealth = (bossHealth -= 150);
       setBossHealth(newBossHealth >= 0 ? newBossHealth : 0);
       setPlayerAttacked(true);
-      setCombatMessage(`${creatureName} USED SPECIAL ATTACK!`);
+      setCombatMessage(`${creatureName} USED CRITICAL HIT!`);
     }
+    // Defenders heal the party for a flat 100 points
     if (creatureType === "defender") {
       setDefenseSpecialDisabled(true);
       setUserHealth((userHealth) => {
@@ -109,6 +111,7 @@ export default function Game() {
       setPlayerAttacked(true);
       setCombatMessage(`${creatureName} USED HEAL!`);
     }
+    // Tricksters set boss isSleepy state to true, bypassing boss retaliation in turn loop
     if (creatureType === "trickster") {
       setTricksterSpecialDisabled(true);
       setBossIsSleepy(true);
@@ -132,12 +135,11 @@ export default function Game() {
   // Set player health
   useEffect(() => {
     const healthArray = userCards.map((card) => card.health);
-
+    // The player's health bar is the combined total of their team's health stat
     let totalHealth = 0;
     healthArray.forEach((healthValue) => {
       totalHealth += healthValue;
     });
-
     setMaxUserHP(totalHealth);
     setUserHealth(totalHealth);
   }, [userCards]);
@@ -146,11 +148,13 @@ export default function Game() {
   useEffect(() => {
     // have to set a timeout otherwise the player will be attacked when the new boss is loaded
     setTimeout(() => {
+      // Upon boss defeat, find the index of the current boss and iterate to the next boss in the array.
       if (bossHealth <= 0) {
         let currentIndex = bosses.indexOf(currentBoss);
         if (currentIndex < bosses.length - 1) {
           const nextBoss = bosses[currentIndex + 1];
           const newBossHealth = nextBoss.health;
+          // Set all necessary values for next battle.
           setCurrentBoss(nextBoss);
           setCurrentBossAttack(nextBoss.attack);
           setAttackSpecialDisabled(false);
@@ -159,6 +163,7 @@ export default function Game() {
           setBossHealth(newBossHealth);
           setCombatMessage(nextBoss.bossIntro);
         } else {
+          // When there are no bosses remaining, generate victory token and redirect to rewards screen
           setBossAnimation("animate__hinge");
           localStorage.setItem("playerVictory", true);
           setTimeout(() => {
@@ -195,7 +200,6 @@ export default function Game() {
         // reset player status to complete turn loop
         setAttackButtonDisabled(false);
         setPlayerAttacked(false);
-        // setCurrentBossAttack(currentBoss.attack[0])
       }, 1000);
     }
     if (playerAttacked && bossIsSleepy === true) {

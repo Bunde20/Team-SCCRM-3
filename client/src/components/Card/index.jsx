@@ -40,11 +40,11 @@ function Card({ creature }) {
         />
         <div className="d-flex justify-content-between stats">
           <div className="d-flex health-container"> 
-          <p className="">{creature.health}</p>
+          <p className="health">{creature.health}</p>
             <FontAwesomeIcon className="fs-4 mt-1 mx-1 health-icon" icon={faHeart}/>
           </div>
           <div className="d-flex attack-container"> 
-          <p className="">{creature.attack}</p>
+          <p className="attack">{creature.attack}</p>
             <FontAwesomeIcon className="fs-4 mt-1 mx-1 attack-icon" icon={faBullseye}/>
           </div>
               

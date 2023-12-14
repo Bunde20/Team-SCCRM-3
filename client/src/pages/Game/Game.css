@@ -6,16 +6,231 @@
   background-position: center;
 }
 
-.game-alert-hd-bg, .game-alert-ft-bg {
+.game-alert-hd-bg,
+.game-alert-ft-bg {
   background-image: url(./../../images/deathImage.jpg);
   opacity: .8;
   border: none;
 }
 
- .game-alert-hd-bg {
+.game-alert-hd-bg {
   background-position: 50% 25%;
 }
 
 .game-alert-ft-bg {
   background-position: 50% 55%;
-} 
+}
+
+.game-bg {
+  background-image: url("../../images/dungeonBG.png"), url("../../images/dungeonMin.png");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.purchase-button {
+  font-size: 22px;
+}
+
+@media (max-width: 1200px) and (min-width: 845px) {
+  .card-container .creature {
+    max-width: 180px;
+    height: 280px;
+  }
+
+  .creature-header h2 {
+    font-size: 20px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .creature-image {
+    border: 2px solid black;
+    max-width: 70%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .attack,
+  .health {
+    width: auto !important;
+    font-size: 20px !important;
+  }
+
+  .health-icon,
+  .attack-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .card-container .button-container {
+    width: 240px;
+    overflow: hidden;
+  }
+
+  .card-container,
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .purchase-button {
+    width: 180px;
+    height: 28px;
+    padding: 0px;
+    text-align: center !important;
+    font-size: 15px !important;
+  }
+
+  .middle-text {
+    font-size: 17px !important;
+  }
+
+  .progress {
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+  }
+
+  .boss-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .boss-name {
+    font-size: 24px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .boss-health {
+    max-width: 80%;
+    width: 100%;
+  }
+
+  .boss-image {
+    max-width: 80%;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .boss-health-bar {
+    width: 80%;
+  }
+
+  .middle-text {
+    font-size: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  .progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 844px) and (min-width: 481px) {
+  .card-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    margin-bottom: 1px;
+  }
+
+  .card-container .creature {
+    max-width: 150px;
+    height: 230px;
+  }
+
+  .card-container .button-container {
+    width: 150px;
+  }
+
+  .creature-header h2 {
+    font-size: 17px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .attack,
+  .health {
+    width: auto !important;
+    font-size: 18px !important;
+  }
+
+  .health-icon,
+  .attack-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .purchase-button {
+    width: 150px;
+    height: 28px;
+    padding: 0px;
+    text-align: center !important;
+    font-size: 14px !important;
+  }
+
+  .middle-text {
+    font-size: 14px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .progress {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .card-container .purchase-button {
+    width: 120px;
+    font-size: 12px !important;
+  }
+
+  .creature-header h2 {
+    font-size: 12px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .creature-image{
+    max-width: 100% !important;
+  }
+
+  .attack,
+  .health {
+    width: auto !important;
+    font-size: 14px !important;
+  }
+
+  .health-icon,
+  .attack-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .purchase-button{
+    font-size: 10px !important;
+    padding: 0px !important;
+  }
+
+  .progrss-bar-container {
+    margin: 0px !important;
+  }
+
+}

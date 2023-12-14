@@ -232,18 +232,24 @@ export default function Game() {
           maxHP={currentBoss.health}
           bossHealth={bossHealth}
         />
-        <p className="fs-4 text-light col-xl-3 mx-auto text-center">
+        <p className="text-light col-xl-3 mx-auto text-center" />
+        <p className="text-light text-center middle-text">
           {combatMessage}
         </p>
+        <div className="progress-bar-container">
+        <div className="team-bar">
         <ProgressBar
-          className="my-3 mx-auto col-xl-3"
+          className="my-3 col-12 progress team-progress-bar"
           now={userHealth}
           max={maxUserHP}
           label={`${userHealth} HP`}
           variant="primary"
           animated
         />
-        <div className="d-flex justify-content-center">
+        </div>
+        </div>
+        <div className="team-container">
+        <div className="d-flex justify-content-center pb-2">
           {userCards.map((creature, index) => (
             <div
               key={index}
@@ -289,6 +295,7 @@ export default function Game() {
             </div>
           ))}
         </div>
+      </div>
       </div>
       <AlertModal
         show={showRetreatModal}

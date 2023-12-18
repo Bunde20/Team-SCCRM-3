@@ -5,7 +5,7 @@
 ## Description
 Welcome to Team SCCRM's Prográmon Palace, a Creature-Battler Card Game built with the MERN stack. Immerse yourself in a mythical world where your collection of powerful creatures face off against terrible foes in epic combat! Prográmon Palace leverages MongoDB and Express to support discrete user accounts and card trading features, React's state management system for complex realtime interactions, and MidJourney's generative image AI for rapid deployment of creature art assets. The project aims to establish a scaleable baseline for what could eventually be built into an entertaining and feature-rich gaming product.
 
-**Deployed Link:**  [https://programon-palace.onrender.com/](https://programon-palace-c417e58495b0.herokuapp.com/)
+**Deployed Link:**  https://programon-palace-c417e58495b0.herokuapp.com/
 
 ## Table of Contents
 - [Log In](#login)

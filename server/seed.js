@@ -28,7 +28,8 @@ const cardData = [
   {
     dexNo: "001",
     name: "Varchar",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367839706759188/elrondhubbard_Molten_Lava_Salamander_in_Inferno_Pit_pokemon_cut_70ff1890-032d-47e4-8c54-462fa38bd5aa.png?ex=657d2a37&is=656ab537&hm=553aeebd6f6b57300fe4ea8e5475a1dd2d6a91376fac22a6236faa3a2af05dc6&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367839706759188/elrondhubbard_Molten_Lava_Salamander_in_Inferno_Pit_pokemon_cut_70ff1890-032d-47e4-8c54-462fa38bd5aa.png?ex=657d2a37&is=656ab537&hm=553aeebd6f6b57300fe4ea8e5475a1dd2d6a91376fac22a6236faa3a2af05dc6&",
+    image: "https://ik.imagekit.io/en4cpe64r/varchar.png?updatedAt=1709148401085",
     attack: "91",
     health: "77",
     coinCost: "20",
@@ -37,7 +38,8 @@ const cardData = [
   {
     dexNo: "002",
     name: "Swinteger",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367652103934083/elrondhubbard_Bioluminescent_Deep_Sea_Leviathan_in_Abyssal_Dept_277a89b2-b14a-4060-b3c6-ff25319d545a.png?ex=657d2a0a&is=656ab50a&hm=b67b50b3a79a9cb76eaab830542be6dbe1c17f0dd6f4f5c1eb2cfa82fdd469c0&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367652103934083/elrondhubbard_Bioluminescent_Deep_Sea_Leviathan_in_Abyssal_Dept_277a89b2-b14a-4060-b3c6-ff25319d545a.png?ex=657d2a0a&is=656ab50a&hm=b67b50b3a79a9cb76eaab830542be6dbe1c17f0dd6f4f5c1eb2cfa82fdd469c0&",
+    image: "https://ik.imagekit.io/en4cpe64r/swinteger.png?updatedAt=1709148453007",
     attack: "71",
     health: "94",
     coinCost: "20",
@@ -46,7 +48,8 @@ const cardData = [
   {
     dexNo: "003",
     name: "Leafarray",
-    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1179031805052071987/elrondhubbard_Enchanted_Forest_Sprite_with_Luminescent_Wings__p_dd57d35e-f384-4686-987e-8052115aca70.png?ex=65784def&is=6565d8ef&hm=414d9ce42ba3b62fe9c7e26e79b96c83d6a19c2229d3585a751430520245c1da&",
+    // image: "https://cdn.discordapp.com/attachments/1062551659168944249/1179031805052071987/elrondhubbard_Enchanted_Forest_Sprite_with_Luminescent_Wings__p_dd57d35e-f384-4686-987e-8052115aca70.png?ex=65784def&is=6565d8ef&hm=414d9ce42ba3b62fe9c7e26e79b96c83d6a19c2229d3585a751430520245c1da&",
+    image: "https://ik.imagekit.io/en4cpe64r/leafarray.png?updatedAt=1709148513840",
     attack: "87",
     health: "82",
     coinCost: "20",
@@ -55,7 +58,8 @@ const cardData = [
   {
     dexNo: "004",
     name: "Galaxys",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367652586258472/elrondhubbard_Celestial_Aurora_Butterfly_in_Enchanted_Garden_po_e414a604-d4e2-42ad-80dd-f87cbaf772d6.png?ex=657d2a0a&is=656ab50a&hm=929d62dd329e5e8e24b4f93fedae9a49d545d794ad6c968fa77e699a41746054&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367652586258472/elrondhubbard_Celestial_Aurora_Butterfly_in_Enchanted_Garden_po_e414a604-d4e2-42ad-80dd-f87cbaf772d6.png?ex=657d2a0a&is=656ab50a&hm=929d62dd329e5e8e24b4f93fedae9a49d545d794ad6c968fa77e699a41746054&",
+    image: "https://ik.imagekit.io/en4cpe64r/galaxys.png?updatedAt=1709149270058",
     attack: "74",
     health: "92",
     coinCost: "16",
@@ -64,7 +68,8 @@ const cardData = [
   {
     dexNo: "005",
     name: "Incognibro",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367653223813260/elrondhubbard_Steel_Golem_Knight_in_Ancient_Citadel_pokemon_cut_b60c5287-b62f-40f0-aeb7-e34aa5dce527.png?ex=657d2a0a&is=656ab50a&hm=2e61c53fe8fc7e2d182ebb3b92fe51dc8ff82db2a732bc55ff87675602cf4371&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367653223813260/elrondhubbard_Steel_Golem_Knight_in_Ancient_Citadel_pokemon_cut_b60c5287-b62f-40f0-aeb7-e34aa5dce527.png?ex=657d2a0a&is=656ab50a&hm=2e61c53fe8fc7e2d182ebb3b92fe51dc8ff82db2a732bc55ff87675602cf4371&",
+    image: "https://ik.imagekit.io/en4cpe64r/incognibro.png?updatedAt=1709149270212",
     attack: "85",
     health: "85",
     coinCost: "13",
@@ -73,7 +78,8 @@ const cardData = [
   {
     dexNo: "006",
     name: "Coalicon",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367653794217984/elrondhubbard_Demonic_Inferno_Imp_amidst_Hellfire_Flames_pokemo_b302d2b5-1275-4db9-b4e1-4720a55d2263.png?ex=657d2a0a&is=656ab50a&hm=b00be314aae9a09171447886f5f4ff861fba4a99150e359445fe3df588334d1e&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367653794217984/elrondhubbard_Demonic_Inferno_Imp_amidst_Hellfire_Flames_pokemo_b302d2b5-1275-4db9-b4e1-4720a55d2263.png?ex=657d2a0a&is=656ab50a&hm=b00be314aae9a09171447886f5f4ff861fba4a99150e359445fe3df588334d1e&",
+    image: "https://ik.imagekit.io/en4cpe64r/coalicon.png?updatedAt=1709149270210",
     attack: "83",
     health: "88",
     coinCost: "11",
@@ -82,7 +88,8 @@ const cardData = [
   {
     dexNo: "007",
     name: "Mirefox",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367654448545802/elrondhubbard_Spectral_Ghost_Wolf_haunting_Abandoned_Graveyard__9c6c5b18-ff38-4ba3-a77b-6c664a1fc29b.png?ex=657d2a0a&is=656ab50a&hm=954d73778c62c624d2c93c92326e772f0741bcd1227deebb4227d64f928e0adf&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367654448545802/elrondhubbard_Spectral_Ghost_Wolf_haunting_Abandoned_Graveyard__9c6c5b18-ff38-4ba3-a77b-6c664a1fc29b.png?ex=657d2a0a&is=656ab50a&hm=954d73778c62c624d2c93c92326e772f0741bcd1227deebb4227d64f928e0adf&",
+    image: "https://ik.imagekit.io/en4cpe64r/mirefox.png?updatedAt=1709149270075",
     attack: "98",
     health: "76",
     coinCost: "14",
@@ -91,7 +98,8 @@ const cardData = [
   {
     dexNo: "008",
     name: "Sunbrave",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367655350325309/elrondhubbard_Mystical_Sun_Lion_basking_in_Solar_Radiance_pokem_d7e8cb46-35a5-4474-a02a-f623e6bf2e0f.png?ex=657d2a0b&is=656ab50b&hm=b82eaa4f9d740894e4256bb178010d735e0cfe5f97734fba0a442fbcf9a49949&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367655350325309/elrondhubbard_Mystical_Sun_Lion_basking_in_Solar_Radiance_pokem_d7e8cb46-35a5-4474-a02a-f623e6bf2e0f.png?ex=657d2a0b&is=656ab50b&hm=b82eaa4f9d740894e4256bb178010d735e0cfe5f97734fba0a442fbcf9a49949&",
+    image: "https://ik.imagekit.io/en4cpe64r/sunbrave.png?updatedAt=1709149270053",
     attack: "71",
     health: "99",
     coinCost: "19",
@@ -100,7 +108,8 @@ const cardData = [
   {
     dexNo: "009",
     name: "Thermaltake",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367655937507379/elrondhubbard_Crystalized_Frost_Wyvern_in_Glacial_Glacier_pokem_51eced29-3d55-440d-9f73-5f8da6b2a1cb.png?ex=657d2a0b&is=656ab50b&hm=60bfcf0209fecd16a998a97fa19453c86151baf00c02b933d85866e909d2a4c3&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367655937507379/elrondhubbard_Crystalized_Frost_Wyvern_in_Glacial_Glacier_pokem_51eced29-3d55-440d-9f73-5f8da6b2a1cb.png?ex=657d2a0b&is=656ab50b&hm=60bfcf0209fecd16a998a97fa19453c86151baf00c02b933d85866e909d2a4c3&",
+    image: "https://ik.imagekit.io/en4cpe64r/thermaltake.png?updatedAt=1709149269687",
     attack: "99",
     health: "70",
     coinCost: "25",
@@ -109,7 +118,8 @@ const cardData = [
   {
     dexNo: "010",
     name: "Robject",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367656486977586/elrondhubbard_Mechanical_Steam_Robot_in_Industrial_City_pokemon_c4668b34-c3ae-4fb6-8b08-c521ce132bd6.png?ex=657d2a0b&is=656ab50b&hm=f6fe960cfe3ec28a726f3d1f8f6044a41b0265d60a2fb026cbf825d2d4d058f5&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367656486977586/elrondhubbard_Mechanical_Steam_Robot_in_Industrial_City_pokemon_c4668b34-c3ae-4fb6-8b08-c521ce132bd6.png?ex=657d2a0b&is=656ab50b&hm=f6fe960cfe3ec28a726f3d1f8f6044a41b0265d60a2fb026cbf825d2d4d058f5&",
+    image: "https://ik.imagekit.io/en4cpe64r/robject.png?updatedAt=1709149270273",
     attack: "91",
     health: "79",
     coinCost: "22",
@@ -118,7 +128,8 @@ const cardData = [
   {
     dexNo: "011",
     name: "Thingtone",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367657069989989/elrondhubbard_Cursed_Swamp_Wraith_emerging_from_Murky_Waters_po_9d4155c9-1fdb-40bf-b38f-ffa938aa2aa7.png?ex=657d2a0b&is=656ab50b&hm=6fa040628a5595fbecf130b501be14a4e75fc2338d53b539df0407a9fc5f197c&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367657069989989/elrondhubbard_Cursed_Swamp_Wraith_emerging_from_Murky_Waters_po_9d4155c9-1fdb-40bf-b38f-ffa938aa2aa7.png?ex=657d2a0b&is=656ab50b&hm=6fa040628a5595fbecf130b501be14a4e75fc2338d53b539df0407a9fc5f197c&",
+    image: "https://ik.imagekit.io/en4cpe64r/thingtone.png?updatedAt=1709149270083",
     attack: "75",
     health: "97",
     coinCost: "17",
@@ -127,7 +138,8 @@ const cardData = [
   {
     dexNo: "012",
     name: "Duolingo",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367657606840360/elrondhubbard_Elusive_Moonlight_Owl_in_Mystic_Woods_pokemon_hor_f61cdf34-0ba1-4962-b904-754fed8c1ff7.png?ex=657d2a0b&is=656ab50b&hm=b0b765a6255cf3d160a2c0ea89205360fc664ef6cf91d40f932ec8037e2d1273&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367657606840360/elrondhubbard_Elusive_Moonlight_Owl_in_Mystic_Woods_pokemon_hor_f61cdf34-0ba1-4962-b904-754fed8c1ff7.png?ex=657d2a0b&is=656ab50b&hm=b0b765a6255cf3d160a2c0ea89205360fc664ef6cf91d40f932ec8037e2d1273&",
+    image: "https://ik.imagekit.io/en4cpe64r/duolingo.png?updatedAt=1709149270143",
     attack: "70",
     health: "96",
     coinCost: "12",

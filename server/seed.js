@@ -148,7 +148,8 @@ const cardData = [
   {
     dexNo: "013",
     name: "Geekachu",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367838473617448/elrondhubbard_Electric_Storm_Elemental_crackling_with_Power_pok_291f0f45-a906-4309-ad31-4eea2f6a2f6c.png?ex=657d2a36&is=656ab536&hm=16156181c4bae0146261751923a463e9a4a134fe4ae750a742ddfbbb9161fde0&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367838473617448/elrondhubbard_Electric_Storm_Elemental_crackling_with_Power_pok_291f0f45-a906-4309-ad31-4eea2f6a2f6c.png?ex=657d2a36&is=656ab536&hm=16156181c4bae0146261751923a463e9a4a134fe4ae750a742ddfbbb9161fde0&",
+    image: "https://ik.imagekit.io/en4cpe64r/geekachu.png?updatedAt=1709149771091",
     attack: "96",
     health: "73",
     coinCost: "18",
@@ -157,7 +158,8 @@ const cardData = [
   {
     dexNo: "014",
     name: "Raycast",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367839060828281/elrondhubbard_Ancient_Stone_Sphinx_guarding_Desert_Oasis_pokemo_de8a8e07-849b-400f-a372-9323bda66b0c.png?ex=657d2a37&is=656ab537&hm=69eeef515832c43fd80f2fd580662661549aee6bca3eeaed2332bb409e2675b2&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367839060828281/elrondhubbard_Ancient_Stone_Sphinx_guarding_Desert_Oasis_pokemo_de8a8e07-849b-400f-a372-9323bda66b0c.png?ex=657d2a37&is=656ab537&hm=69eeef515832c43fd80f2fd580662661549aee6bca3eeaed2332bb409e2675b2&",
+    image: "https://ik.imagekit.io/en4cpe64r/raycast.png?updatedAt=1709149771077",
     attack: "88",
     health: "86",
     coinCost: "11",
@@ -166,7 +168,8 @@ const cardData = [
   {
     dexNo: "015",
     name: "Growzilla",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1178896087663259748/elrondhubbard_Fierce_Fire_Drake_in_Volcanic_Lair__pokemon_5e6db646-bb15-4376-994d-0b2a2001e077.png?ex=6577cf8a&is=65655a8a&hm=b9e0673939150873757be81b83d88d7457498a1a8762ad991f31f45e97695c66&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1178896087663259748/elrondhubbard_Fierce_Fire_Drake_in_Volcanic_Lair__pokemon_5e6db646-bb15-4376-994d-0b2a2001e077.png?ex=6577cf8a&is=65655a8a&hm=b9e0673939150873757be81b83d88d7457498a1a8762ad991f31f45e97695c66&",
+    image: "https://ik.imagekit.io/en4cpe64r/growzilla.png?updatedAt=1709149771133",
     attack: "98",
     health: "78",
     coinCost: "21",
@@ -175,7 +178,8 @@ const cardData = [
   {
     dexNo: "016",
     name: "Unicode",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367840302342154/elrondhubbard_Luminous_Sky_Unicorn_with_Radiant_Horn_pokemon_cu_6ee8562f-5bd7-4511-b323-2c92f6da94d6.png?ex=657d2a37&is=656ab537&hm=7b1db0f83e1025d263f2e40a5e09eb4b5ef6810077df068f5bdbeebd416ea3ce&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367840302342154/elrondhubbard_Luminous_Sky_Unicorn_with_Radiant_Horn_pokemon_cu_6ee8562f-5bd7-4511-b323-2c92f6da94d6.png?ex=657d2a37&is=656ab537&hm=7b1db0f83e1025d263f2e40a5e09eb4b5ef6810077df068f5bdbeebd416ea3ce&",
+    image: "https://ik.imagekit.io/en4cpe64r/unicode.png?updatedAt=1709149770870",
     attack: "81",
     health: "89",
     coinCost: "10",
@@ -184,7 +188,8 @@ const cardData = [
   {
     dexNo: "017",
     name: "Snowflape",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367840931495956/elrondhubbard_Frozen_Ice_Yeti_in_Arctic_Blizzard_pokemon_cute_940df5f6-655a-4b06-89fe-baed5f86531b.png?ex=657d2a37&is=656ab537&hm=be72f299f0bf4f2382968eb02dafc0d487a56085366bdbef9995513dd3990be9&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367840931495956/elrondhubbard_Frozen_Ice_Yeti_in_Arctic_Blizzard_pokemon_cute_940df5f6-655a-4b06-89fe-baed5f86531b.png?ex=657d2a37&is=656ab537&hm=be72f299f0bf4f2382968eb02dafc0d487a56085366bdbef9995513dd3990be9&",
+    image: "https://ik.imagekit.io/en4cpe64r/snowflape.png?updatedAt=1709149770817",
     attack: "79",
     health: "92",
     coinCost: "15",
@@ -193,7 +198,8 @@ const cardData = [
   {
     dexNo: "018",
     name: "Webdev",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367841485127740/elrondhubbard_Venomous_Shadow_Spider_in_Dark_Abyss_pokemon_cute_70f35d2b-0b6c-4964-93c7-9674a86a2d15.png?ex=657d2a37&is=656ab537&hm=140dded29a62e0b1187ff5d31849d9c3ff0df626c03c97e32bff57c95b5a7337&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367841485127740/elrondhubbard_Venomous_Shadow_Spider_in_Dark_Abyss_pokemon_cute_70f35d2b-0b6c-4964-93c7-9674a86a2d15.png?ex=657d2a37&is=656ab537&hm=140dded29a62e0b1187ff5d31849d9c3ff0df626c03c97e32bff57c95b5a7337&",
+    image: "https://ik.imagekit.io/en4cpe64r/webdev.png?updatedAt=1709149770790",
     attack: "94",
     health: "76",
     coinCost: "13",
@@ -202,7 +208,8 @@ const cardData = [
   {
     dexNo: "019",
     name: "Wyloop",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367841954906183/elrondhubbard_Celestial_Star_Phoenix_soaring_through_Cosmos_pok_d913cd2c-af7f-4afc-aa12-463e893e2c76.png?ex=657d2a37&is=656ab537&hm=c2da386c30f79942e8cc985f1d51102899ebb22a3b1a1dab732f2997963fe03d&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367841954906183/elrondhubbard_Celestial_Star_Phoenix_soaring_through_Cosmos_pok_d913cd2c-af7f-4afc-aa12-463e893e2c76.png?ex=657d2a37&is=656ab537&hm=c2da386c30f79942e8cc985f1d51102899ebb22a3b1a1dab732f2997963fe03d&",
+    image: "https://ik.imagekit.io/en4cpe64r/wyloop.png?updatedAt=1709149770804",
     attack: "82",
     health: "85",
     coinCost: "16",
@@ -211,7 +218,8 @@ const cardData = [
   {
     dexNo: "020",
     name: "Cobol",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367842554675261/elrondhubbard_Ironclad_Earth_Golem_in_Crystal_Cavern_pokemon_f3ad5233-9362-4659-8272-62408dcf49ca.png?ex=657d2a37&is=656ab537&hm=1fa79e44a954556f13ba7aed86d806c90ae46fac40363f9b06410d01ab58405e&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367842554675261/elrondhubbard_Ironclad_Earth_Golem_in_Crystal_Cavern_pokemon_f3ad5233-9362-4659-8272-62408dcf49ca.png?ex=657d2a37&is=656ab537&hm=1fa79e44a954556f13ba7aed86d806c90ae46fac40363f9b06410d01ab58405e&",
+    image: "https://ik.imagekit.io/en4cpe64r/cobol.png?updatedAt=1709149770685",
     attack: "72",
     health: "99",
     coinCost: "23",
@@ -220,7 +228,8 @@ const cardData = [
   {
     dexNo: "021",
     name: "Overclox",
-    image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367843099942953/elrondhubbard_Thunderous_Storm_Griffin_on_Mountain_Peaks_pokemo_bbb0ae28-3fad-4e97-8af8-d5ef8cedca58.png?ex=657d2a37&is=656ab537&hm=9f4ead4ceb0ad30ff9afa5d48d9fd6f8d15ca463167a95ce4fb52c80414d75b9&",
+    // image: "https://cdn.discordapp.com/attachments/1138284399704682537/1180367843099942953/elrondhubbard_Thunderous_Storm_Griffin_on_Mountain_Peaks_pokemo_bbb0ae28-3fad-4e97-8af8-d5ef8cedca58.png?ex=657d2a37&is=656ab537&hm=9f4ead4ceb0ad30ff9afa5d48d9fd6f8d15ca463167a95ce4fb52c80414d75b9&",
+    image: "https://ik.imagekit.io/en4cpe64r/overclox.png?updatedAt=1709149770814",
     attack: "98",
     health: "76",
     coinCost: "22",
@@ -292,7 +301,8 @@ const cardData = [
   {
     dexNo: "029",
     name: "Terrabite",
-    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184245418989715586/elrondhubbard_a_terrible_lizard_stands_atop_a_pool_of_toxic_slu_09f95111-747f-4104-8c16-bf39b82f88f9.png?ex=658b457e&is=6578d07e&hm=311a67e75e26686390a5be886c742caef7a36c831d9e30816e5da99c41c18ea2&",
+    // image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184245418989715586/elrondhubbard_a_terrible_lizard_stands_atop_a_pool_of_toxic_slu_09f95111-747f-4104-8c16-bf39b82f88f9.png?ex=658b457e&is=6578d07e&hm=311a67e75e26686390a5be886c742caef7a36c831d9e30816e5da99c41c18ea2&",
+    image: "https://ik.imagekit.io/en4cpe64r/terrabite.png?updatedAt=1709149770807",
     attack: "124",
     health: "86",
     coinCost: "100",
@@ -301,7 +311,8 @@ const cardData = [
   {
     dexNo: "030",
     name: "Assemblus",
-    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184253464134553712/elrondhubbard_menacing_deep_sea_kraken_collecting_ships_pokemon_2e4ca9e4-07ad-497c-8fce-68e058a6f12d.png?ex=658b4cfc&is=6578d7fc&hm=c4741a15ede954b51046d29c863d062d07e8c7823129ac118c6ab316ad68c3a1&",
+    // image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184253464134553712/elrondhubbard_menacing_deep_sea_kraken_collecting_ships_pokemon_2e4ca9e4-07ad-497c-8fce-68e058a6f12d.png?ex=658b4cfc&is=6578d7fc&hm=c4741a15ede954b51046d29c863d062d07e8c7823129ac118c6ab316ad68c3a1&",
+    image: "https://ik.imagekit.io/en4cpe64r/assemblus.png?updatedAt=1709149770643",
     attack: "97",
     health: "98",
     coinCost: "100",
@@ -310,7 +321,8 @@ const cardData = [
   {
     dexNo: "031",
     name: "Serviroot",
-    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184250363319173240/elrondhubbard_a_massive_tree_grasping_at_the_earth_pokemon_cute_c902979a-b664-4f9c-80d3-a7c3ad5383d6.png?ex=658b4a18&is=6578d518&hm=70b3ac2f64fa1c1ee8d2dac8e6e9ffbae5aa78baa602a34037a11cb9d35cf842&",
+    // image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184250363319173240/elrondhubbard_a_massive_tree_grasping_at_the_earth_pokemon_cute_c902979a-b664-4f9c-80d3-a7c3ad5383d6.png?ex=658b4a18&is=6578d518&hm=70b3ac2f64fa1c1ee8d2dac8e6e9ffbae5aa78baa602a34037a11cb9d35cf842&",
+    image: "https://ik.imagekit.io/en4cpe64r/serviroot.png?updatedAt=1709149770823",
     attack: "89",
     health: "134",
     coinCost: "100",
@@ -319,7 +331,8 @@ const cardData = [
   {
     dexNo: "032",
     name: "Gitfetch",
-    image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184252270016221294/elrondhubbard_adorable_terrier_holding_bone_in_mouth_pokemon_cu_b946a97c-7723-44fc-92a7-095ee0c91589.png?ex=658b4bdf&is=6578d6df&hm=2fbd7ba2f68af0b354c40910da2e307998c9f02687978bd0cc655004940dac5f&",
+    // image: "https://cdn.discordapp.com/attachments/1062551659168944249/1184252270016221294/elrondhubbard_adorable_terrier_holding_bone_in_mouth_pokemon_cu_b946a97c-7723-44fc-92a7-095ee0c91589.png?ex=658b4bdf&is=6578d6df&hm=2fbd7ba2f68af0b354c40910da2e307998c9f02687978bd0cc655004940dac5f&",
+    image: "https://ik.imagekit.io/en4cpe64r/gitfetch.png?updatedAt=1709149770616",
     attack: "5",
     health: "5",
     coinCost: "999",

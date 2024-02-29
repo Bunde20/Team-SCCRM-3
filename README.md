@@ -106,6 +106,7 @@ A good Prográmon team can win any battle. Try the following combo to improve yo
 - Bootstrap
 - animate.css
 - Fontawesome
+- imagekit.io
 
 **Backend**
 
